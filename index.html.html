@@ -1,0 +1,1807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aisle & Bloom — Wedding Vendor Directory</title>
+  <meta name="description" content="Discover and book the best wedding vendors in Melbourne. Photography, florals, catering, venues and more — all in one place.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #faf8f4;
+      --warm-white: #fff9f5;
+      --blush: #f5ede6;
+      --dusty-rose: #c9a99a;
+      --deep-rose: #8b5e52;
+      --charcoal: #2c2825;
+      --mid: #6b6460;
+      --light: #a09a96;
+      --border: rgba(44,40,37,0.1);
+      --border-strong: rgba(44,40,37,0.2);
+      --gold: #b8975a;
+      --success-bg: #edf5e8;
+      --success: #3a6e28;
+      --warning-bg: #fdf3e3;
+      --warning: #8a5c0a;
+      --danger-bg: #fceaea;
+      --danger: #8b2c2c;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      color: var(--charcoal);
+      background: var(--cream);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250,248,244,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 0.5px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--charcoal);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-logo em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--dusty-rose);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--charcoal); }
+
+    .nav-cta {
+      padding: 8px 20px;
+      background: var(--charcoal);
+      color: var(--cream) !important;
+      border-radius: 999px;
+      font-size: 12px !important;
+      letter-spacing: 0.08em !important;
+    }
+
+    .nav-cta:hover { opacity: 0.85; }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--charcoal);
+      transition: all 0.3s;
+    }
+
+    /* ── PAGE TABS ── */
+    .page-tabs {
+      display: flex;
+      border-bottom: 0.5px solid var(--border);
+      background: var(--warm-white);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .page-tabs::-webkit-scrollbar { display: none; }
+
+    .ptab {
+      flex-shrink: 0;
+      padding: 1rem 1.5rem;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--mid);
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Jost', sans-serif;
+    }
+
+    .ptab.active {
+      color: var(--charcoal);
+      border-bottom-color: var(--charcoal);
+    }
+
+    .ptab:hover { color: var(--charcoal); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: var(--blush);
+      z-index: 0;
+    }
+
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 60%;
+      height: 100%;
+      background: radial-gradient(ellipse, rgba(201,169,154,0.3) 0%, transparent 70%);
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      bottom: -20%;
+      left: -5%;
+      width: 50%;
+      height: 80%;
+      background: radial-gradient(ellipse, rgba(184,151,90,0.15) 0%, transparent 70%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      animation: fadeUp 0.9s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--dusty-rose);
+      margin-bottom: 1.25rem;
+      font-weight: 400;
+      animation: fadeUp 0.9s 0.1s ease both;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(42px, 7vw, 80px);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--charcoal);
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.9s 0.15s ease both;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--deep-rose);
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      color: var(--mid);
+      max-width: 460px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+      animation: fadeUp 0.9s 0.2s ease both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeUp 0.9s 0.25s ease both;
+    }
+
+    .btn-primary {
+      padding: 14px 32px;
+      background: var(--charcoal);
+      color: var(--cream);
+      border: none;
+      border-radius: 999px;
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { opacity: 0.82; }
+
+    .btn-outline {
+      padding: 14px 32px;
+      background: transparent;
+      color: var(--charcoal);
+      border: 0.5px solid var(--border-strong);
+      border-radius: 999px;
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-outline:hover {
+      background: var(--charcoal);
+      color: var(--cream);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      justify-content: center;
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 0.5px solid var(--border);
+      animation: fadeUp 0.9s 0.3s ease both;
+    }
+
+    .hero-stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      font-weight: 600;
+      color: var(--charcoal);
+      display: block;
+    }
+
+    .hero-stat-lbl {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--light);
+    }
+
+    /* ── HOW IT WORKS ── */
+    .section {
+      padding: 6rem 2rem;
+    }
+
+    .section-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--dusty-rose);
+      margin-bottom: 0.75rem;
+      font-weight: 400;
+      text-align: center;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(30px, 4vw, 46px);
+      font-weight: 300;
+      text-align: center;
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .section-title em { font-style: italic; color: var(--deep-rose); }
+
+    .section-sub {
+      text-align: center;
+      font-size: 15px;
+      color: var(--mid);
+      max-width: 480px;
+      margin: 0 auto 4rem;
+      line-height: 1.7;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+    }
+
+    .step {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      background: var(--warm-white);
+      border-radius: 16px;
+      border: 0.5px solid var(--border);
+      transition: border-color 0.2s;
+    }
+
+    .step:hover { border-color: var(--border-strong); }
+
+    .step-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48px;
+      font-weight: 300;
+      color: var(--dusty-rose);
+      opacity: 0.6;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .step h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--charcoal);
+    }
+
+    .step p {
+      font-size: 13px;
+      color: var(--mid);
+      line-height: 1.6;
+    }
+
+    /* ── CATEGORIES ── */
+    .cats-section { background: var(--blush); }
+
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 12px;
+    }
+
+    .cat-pill {
+      background: var(--warm-white);
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: block;
+    }
+
+    .cat-pill:hover {
+      border-color: var(--dusty-rose);
+      background: white;
+    }
+
+    .cat-pill-icon { font-size: 24px; margin-bottom: 8px; display: block; }
+
+    .cat-pill-name {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: var(--charcoal);
+    }
+
+    /* ── DIRECTORY ── */
+    .dir-section { background: var(--warm-white); }
+
+    .dir-controls {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .dir-search {
+      flex: 1;
+      min-width: 220px;
+      padding: 11px 16px;
+      border: 0.5px solid var(--border-strong);
+      border-radius: 999px;
+      font-family: 'Jost', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      background: white;
+      color: var(--charcoal);
+      outline: none;
+    }
+
+    .dir-search:focus { border-color: var(--dusty-rose); }
+
+    .dir-filters {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .fbtn {
+      padding: 7px 16px;
+      border: 0.5px solid var(--border);
+      border-radius: 999px;
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      background: white;
+      color: var(--mid);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .fbtn:hover { border-color: var(--border-strong); color: var(--charcoal); }
+    .fbtn.active { background: var(--charcoal); color: var(--cream); border-color: var(--charcoal); }
+
+    .dir-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 2rem;
+    }
+
+    .dstat {
+      background: var(--blush);
+      border-radius: 10px;
+      padding: 0.875rem;
+      text-align: center;
+    }
+
+    .dstat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--charcoal);
+    }
+
+    .dstat-lbl {
+      font-size: 11px;
+      color: var(--mid);
+      letter-spacing: 0.06em;
+    }
+
+    .vendor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .vcard {
+      background: white;
+      border: 0.5px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .vcard:hover {
+      border-color: var(--dusty-rose);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(44,40,37,0.06);
+    }
+
+    .vcard-banner {
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      position: relative;
+    }
+
+    .vbadge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      padding: 3px 9px;
+      border-radius: 999px;
+      text-transform: uppercase;
+    }
+
+    .b-avail { background: var(--success-bg); color: var(--success); }
+    .b-book { background: var(--danger-bg); color: var(--danger); }
+    .b-lim { background: var(--warning-bg); color: var(--warning); }
+
+    .vcard-body { padding: 1rem 1.1rem 1.1rem; }
+
+    .vcard-cat {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--light);
+      margin-bottom: 3px;
+    }
+
+    .vcard-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 5px;
+      line-height: 1.2;
+    }
+
+    .vcard-desc {
+      font-size: 12px;
+      color: var(--mid);
+      line-height: 1.55;
+      margin-bottom: 10px;
+    }
+
+    .vcard-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 0.5px solid var(--border);
+      padding-top: 10px;
+    }
+
+    .vcard-price { font-size: 13px; font-weight: 500; color: var(--charcoal); }
+
+    .vcard-rating {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      color: var(--mid);
+    }
+
+    .stars { color: #c4973a; font-size: 11px; }
+
+    .vcard-btn {
+      display: block;
+      width: 100%;
+      margin-top: 10px;
+      padding: 8px;
+      text-align: center;
+      border: 0.5px solid var(--border-strong);
+      border-radius: 8px;
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      background: transparent;
+      color: var(--charcoal);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .vcard-btn:hover { background: var(--charcoal); color: var(--cream); }
+
+    .dir-empty {
+      grid-column: 1/-1;
+      text-align: center;
+      padding: 4rem 1rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-style: italic;
+      color: var(--light);
+    }
+
+    /* ── PRICING ── */
+    .pricing-section { background: var(--cream); }
+
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .plan {
+      background: white;
+      border: 0.5px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem 1.75rem;
+    }
+
+    .plan.featured { border: 2px solid var(--dusty-rose); }
+
+    .plan-pill {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 1.25rem;
+      background: #f5ede6;
+      color: var(--deep-rose);
+    }
+
+    .plan-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--charcoal);
+    }
+
+    .plan-tagline {
+      font-size: 13px;
+      color: var(--mid);
+      margin-bottom: 1.5rem;
+      line-height: 1.55;
+    }
+
+    .plan-price-block {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .plan-price-row { display: flex; align-items: baseline; gap: 3px; }
+
+    .p-dollar {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--mid);
+      align-self: flex-start;
+      margin-top: 8px;
+    }
+
+    .p-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 54px;
+      font-weight: 600;
+      line-height: 1;
+      color: var(--charcoal);
+    }
+
+    .p-once {
+      font-size: 11px;
+      color: var(--light);
+      letter-spacing: 0.06em;
+      margin-top: 6px;
+    }
+
+    .feat-list { list-style: none; margin-bottom: 1.75rem; }
+
+    .feat-list li {
+      font-size: 13px;
+      color: var(--mid);
+      padding: 7px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.4;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .feat-list li:last-child { border-bottom: none; }
+    .feat-list li strong { color: var(--charcoal); font-weight: 500; }
+    .ck { color: var(--success); flex-shrink: 0; font-size: 13px; margin-top: 1px; }
+    .cx { color: var(--light); flex-shrink: 0; font-size: 13px; margin-top: 1px; }
+
+    .plan-btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      text-align: center;
+      border-radius: 999px;
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.07em;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .plan-btn-ghost {
+      border: 0.5px solid var(--border-strong);
+      background: transparent;
+      color: var(--charcoal);
+    }
+
+    .plan-btn-ghost:hover { background: var(--charcoal); color: var(--cream); }
+
+    .plan-btn-solid {
+      border: none;
+      background: var(--charcoal);
+      color: var(--cream);
+    }
+
+    .plan-btn-solid:hover { opacity: 0.84; }
+
+    /* Budget preview */
+    .budget-preview {
+      max-width: 540px;
+      margin: 3rem auto 0;
+      background: var(--blush);
+      border-radius: 16px;
+      padding: 1.5rem;
+      border: 0.5px solid var(--border);
+    }
+
+    .bp-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      font-style: italic;
+      color: var(--mid);
+      text-align: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .bp-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 1rem;
+    }
+
+    .bp-amount {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--charcoal);
+    }
+
+    .bp-label { font-size: 11px; color: var(--mid); letter-spacing: 0.06em; }
+
+    .bp-rows { display: flex; flex-direction: column; gap: 8px; margin-bottom: 1rem; }
+
+    .bp-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: white;
+      border-radius: 10px;
+      padding: 10px 12px;
+      border: 0.5px solid var(--border);
+    }
+
+    .bp-icon { font-size: 16px; flex-shrink: 0; }
+    .bp-name { flex: 1; font-size: 13px; font-weight: 500; color: var(--charcoal); }
+    .bp-cat { font-size: 11px; color: var(--light); }
+    .bp-amt { font-size: 13px; font-weight: 500; }
+
+    .bp-status {
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-weight: 400;
+      margin-top: 2px;
+      white-space: nowrap;
+    }
+
+    .pb-track {
+      height: 6px;
+      background: var(--border);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 6px;
+    }
+
+    .pb-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: #5a8a3a;
+      width: 38%;
+    }
+
+    .pb-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--light);
+    }
+
+    .lock-note {
+      text-align: center;
+      padding-top: 1rem;
+      font-size: 12px;
+      color: var(--light);
+    }
+
+    /* ── VENDOR SIGN UP ── */
+    .vendor-section { background: var(--blush); }
+
+    .vendor-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .vendor-copy h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      color: var(--charcoal);
+    }
+
+    .vendor-copy h2 em { font-style: italic; color: var(--deep-rose); }
+
+    .vendor-copy p {
+      font-size: 14px;
+      color: var(--mid);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .vendor-perks { list-style: none; margin-bottom: 2rem; }
+
+    .vendor-perks li {
+      font-size: 13px;
+      color: var(--mid);
+      padding: 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .vendor-perks li:last-child { border-bottom: none; }
+    .perk-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--dusty-rose); flex-shrink: 0; }
+
+    .signup-form {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      border: 0.5px solid var(--border);
+    }
+
+    .signup-form h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      color: var(--charcoal);
+    }
+
+    .form-group { margin-bottom: 14px; }
+
+    .form-group label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 5px;
+      font-weight: 400;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border: 0.5px solid var(--border-strong);
+      border-radius: 8px;
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--charcoal);
+      background: var(--cream);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--dusty-rose); }
+
+    .form-group textarea { height: 80px; resize: vertical; }
+
+    .form-submit {
+      width: 100%;
+      padding: 12px;
+      background: var(--charcoal);
+      color: var(--cream);
+      border: none;
+      border-radius: 999px;
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      margin-top: 6px;
+    }
+
+    .form-submit:hover { opacity: 0.84; }
+
+    .form-note {
+      font-size: 11px;
+      color: var(--light);
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-section { background: var(--cream); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .tcard {
+      background: white;
+      border: 0.5px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+    }
+
+    .tcard-stars { color: #c4973a; font-size: 13px; margin-bottom: 0.75rem; }
+
+    .tcard-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--charcoal);
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+
+    .tcard-author {
+      font-size: 12px;
+      color: var(--mid);
+      letter-spacing: 0.04em;
+    }
+
+    .tcard-author strong { color: var(--charcoal); font-weight: 500; }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(44,40,37,0.5);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-overlay.open { display: flex; }
+
+    .modal {
+      background: white;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 460px;
+      max-height: 90vh;
+      overflow-y: auto;
+      animation: fadeUp 0.25s ease;
+    }
+
+    .modal-banner {
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      border-radius: 16px 16px 0 0;
+    }
+
+    .modal-body { padding: 1.5rem 1.75rem 1.75rem; }
+    .modal-cat { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--light); margin-bottom: 4px; }
+    .modal-name { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; margin-bottom: 6px; color: var(--charcoal); }
+    .modal-desc { font-size: 13px; color: var(--mid); line-height: 1.6; margin-bottom: 1.25rem; }
+
+    .modal-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 1.25rem;
+    }
+
+    .det {
+      background: var(--blush);
+      border-radius: 10px;
+      padding: 10px 12px;
+    }
+
+    .det-lbl { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--light); margin-bottom: 2px; }
+    .det-val { font-size: 14px; font-weight: 500; color: var(--charcoal); }
+
+    .modal-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.25rem; }
+
+    .tag {
+      font-size: 11px;
+      padding: 3px 10px;
+      border: 0.5px solid var(--border-strong);
+      border-radius: 999px;
+      color: var(--mid);
+    }
+
+    .modal-actions { display: flex; gap: 8px; }
+
+    .mbtn-primary {
+      flex: 1;
+      padding: 11px;
+      background: var(--charcoal);
+      color: var(--cream);
+      border: none;
+      border-radius: 999px;
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .mbtn-secondary {
+      padding: 11px 16px;
+      background: transparent;
+      color: var(--mid);
+      border: 0.5px solid var(--border-strong);
+      border-radius: 999px;
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    /* ── FAQ ── */
+    .faq-section { background: var(--blush); }
+    .faq-inner { max-width: 640px; margin: 0 auto; }
+
+    .faq-item { border-bottom: 0.5px solid var(--border); }
+
+    .faq-q {
+      width: 100%;
+      text-align: left;
+      padding: 1.1rem 0;
+      font-family: 'Jost', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--charcoal);
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .faq-ch { font-size: 16px; color: var(--light); transition: transform 0.2s; flex-shrink: 0; }
+    .faq-ch.open { transform: rotate(180deg); }
+
+    .faq-a {
+      font-size: 13px;
+      color: var(--mid);
+      line-height: 1.7;
+      padding-bottom: 1rem;
+      display: none;
+    }
+
+    .faq-a.open { display: block; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--charcoal);
+      color: rgba(250,248,244,0.7);
+      padding: 3rem 2rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 0.5px solid rgba(250,248,244,0.1);
+    }
+
+    .footer-brand h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-brand h3 em { font-style: italic; font-weight: 300; color: var(--dusty-rose); }
+
+    .footer-brand p {
+      font-size: 13px;
+      line-height: 1.7;
+      max-width: 280px;
+    }
+
+    .footer-col h4 {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--cream);
+      margin-bottom: 1rem;
+      font-weight: 400;
+    }
+
+    .footer-col ul { list-style: none; }
+
+    .footer-col ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-col ul li a {
+      font-size: 13px;
+      color: rgba(250,248,244,0.6);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul li a:hover { color: var(--cream); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-copy {
+      font-size: 11px;
+      color: rgba(250,248,244,0.4);
+      line-height: 1.7;
+      max-width: 600px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-links a {
+      font-size: 11px;
+      color: rgba(250,248,244,0.4);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: rgba(250,248,244,0.8); }
+
+    /* ── TOAST ── */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--charcoal);
+      color: var(--cream);
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-size: 13px;
+      z-index: 500;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s;
+      pointer-events: none;
+    }
+
+    .toast.show { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 1rem; }
+
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: var(--cream);
+        border-bottom: 0.5px solid var(--border);
+        padding: 1rem;
+        gap: 1rem;
+        z-index: 99;
+      }
+
+      .nav-toggle { display: flex; }
+
+      .hero { padding: 4rem 1.25rem 3rem; }
+      .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+
+      .section { padding: 4rem 1.25rem; }
+
+      .dir-stats { grid-template-columns: repeat(2, 1fr); }
+
+      .vendor-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+
+      .footer-bottom { flex-direction: column; }
+
+      .plans { grid-template-columns: 1fr; }
+
+      .modal-details { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Aisle <em>&</em> Bloom</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#directory">Vendors</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#vendors">For vendors</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#pricing" class="nav-cta">Get started</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- PAGE TABS -->
+  <div class="page-tabs">
+    <button class="ptab active" onclick="showSection('home', this)">Home</button>
+    <button class="ptab" onclick="showSection('directory', this)">Vendor directory</button>
+    <button class="ptab" onclick="showSection('pricing', this)">Pricing for couples</button>
+    <button class="ptab" onclick="showSection('vendors', this)">For vendors</button>
+  </div>
+
+  <!-- ══ HOME ══ -->
+  <div id="sec-home">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <p class="hero-eyebrow">Melbourne's wedding vendor directory</p>
+        <h1>Find your perfect<br><em>wedding team</em></h1>
+        <p class="hero-sub">Every vendor you need — photographers, florists, caterers, venues, and more — in one beautifully curated directory.</p>
+        <div class="hero-actions">
+          <a href="#" class="btn-primary" onclick="showSection('directory', document.querySelectorAll('.ptab')[1])">Browse vendors</a>
+          <a href="#" class="btn-outline" onclick="showSection('pricing', document.querySelectorAll('.ptab')[2])">See pricing</a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <span class="hero-stat-num">120+</span>
+            <span class="hero-stat-lbl">Verified vendors</span>
+          </div>
+          <div>
+            <span class="hero-stat-num">8</span>
+            <span class="hero-stat-lbl">Categories</span>
+          </div>
+          <div>
+            <span class="hero-stat-num">500+</span>
+            <span class="hero-stat-lbl">Happy couples</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section">
+      <div class="section-inner">
+        <p class="section-eyebrow">How it works</p>
+        <h2 class="section-title">Planning made <em>simple</em></h2>
+        <p class="section-sub">From discovery to booking, we make finding the right vendors effortless.</p>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">01</div>
+            <h3>Browse</h3>
+            <p>Explore verified vendors across every category. Filter by style, location, and availability.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <h3>Shortlist</h3>
+            <p>Save your favourites, compare pricing, and read real reviews from couples like you.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <h3>Enquire</h3>
+            <p>Contact vendors directly from their profile. No middlemen, no hidden fees.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">04</div>
+            <h3>Track</h3>
+            <p>Unlock the budget tracker to manage deposits, payments, and spending in one place.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="section cats-section">
+      <div class="section-inner">
+        <p class="section-eyebrow">Browse by category</p>
+        <h2 class="section-title">Everything your <em>day needs</em></h2>
+        <p class="section-sub">From the ceremony to the dance floor, we have every vendor covered.</p>
+        <div class="cat-grid">
+          <a class="cat-pill" href="#" onclick="filterAndGo('Photography')"><span class="cat-pill-icon">📷</span><span class="cat-pill-name">Photography</span></a>
+          <a class="cat-pill" href="#" onclick="filterAndGo('Florals')"><span class="cat-pill-icon">🌸</span><span class="cat-pill-name">Florals</span></a>
+          <a class="cat-pill" href="#" onclick="filterAndGo('Catering')"><span class="cat-pill-icon">🍽️</span><span class="cat-pill-name">Catering</span></a>
+          <a class="cat-pill" href="#" onclick="filterAndGo('Music')"><span class="cat-pill-icon">🎻</span><span class="cat-pill-name">Music</span></a>
+          <a class="cat-pill" href="#" onclick="filterAndGo('Venue')"><span class="cat-pill-icon">🏛️</span><span class="cat-pill-name">Venues</span></a>
+          <a class="cat-pill" href="#" onclick="filterAndGo('Cake')"><span class="cat-pill-icon">🎂</span><span class="cat-pill-name">Cakes</span></a>
+          <a class="cat-pill" href="#" onclick="filterAndGo('Hair & Makeup')"><span class="cat-pill-icon">💄</span><span class="cat-pill-name">Hair &amp; Makeup</span></a>
+          <a class="cat-pill" href="#" onclick="filterAndGo('Transport')"><span class="cat-pill-icon">🚗</span><span class="cat-pill-name">Transport</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section testimonials-section">
+      <div class="section-inner">
+        <p class="section-eyebrow">Couples love us</p>
+        <h2 class="section-title">Real stories from <em>real weddings</em></h2>
+        <p class="section-sub">Over 500 couples have used Aisle &amp; Bloom to plan their perfect day.</p>
+        <div class="testimonials-grid">
+          <div class="tcard">
+            <div class="tcard-stars">★★★★★</div>
+            <p class="tcard-quote">"We found our photographer, florist, and caterer all in one afternoon. The budget tracker kept us completely on top of our spending."</p>
+            <p class="tcard-author"><strong>Sophie &amp; James</strong> · Married March 2026</p>
+          </div>
+          <div class="tcard">
+            <div class="tcard-stars">★★★★★</div>
+            <p class="tcard-quote">"The availability badges saved us so much time. We didn't waste a single enquiry on a vendor who couldn't do our date."</p>
+            <p class="tcard-author"><strong>Mia &amp; Tom</strong> · Married January 2026</p>
+          </div>
+          <div class="tcard">
+            <div class="tcard-stars">★★★★★</div>
+            <p class="tcard-quote">"Worth every cent for the budget tracker alone. Knowing exactly what we'd paid and what was still owing made the whole process so much less stressful."</p>
+            <p class="tcard-author"><strong>Priya &amp; Daniel</strong> · Married November 2025</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ══ DIRECTORY ══ -->
+  <div id="sec-directory" style="display:none">
+    <section class="section dir-section">
+      <div class="section-inner">
+        <p class="section-eyebrow">Vendor directory</p>
+        <h2 class="section-title">Find your <em>perfect vendors</em></h2>
+        <p class="section-sub">Browse Melbourne's best wedding vendors — all verified, reviewed, and available to enquire.</p>
+
+        <div class="dir-controls">
+          <input type="text" class="dir-search" id="searchInput" placeholder="Search by name, style, location..." oninput="filterVendors()">
+        </div>
+
+        <div class="dir-filters">
+          <button class="fbtn active" onclick="setFilter('All',this)">All</button>
+          <button class="fbtn" onclick="setFilter('Photography',this)">Photography</button>
+          <button class="fbtn" onclick="setFilter('Florals',this)">Florals</button>
+          <button class="fbtn" onclick="setFilter('Catering',this)">Catering</button>
+          <button class="fbtn" onclick="setFilter('Music',this)">Music</button>
+          <button class="fbtn" onclick="setFilter('Venue',this)">Venue</button>
+          <button class="fbtn" onclick="setFilter('Cake',this)">Cake</button>
+          <button class="fbtn" onclick="setFilter('Hair &amp; Makeup',this)">Hair &amp; Makeup</button>
+          <button class="fbtn" onclick="setFilter('Transport',this)">Transport</button>
+        </div>
+
+        <div class="dir-stats">
+          <div class="dstat"><div class="dstat-num" id="statTotal">12</div><div class="dstat-lbl">Vendors</div></div>
+          <div class="dstat"><div class="dstat-num" id="statAvail">8</div><div class="dstat-lbl">Available</div></div>
+          <div class="dstat"><div class="dstat-num" id="statBooked">3</div><div class="dstat-lbl">Booked</div></div>
+          <div class="dstat"><div class="dstat-num" id="statLimited">1</div><div class="dstat-lbl">Limited dates</div></div>
+        </div>
+
+        <div class="vendor-grid" id="vendorGrid"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ══ PRICING ══ -->
+  <div id="sec-pricing" style="display:none">
+    <section class="section pricing-section">
+      <div class="section-inner">
+        <p class="section-eyebrow">Simple, honest pricing</p>
+        <h2 class="section-title">Free to browse.<br><em>Pay once to plan.</em></h2>
+        <p class="section-sub">No subscriptions. No renewals. Browse every vendor for free — unlock your live budget tracker with a single one-off payment.</p>
+
+        <div class="plans">
+          <div class="plan">
+            <p class="plan-name">Free browsing</p>
+            <p class="plan-tagline">Explore every vendor in the directory. Search, filter, and enquire — completely free, forever.</p>
+            <div class="plan-price-block">
+              <div class="plan-price-row"><span class="p-dollar">$</span><span class="p-num">0</span></div>
+              <p class="p-once">Always free — no card required</p>
+            </div>
+            <ul class="feat-list">
+              <li><span class="ck">✓</span>Full vendor directory — all categories</li>
+              <li><span class="ck">✓</span>Search &amp; filter by style, location, category</li>
+              <li><span class="ck">✓</span>View full vendor profiles and pricing</li>
+              <li><span class="ck">✓</span>Send direct enquiries to vendors</li>
+              <li><span class="ck">✓</span>Availability status for every vendor</li>
+              <li><span class="cx">–</span><span style="color:var(--light)">Live budget tracker linked to your vendors</span></li>
+              <li><span class="cx">–</span><span style="color:var(--light)">Deposit &amp; payment tracking</span></li>
+              <li><span class="cx">–</span><span style="color:var(--light)">Spending breakdown by category</span></li>
+            </ul>
+            <a href="#directory" class="plan-btn plan-btn-ghost" onclick="showSection('directory', document.querySelectorAll('.ptab')[1])">Start browsing — it's free</a>
+          </div>
+
+          <div class="plan featured">
+            <span class="plan-pill">One-off purchase</span>
+            <p class="plan-name">Budget tracker</p>
+            <p class="plan-tagline">A live budget dashboard linked to the vendors you choose — tracking every dollar from deposit to final payment.</p>
+            <div class="plan-price-block">
+              <div class="plan-price-row"><span class="p-dollar">$</span><span class="p-num">1,199</span></div>
+              <p class="p-once">One-off payment — yours until your wedding day</p>
+            </div>
+            <ul class="feat-list">
+              <li><span class="ck">✓</span>Everything in free browsing</li>
+              <li><span class="ck">✓</span><strong>Live budget linked to your chosen vendors</strong></li>
+              <li><span class="ck">✓</span><strong>Deposit &amp; payment tracking</strong></li>
+              <li><span class="ck">✓</span><strong>Spending breakdown by category</strong></li>
+              <li><span class="ck">✓</span>Budget vs actual progress with overspend alerts</li>
+              <li><span class="ck">✓</span>Add custom items outside the directory</li>
+              <li><span class="ck">✓</span>Shareable budget view with your partner</li>
+              <li><span class="ck">✓</span>Access retained 3 months post-wedding</li>
+            </ul>
+            <a href="#" class="plan-btn plan-btn-solid" onclick="showToast('Redirecting to secure checkout...')">Unlock budget tracker — $1,199</a>
+          </div>
+        </div>
+
+        <div class="budget-preview">
+          <p class="bp-title">What the budget tracker looks like</p>
+          <div class="bp-top">
+            <div><div class="bp-label">Total budget</div><div class="bp-amount">$28,450</div></div>
+            <div style="text-align:right"><div class="bp-label">Paid so far</div><div class="bp-amount" style="font-size:20px;color:var(--mid)">$10,700</div></div>
+          </div>
+          <div class="bp-rows">
+            <div class="bp-row"><span class="bp-icon">🏛️</span><div><div class="bp-name">Rippon Lea Estate</div><div class="bp-cat">Venue</div></div><div style="text-align:right"><div class="bp-amt">$7,500</div><div class="bp-status b-lim">Deposit paid</div></div></div>
+            <div class="bp-row"><span class="bp-icon">📷</span><div><div class="bp-name">Clara Holt Photography</div><div class="bp-cat">Photography</div></div><div style="text-align:right"><div class="bp-amt">$3,500</div><div class="bp-status b-avail">Fully paid</div></div></div>
+            <div class="bp-row"><span class="bp-icon">🍽️</span><div><div class="bp-name">Savour Catering Co.</div><div class="bp-cat">Catering</div></div><div style="text-align:right"><div class="bp-amt">$8,500</div><div class="bp-status" style="background:var(--warning-bg);color:var(--warning)">Pending</div></div></div>
+          </div>
+          <div class="pb-track"><div class="pb-fill"></div></div>
+          <div class="pb-row"><span>38% of budget used</span><span>$17,750 remaining</span></div>
+          <p class="lock-note">🔒 Unlock the full tracker for all your chosen vendors</p>
+        </div>
+
+        <div style="max-width:540px;margin:2rem auto 0;background:var(--blush);border-radius:16px;padding:1.5rem;text-align:center;border:0.5px solid var(--border)">
+          <p style="font-size:13px;color:var(--mid);line-height:1.7"><strong style="color:var(--charcoal)">30-day money-back guarantee.</strong> If you purchase and decide it's not right for you within 30 days, we'll refund you in full — no questions asked.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ ON PRICING PAGE -->
+    <section class="section faq-section">
+      <div class="section-inner">
+        <p class="section-eyebrow">Questions</p>
+        <h2 class="section-title">Common <em>questions</em></h2>
+        <div class="faq-inner">
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Why does the budget tracker cost $1,199? <span class="faq-ch">▾</span></button><div class="faq-a">The tracker is purpose-built to link directly to vendors you choose from the directory — so your budget updates live as you shortlist. It includes deposit tracking, overspend alerts, and a shareable partner view. Given the average Australian wedding costs over $30,000, the tracker pays for itself by keeping you in control of every dollar.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is this a subscription? <span class="faq-ch">▾</span></button><div class="faq-a">No. It is a single one-off payment. You will never be billed again. Access is yours from the moment you pay until 3 months after your wedding date.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How does the tracker link to vendors I choose? <span class="faq-ch">▾</span></button><div class="faq-a">When you save a vendor to your shortlist, their pricing is pulled directly into your budget dashboard. You then set your agreed quote, log deposits, and mark payments — all in one place, always in sync with your vendor list.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can my partner access the budget tracker too? <span class="faq-ch">▾</span></button><div class="faq-a">Yes. The tracker includes a shareable link so both partners can view and update the budget together in real time.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can I add vendors not in the directory? <span class="faq-ch">▾</span></button><div class="faq-a">Yes — you can add custom line items manually, such as a family friend doing florals or travel costs, and they appear alongside your directory vendors.</div></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ══ FOR VENDORS ══ -->
+  <div id="sec-vendors" style="display:none">
+    <section class="section vendor-section">
+      <div class="vendor-inner">
+        <div class="vendor-copy">
+          <p class="section-eyebrow" style="text-align:left">For wedding vendors</p>
+          <h2>Reach couples <em>already planning</em></h2>
+          <p>Aisle &amp; Bloom connects you with engaged couples who are actively searching for vendors in your category. No cold outreach — just warm leads from people ready to book.</p>
+          <ul class="vendor-perks">
+            <li><span class="perk-dot"></span>Featured listing in your category with photos, pricing, and reviews</li>
+            <li><span class="perk-dot"></span>Direct enquiries from couples — no commissions on bookings</li>
+            <li><span class="perk-dot"></span>Availability badge so only available-date couples enquire</li>
+            <li><span class="perk-dot"></span>Priority placement available for maximum visibility</li>
+            <li><span class="perk-dot"></span>Dashboard to manage enquiries and update your profile</li>
+            <li><span class="perk-dot"></span>Listed on a platform trusted by 500+ Melbourne couples</li>
+          </ul>
+          <a href="#" class="btn-primary" onclick="document.getElementById('signupForm').scrollIntoView({behavior:'smooth'})">Apply to be listed</a>
+        </div>
+
+        <div class="signup-form" id="signupForm">
+          <h3>Apply to join</h3>
+          <div class="form-group">
+            <label>Business name</label>
+            <input type="text" placeholder="e.g. Clara Holt Photography">
+          </div>
+          <div class="form-group">
+            <label>Category</label>
+            <select>
+              <option value="">Select a category</option>
+              <option>Photography</option>
+              <option>Florals</option>
+              <option>Catering</option>
+              <option>Music</option>
+              <option>Venue</option>
+              <option>Cake</option>
+              <option>Hair &amp; Makeup</option>
+              <option>Transport</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Contact name</label>
+            <input type="text" placeholder="Your full name">
+          </div>
+          <div class="form-group">
+            <label>Email address</label>
+            <input type="email" placeholder="hello@yourbusiness.com.au">
+          </div>
+          <div class="form-group">
+            <label>Website or Instagram</label>
+            <input type="text" placeholder="yourbusiness.com.au or @handle">
+          </div>
+          <div class="form-group">
+            <label>Tell us about your business</label>
+            <textarea placeholder="A brief description of your services, style, and location..."></textarea>
+          </div>
+          <button class="form-submit" onclick="showToast('Application received — we\'ll be in touch within 48 hours.')">Submit application</button>
+          <p class="form-note">We review all applications within 48 hours. No listing fees to get started.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+    <div class="modal" id="modal"></div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h3>Aisle <em>&</em> Bloom</h3>
+          <p>Melbourne's curated wedding vendor directory. Find, compare, and connect with the best vendors for your perfect day.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Directory</h4>
+          <ul>
+            <li><a href="#" onclick="filterAndGo('Photography')">Photography</a></li>
+            <li><a href="#" onclick="filterAndGo('Florals')">Florals</a></li>
+            <li><a href="#" onclick="filterAndGo('Catering')">Catering</a></li>
+            <li><a href="#" onclick="filterAndGo('Venue')">Venues</a></li>
+            <li><a href="#" onclick="filterAndGo('Music')">Music</a></li>
+            <li><a href="#" onclick="filterAndGo('Cake')">Cakes</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About us</a></li>
+            <li><a href="#" onclick="showSection('pricing', document.querySelectorAll('.ptab')[2])">Pricing for couples</a></li>
+            <li><a href="#" onclick="showSection('vendors', document.querySelectorAll('.ptab')[3])">List your business</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Privacy policy</a></li>
+            <li><a href="#">Terms of use</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">
+          © 2026 Aisle &amp; Bloom (ABN 52 326 516 070). All rights reserved.<br>
+          The design, content, code, vendor listings, and all other material on this website are the exclusive intellectual property of Aisle &amp; Bloom (ABN 52 326 516 070). Unauthorised reproduction, distribution, copying, scraping, or use of any material from this website — in whole or in part — without prior written consent is strictly prohibited and may constitute an infringement of copyright under the Copyright Act 1968 (Cth).<br>
+          Aisle &amp; Bloom is a trademark of Aisle &amp; Bloom (ABN 52 326 516 070). All vendor logos, names, and images remain the property of their respective owners. Enquiries: hello@aisleanbloom.com.au
+        </p>
+        <div class="footer-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const BANNERS = [
+      'linear-gradient(135deg,#f9f3ec,#f0e6d3)',
+      'linear-gradient(135deg,#edf3f9,#d6e8f5)',
+      'linear-gradient(135deg,#f2f9ed,#ddf0d0)',
+      'linear-gradient(135deg,#f9edee,#f5d3d6)',
+      'linear-gradient(135deg,#f2edf9,#e0d3f5)',
+      'linear-gradient(135deg,#f9f9ed,#f5f2c8)',
+      'linear-gradient(135deg,#edf9f7,#c8eee9)',
+      'linear-gradient(135deg,#f9edf6,#f0c8ea)',
+    ];
+
+    const vendors = [
+      {id:1,name:'Clara Holt Photography',cat:'Photography',icon:'📷',desc:'Candid, film-inspired wedding photography with a warm editorial touch.',price:'From $3,200',rating:4.9,reviews:84,location:'Melbourne CBD',style:['Candid','Film','Editorial'],packages:'3 packages',availability:'available',color:BANNERS[1]},
+      {id:2,name:'The Bloom Studio',cat:'Florals',icon:'🌸',desc:'Lush, garden-style arrangements. Specialises in dried and seasonal florals.',price:'From $800',rating:4.8,reviews:61,location:'Fitzroy',style:['Garden','Dried','Seasonal'],packages:'Custom quotes',availability:'limited',color:BANNERS[0]},
+      {id:3,name:'Savour Catering Co.',cat:'Catering',icon:'🍽️',desc:'Farm-to-table menus with flexible dietary options. Sit-down or roaming.',price:'From $85 pp',rating:4.7,reviews:112,location:'Inner Melbourne',style:['Farm-to-table','Modern'],packages:'4 menus',availability:'available',color:BANNERS[2]},
+      {id:4,name:'Harmony Strings',cat:'Music',icon:'🎻',desc:'Classic string quartet performing contemporary and classical wedding music.',price:'From $900',rating:5.0,reviews:39,location:'Melbourne',style:['Classical','Contemporary'],packages:'3h / 5h',availability:'booked',color:BANNERS[5]},
+      {id:5,name:'Rippon Lea Estate',cat:'Venue',icon:'🏛️',desc:'Historic 19th-century estate with manicured gardens and a grand ballroom.',price:'From $6,500',rating:4.9,reviews:203,location:'Elsternwick',style:['Heritage','Garden','Ballroom'],packages:'Full day hire',availability:'available',color:BANNERS[4]},
+      {id:6,name:'Sugar & Lace Cakes',cat:'Cake',icon:'🎂',desc:'Sculptural wedding cakes crafted to match your aesthetic. All flavours.',price:'From $650',rating:4.8,reviews:55,location:'Collingwood',style:['Modern','Minimalist','Floral'],packages:'Tasting sessions',availability:'available',color:BANNERS[3]},
+      {id:7,name:'Luminous Beauty Co.',cat:'Hair & Makeup',icon:'💄',desc:'Bridal beauty team specialising in soft glam and natural luminous looks.',price:'From $420',rating:4.9,reviews:97,location:'Mobile — all Melbourne',style:['Soft glam','Natural','Editorial'],packages:'1–6 people',availability:'available',color:BANNERS[7]},
+      {id:8,name:'Vintage Rides Melbourne',cat:'Transport',icon:'🚗',desc:'Restored vintage cars for bride and groom transport. Perfect for photos.',price:'From $550',rating:4.7,reviews:28,location:'Melbourne',style:['Vintage','Classic'],packages:'3h / full day',availability:'available',color:BANNERS[5]},
+      {id:9,name:'James Archer Films',cat:'Photography',icon:'🎬',desc:'Cinematic videography capturing every emotion of your wedding day.',price:'From $2,800',rating:4.8,reviews:44,location:'Melbourne & Yarra Valley',style:['Cinematic','Documentary'],packages:'2 packages',availability:'booked',color:BANNERS[1]},
+      {id:10,name:'Wild & Whimsy Florals',cat:'Florals',icon:'🌿',desc:'Boho and free-spirited floral designs using local native Australian flowers.',price:'From $600',rating:4.6,reviews:33,location:'Northcote',style:['Boho','Native','Whimsical'],packages:'Custom quotes',availability:'available',color:BANNERS[0]},
+      {id:11,name:'The Grand Pavilion',cat:'Venue',icon:'🏩',desc:'Contemporary waterfront venue with floor-to-ceiling views and flexible spaces.',price:'From $9,000',rating:4.8,reviews:176,location:'St Kilda',style:['Contemporary','Waterfront'],packages:'Day or evening',availability:'booked',color:BANNERS[4]},
+      {id:12,name:'Encore Events DJ',cat:'Music',icon:'🎧',desc:'Professional wedding DJ service with lighting and MC included.',price:'From $1,100',rating:4.7,reviews:67,location:'Melbourne-wide',style:['DJ','Contemporary','Pop'],packages:'5h / 8h',availability:'available',color:BANNERS[6]},
+    ];
+
+    let activeFilter = 'All';
+
+    function showSection(sec, tabEl) {
+      ['home','directory','pricing','vendors'].forEach(s => {
+        document.getElementById('sec-' + s).style.display = s === sec ? 'block' : 'none';
+      });
+      document.querySelectorAll('.ptab').forEach(t => t.classList.remove('active'));
+      if (tabEl) tabEl.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (sec === 'directory') filterVendors();
+      return false;
+    }
+
+    function filterAndGo(cat) {
+      activeFilter = cat;
+      showSection('directory', document.querySelectorAll('.ptab')[1]);
+      document.querySelectorAll('.fbtn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.fbtn').forEach(b => {
+        if (b.textContent.trim() === cat || (cat === 'Hair & Makeup' && b.textContent.includes('Hair'))) b.classList.add('active');
+      });
+      filterVendors();
+      return false;
+    }
+
+    function setFilter(cat, el) {
+      activeFilter = cat;
+      document.querySelectorAll('.fbtn').forEach(b => b.classList.remove('active'));
+      el.classList.add('active');
+      filterVendors();
+    }
+
+    function filterVendors() {
+      const s = (document.getElementById('searchInput') ? document.getElementById('searchInput').value : '').toLowerCase();
+      const filtered = vendors.filter(v => {
+        const mc = activeFilter === 'All' || v.cat === activeFilter;
+        const ms = !s || v.name.toLowerCase().includes(s) || v.cat.toLowerCase().includes(s) || v.style.some(x => x.toLowerCase().includes(s)) || v.location.toLowerCase().includes(s);
+        return mc && ms;
+      });
+      document.getElementById('statTotal').textContent = filtered.length;
+      document.getElementById('statAvail').textContent = filtered.filter(v => v.availability === 'available').length;
+      document.getElementById('statBooked').textContent = filtered.filter(v => v.availability === 'booked').length;
+      document.getElementById('statLimited').textContent = filtered.filter(v => v.availability === 'limited').length;
+      document.getElementById('vendorGrid').innerHTML = filtered.length === 0
+        ? '<div class="dir-empty">No vendors found — try a different search</div>'
+        : filtered.map(v => cardHTML(v)).join('');
+    }
+
+    function stars(r) {
+      const f = Math.floor(r);
+      return '★'.repeat(f) + (r % 1 >= 0.5 ? '½' : '') + '☆'.repeat(5 - f - (r % 1 >= 0.5 ? 1 : 0));
+    }
+
+    function badgeCls(a) { return a === 'available' ? 'b-avail' : a === 'booked' ? 'b-book' : 'b-lim'; }
+    function badgeLbl(a) { return a === 'available' ? 'Available' : a === 'booked' ? 'Booked' : 'Limited dates'; }
+
+    function cardHTML(v) {
+      return `<div class="vcard" onclick="openModal(${v.id})">
+        <div class="vcard-banner" style="background:${v.color}">
+          <span style="font-size:28px">${v.icon}</span>
+          <span class="vbadge ${badgeCls(v.availability)}">${badgeLbl(v.availability)}</span>
+        </div>
+        <div class="vcard-body">
+          <p class="vcard-cat">${v.cat}</p>
+          <p class="vcard-name">${v.name}</p>
+          <p class="vcard-desc">${v.desc}</p>
+          <div class="vcard-meta">
+            <span class="vcard-price">${v.price}</span>
+            <span class="vcard-rating"><span class="stars">${stars(v.rating)}</span> ${v.rating} (${v.reviews})</span>
+          </div>
+          <button class="vcard-btn">View details</button>
+        </div>
+      </div>`;
+    }
+
+    function openModal(id) {
+      const v = vendors.find(x => x.id === id);
+      if (!v) return;
+      document.getElementById('modal').innerHTML = `
+        <div class="modal-banner" style="background:${v.color}">${v.icon}</div>
+        <div class="modal-body">
+          <p class="modal-cat">${v.cat}</p>
+          <p class="modal-name">${v.name}</p>
+          <p class="modal-desc">${v.desc} Based in ${v.location}.</p>
+          <div class="modal-details">
+            <div class="det"><div class="det-lbl">Starting from</div><div class="det-val">${v.price}</div></div>
+            <div class="det"><div class="det-lbl">Rating</div><div class="det-val">${v.rating} ★ (${v.reviews})</div></div>
+            <div class="det"><div class="det-lbl">Packages</div><div class="det-val">${v.packages}</div></div>
+            <div class="det"><div class="det-lbl">Availability</div><div class="det-val" style="text-transform:capitalize">${v.availability}</div></div>
+          </div>
+          <div class="modal-tags">${v.style.map(s => `<span class="tag">${s}</span>`).join('')}</div>
+          <div class="modal-actions">
+            <button class="mbtn-primary" onclick="showToast('Opening enquiry for ${v.name}...')">Enquire now</button>
+            <button class="mbtn-secondary" onclick="closeModal()">Close</button>
+          </div>
+        </div>`;
+      document.getElementById('modalOverlay').classList.add('open');
+    }
+
+    function closeModal(e) {
+      if (!e || e.target === document.getElementById('modalOverlay'))
+        document.getElementById('modalOverlay').classList.remove('open');
+    }
+
+    function toggleFaq(el) {
+      const a = el.nextElementSibling;
+      const ch = el.querySelector('.faq-ch');
+      a.classList.toggle('open');
+      ch.classList.toggle('open');
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 3000);
+    }
+
+    document.getElementById('navToggle').addEventListener('click', () => {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+
+    filterVendors();
+  </script>
+</body>
+</html>
