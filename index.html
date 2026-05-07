@@ -1552,48 +1552,7 @@
             <li><span class="perk-dot"></span>Dashboard to manage enquiries and update your profile</li>
             <li><span class="perk-dot"></span>Listed on a platform trusted by 500+ Melbourne couples</li>
           </ul>
-          <a href="#" class="btn-primary" onclick="document.getElementById('signupForm').scrollIntoView({behavior:'smooth'})">Apply to be listed</a>
-        </div>
-
-        <div class="signup-form" id="signupForm">
-          <h3>Apply to join</h3>
-          <div class="form-group">
-            <label>Business name</label>
-            <input type="text" placeholder="e.g. Clara Holt Photography">
-          </div>
-          <div class="form-group">
-            <label>Category</label>
-            <select>
-              <option value="">Select a category</option>
-              <option>Photography</option>
-              <option>Florals</option>
-              <option>Catering</option>
-              <option>Music</option>
-              <option>Venue</option>
-              <option>Cake</option>
-              <option>Hair &amp; Makeup</option>
-              <option>Transport</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Contact name</label>
-            <input type="text" placeholder="Your full name">
-          </div>
-          <div class="form-group">
-            <label>Email address</label>
-            <input type="email" placeholder="hello@yourbusiness.com.au">
-          </div>
-          <div class="form-group">
-            <label>Website or Instagram</label>
-            <input type="text" placeholder="yourbusiness.com.au or @handle">
-          </div>
-          <div class="form-group">
-            <label>Tell us about your business</label>
-            <textarea placeholder="A brief description of your services, style, and location..."></textarea>
-          </div>
-          <button class="form-submit" onclick="showToast('Application received — we\'ll be in touch within 48 hours.')">Submit application</button>
-          <p class="form-note">We review all applications within 48 hours. No listing fees to get started.</p>
+          <a href="mailto:infoaislebloom@gmail.com?subject=Vendor%20Application&body=Hi%2C%20I%27d%20like%20to%20list%20my%20business%20on%20Aisle%20%26%20Bloom." class="btn-primary">Apply to be listed</a>
         </div>
       </div>
     </section>
@@ -1802,6 +1761,34 @@
     });
 
     filterVendors();
+
+    function submitVendorForm() {
+      const fields = document.querySelectorAll('#signupForm input, #signupForm select, #signupForm textarea');
+      const businessName = fields[0].value.trim();
+      const category = fields[1].value.trim();
+      const contactName = fields[2].value.trim();
+      const emailAddr = fields[3].value.trim();
+      const website = fields[4].value.trim();
+      const description = fields[5].value.trim();
+
+      if (!businessName || !contactName || !emailAddr) {
+        showToast('Please fill in at least your business name, contact name and email.');
+        return;
+      }
+
+      const subject = encodeURIComponent('Vendor Application — ' + businessName);
+      const body = encodeURIComponent(
+        'Business Name: ' + businessName + '\n' +
+        'Category: ' + category + '\n' +
+        'Contact Name: ' + contactName + '\n' +
+        'Email: ' + emailAddr + '\n' +
+        'Website / Instagram: ' + website + '\n\n' +
+        'About the business:\n' + description
+      );
+
+      window.location.href = 'mailto:infoaislebloom@gmail.com?subject=' + subject + '&body=' + body;
+      showToast("Application received — we'll be in touch within 48 hours.");
+    }
   </script>
 </body>
 </html>
