@@ -416,7 +416,20 @@
       background: white;
     }
 
-    .cat-pill-icon { font-size: 24px; margin-bottom: 8px; display: block; }
+    .cat-pill-icon {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--charcoal);
+      border-radius: 50%;
+      color: var(--gold);
+      border: none;
+      margin-bottom: 8px;
+      box-shadow: 0 2px 8px rgba(44,40,37,0.2);
+    }
+    .cat-pill-icon svg { width: 22px; height: 22px; }
 
     .cat-pill-name {
       font-size: 12px;
@@ -532,6 +545,33 @@
       font-size: 30px;
       position: relative;
     }
+
+    .vcard-icon {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--charcoal);
+      border-radius: 50%;
+      color: var(--gold);
+      border: none;
+      box-shadow: 0 2px 8px rgba(44,40,37,0.25);
+    }
+
+    .modal-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--charcoal);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+    }
+
+    .modal-icon svg { width: 36px; height: 36px; }
 
     .vbadge {
       position: absolute;
@@ -1133,7 +1173,7 @@
       color: var(--mid);
     }
 
-    .modal-actions { display: flex; gap: 8px; }
+ display: flex; gap: 8px; }
 
     .mbtn-primary {
       flex: 1;
@@ -1157,6 +1197,37 @@
       font-size: 13px;
       cursor: pointer;
     }
+
+    .enquiry-form {
+      margin-top: 1.25rem;
+      padding-top: 1.25rem;
+      border-top: 0.5px solid var(--border);
+    }
+
+    .enquiry-form-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 0.875rem;
+    }
+
+    .enq-input {
+      width: 100%;
+      padding: 10px 14px;
+      margin-bottom: 0.6rem;
+      border: 0.5px solid var(--border-strong);
+      border-radius: 8px;
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      color: var(--charcoal);
+      background: var(--cream);
+      outline: none;
+      transition: border-color 0.2s;
+      box-sizing: border-box;
+    }
+
+    .enq-input:focus { border-color: var(--dusty-rose); }
 
     /* ── FAQ ── */
     .faq-section { background: var(--blush); }
@@ -1345,6 +1416,14 @@
       .modal-details { grid-template-columns: 1fr 1fr; }
     }
   </style>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KR0Q3TS3TL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-KR0Q3TS3TL');
+  </script>
 </head>
 <body>
 
@@ -1441,7 +1520,7 @@
         <p class="section-sub">A glimpse of the beautiful moments captured by our Melbourne vendors.</p>
         <div class="gallery-grid">
           <div class="gallery-item">
-            <img src="images/20241026_Hanna+Sehan_5122.jpg" alt="Wedding photo 1">
+            <img src="images/20241026_Hanna%2BSehan_5122.jpg" alt="Wedding photo 1">
             <div class="gallery-overlay">
               <div class="gallery-overlay-line"></div>
               <span class="gallery-overlay-label">Photography</span>
@@ -1449,7 +1528,7 @@
             </div>
           </div>
           <div class="gallery-item">
-            <img src="images/20241026_Hanna+Sehan_6047.jpg" alt="Wedding photo 2">
+            <img src="images/20241026_Hanna%2BSehan_6047.jpg" alt="Wedding photo 2">
             <div class="gallery-overlay">
               <div class="gallery-overlay-line"></div>
               <span class="gallery-overlay-label">Florals</span>
@@ -1457,7 +1536,7 @@
             </div>
           </div>
           <div class="gallery-item">
-            <img src="images/20241026_Hanna+Sehan_3050.jpg" alt="Wedding photo 3">
+            <img src="images/20241026_Hanna%2BSehan_3050.jpg" alt="Wedding photo 3">
             <div class="gallery-overlay">
               <div class="gallery-overlay-line"></div>
               <span class="gallery-overlay-label">Venues</span>
@@ -1465,7 +1544,7 @@
             </div>
           </div>
           <div class="gallery-item">
-            <img src="images/20241026_Hanna+Sehan_6010.jpg" alt="Wedding photo 4">
+            <img src="images/20241026_Hanna%2BSehan_6010.jpg" alt="Wedding photo 4">
             <div class="gallery-overlay">
               <div class="gallery-overlay-line"></div>
               <span class="gallery-overlay-label">Catering</span>
@@ -1482,16 +1561,7 @@
         <p class="section-eyebrow">Browse by category</p>
         <h2 class="section-title">Everything your <em>day needs</em></h2>
         <p class="section-sub">From the ceremony to the dance floor, we have every vendor covered.</p>
-        <div class="cat-grid">
-          <a class="cat-pill" href="#" onclick="filterAndGo('Photography')"><span class="cat-pill-icon">📷</span><span class="cat-pill-name">Photography</span></a>
-          <a class="cat-pill" href="#" onclick="filterAndGo('Florals')"><span class="cat-pill-icon">🌸</span><span class="cat-pill-name">Florals</span></a>
-          <a class="cat-pill" href="#" onclick="filterAndGo('Catering')"><span class="cat-pill-icon">🍽️</span><span class="cat-pill-name">Catering</span></a>
-          <a class="cat-pill" href="#" onclick="filterAndGo('Music')"><span class="cat-pill-icon">🎻</span><span class="cat-pill-name">Music</span></a>
-          <a class="cat-pill" href="#" onclick="filterAndGo('Venue')"><span class="cat-pill-icon">🏛️</span><span class="cat-pill-name">Venues</span></a>
-          <a class="cat-pill" href="#" onclick="filterAndGo('Cake')"><span class="cat-pill-icon">🎂</span><span class="cat-pill-name">Cakes</span></a>
-          <a class="cat-pill" href="#" onclick="filterAndGo('Hair & Makeup')"><span class="cat-pill-icon">💄</span><span class="cat-pill-name">Hair &amp; Makeup</span></a>
-          <a class="cat-pill" href="#" onclick="filterAndGo('Transport')"><span class="cat-pill-icon">🚗</span><span class="cat-pill-name">Transport</span></a>
-        </div>
+        <div class="cat-grid" id="catGrid"></div>
       </div>
     </section>
 
@@ -1593,7 +1663,7 @@
             <p class="plan-name">Budget tracker</p>
             <p class="plan-tagline">A live budget dashboard linked to the vendors you choose — tracking every dollar from deposit to final payment.</p>
             <div class="plan-price-block">
-              <div class="plan-price-row"><span class="p-dollar">$</span><span class="p-num">1,199</span></div>
+              <div class="plan-price-row"><span class="p-dollar">$</span><span class="p-num">299</span></div>
               <p class="p-once">One-off payment — yours until your wedding day</p>
             </div>
             <ul class="feat-list">
@@ -1606,7 +1676,7 @@
               <li><span class="ck">✓</span>Shareable budget view with your partner</li>
               <li><span class="ck">✓</span>Access retained 3 months post-wedding</li>
             </ul>
-            <a href="#" class="plan-btn plan-btn-solid" onclick="showToast('Redirecting to secure checkout...')">Unlock budget tracker — $1,199</a>
+            <a href="#" class="plan-btn plan-btn-solid" onclick="showToast('Redirecting to secure checkout...')">Unlock budget tracker — $299</a>
           </div>
         </div>
 
@@ -1737,18 +1807,18 @@
     ];
 
     const vendors = [
-      {id:1,name:'Clara Holt Photography',cat:'Photography',icon:'📷',desc:'Candid, film-inspired wedding photography with a warm editorial touch.',price:'From $3,200',rating:4.9,reviews:84,location:'Melbourne CBD',style:['Candid','Film','Editorial'],packages:'3 packages',availability:'available',color:BANNERS[1]},
-      {id:2,name:'The Bloom Studio',cat:'Florals',icon:'🌸',desc:'Lush, garden-style arrangements. Specialises in dried and seasonal florals.',price:'From $800',rating:4.8,reviews:61,location:'Fitzroy',style:['Garden','Dried','Seasonal'],packages:'Custom quotes',availability:'limited',color:BANNERS[0]},
-      {id:3,name:'Savour Catering Co.',cat:'Catering',icon:'🍽️',desc:'Farm-to-table menus with flexible dietary options. Sit-down or roaming.',price:'From $85 pp',rating:4.7,reviews:112,location:'Inner Melbourne',style:['Farm-to-table','Modern'],packages:'4 menus',availability:'available',color:BANNERS[2]},
-      {id:4,name:'Harmony Strings',cat:'Music',icon:'🎻',desc:'Classic string quartet performing contemporary and classical wedding music.',price:'From $900',rating:5.0,reviews:39,location:'Melbourne',style:['Classical','Contemporary'],packages:'3h / 5h',availability:'booked',color:BANNERS[5]},
-      {id:5,name:'Rippon Lea Estate',cat:'Venue',icon:'🏛️',desc:'Historic 19th-century estate with manicured gardens and a grand ballroom.',price:'From $6,500',rating:4.9,reviews:203,location:'Elsternwick',style:['Heritage','Garden','Ballroom'],packages:'Full day hire',availability:'available',color:BANNERS[4]},
-      {id:6,name:'Sugar & Lace Cakes',cat:'Cake',icon:'🎂',desc:'Sculptural wedding cakes crafted to match your aesthetic. All flavours.',price:'From $650',rating:4.8,reviews:55,location:'Collingwood',style:['Modern','Minimalist','Floral'],packages:'Tasting sessions',availability:'available',color:BANNERS[3]},
-      {id:7,name:'Luminous Beauty Co.',cat:'Hair & Makeup',icon:'💄',desc:'Bridal beauty team specialising in soft glam and natural luminous looks.',price:'From $420',rating:4.9,reviews:97,location:'Mobile — all Melbourne',style:['Soft glam','Natural','Editorial'],packages:'1–6 people',availability:'available',color:BANNERS[7]},
-      {id:8,name:'Vintage Rides Melbourne',cat:'Transport',icon:'🚗',desc:'Restored vintage cars for bride and groom transport. Perfect for photos.',price:'From $550',rating:4.7,reviews:28,location:'Melbourne',style:['Vintage','Classic'],packages:'3h / full day',availability:'available',color:BANNERS[5]},
-      {id:9,name:'James Archer Films',cat:'Photography',icon:'🎬',desc:'Cinematic videography capturing every emotion of your wedding day.',price:'From $2,800',rating:4.8,reviews:44,location:'Melbourne & Yarra Valley',style:['Cinematic','Documentary'],packages:'2 packages',availability:'booked',color:BANNERS[1]},
-      {id:10,name:'Wild & Whimsy Florals',cat:'Florals',icon:'🌿',desc:'Boho and free-spirited floral designs using local native Australian flowers.',price:'From $600',rating:4.6,reviews:33,location:'Northcote',style:['Boho','Native','Whimsical'],packages:'Custom quotes',availability:'available',color:BANNERS[0]},
-      {id:11,name:'The Grand Pavilion',cat:'Venue',icon:'🏩',desc:'Contemporary waterfront venue with floor-to-ceiling views and flexible spaces.',price:'From $9,000',rating:4.8,reviews:176,location:'St Kilda',style:['Contemporary','Waterfront'],packages:'Day or evening',availability:'booked',color:BANNERS[4]},
-      {id:12,name:'Encore Events DJ',cat:'Music',icon:'🎧',desc:'Professional wedding DJ service with lighting and MC included.',price:'From $1,100',rating:4.7,reviews:67,location:'Melbourne-wide',style:['DJ','Contemporary','Pop'],packages:'5h / 8h',availability:'available',color:BANNERS[6]},
+      {id:1,name:'Clara Holt Photography',cat:'Photography',icon:'camera',desc:'Candid, film-inspired wedding photography with a warm editorial touch.',price:'From $3,200',rating:4.9,reviews:84,location:'Melbourne CBD',style:['Candid','Film','Editorial'],packages:'3 packages',availability:'available',color:BANNERS[1]},
+      {id:2,name:'The Bloom Studio',cat:'Florals',icon:'florals',desc:'Lush, garden-style arrangements. Specialises in dried and seasonal florals.',price:'From $800',rating:4.8,reviews:61,location:'Fitzroy',style:['Garden','Dried','Seasonal'],packages:'Custom quotes',availability:'limited',color:BANNERS[0]},
+      {id:3,name:'Savour Catering Co.',cat:'Catering',icon:'catering',desc:'Farm-to-table menus with flexible dietary options. Sit-down or roaming.',price:'From $85 pp',rating:4.7,reviews:112,location:'Inner Melbourne',style:['Farm-to-table','Modern'],packages:'4 menus',availability:'available',color:BANNERS[2]},
+      {id:4,name:'Harmony Strings',cat:'Music',icon:'music',desc:'Classic string quartet performing contemporary and classical wedding music.',price:'From $900',rating:5.0,reviews:39,location:'Melbourne',style:['Classical','Contemporary'],packages:'3h / 5h',availability:'booked',color:BANNERS[5]},
+      {id:5,name:'Rippon Lea Estate',cat:'Venue',icon:'venue',desc:'Historic 19th-century estate with manicured gardens and a grand ballroom.',price:'From $6,500',rating:4.9,reviews:203,location:'Elsternwick',style:['Heritage','Garden','Ballroom'],packages:'Full day hire',availability:'available',color:BANNERS[4]},
+      {id:6,name:'Sugar & Lace Cakes',cat:'Cake',icon:'cake',desc:'Sculptural wedding cakes crafted to match your aesthetic. All flavours.',price:'From $650',rating:4.8,reviews:55,location:'Collingwood',style:['Modern','Minimalist','Floral'],packages:'Tasting sessions',availability:'available',color:BANNERS[3]},
+      {id:7,name:'Luminous Beauty Co.',cat:'Hair & Makeup',icon:'beauty',desc:'Bridal beauty team specialising in soft glam and natural luminous looks.',price:'From $420',rating:4.9,reviews:97,location:'Mobile — all Melbourne',style:['Soft glam','Natural','Editorial'],packages:'1–6 people',availability:'available',color:BANNERS[7]},
+      {id:8,name:'Vintage Rides Melbourne',cat:'Transport',icon:'transport',desc:'Restored vintage cars for bride and groom transport. Perfect for photos.',price:'From $550',rating:4.7,reviews:28,location:'Melbourne',style:['Vintage','Classic'],packages:'3h / full day',availability:'available',color:BANNERS[5]},
+      {id:9,name:'James Archer Films',cat:'Photography',icon:'camera',desc:'Cinematic videography capturing every emotion of your wedding day.',price:'From $2,800',rating:4.8,reviews:44,location:'Melbourne & Yarra Valley',style:['Cinematic','Documentary'],packages:'2 packages',availability:'booked',color:BANNERS[1]},
+      {id:10,name:'Wild & Whimsy Florals',cat:'Florals',icon:'florals',desc:'Boho and free-spirited floral designs using local native Australian flowers.',price:'From $600',rating:4.6,reviews:33,location:'Northcote',style:['Boho','Native','Whimsical'],packages:'Custom quotes',availability:'available',color:BANNERS[0]},
+      {id:11,name:'The Grand Pavilion',cat:'Venue',icon:'venue',desc:'Contemporary waterfront venue with floor-to-ceiling views and flexible spaces.',price:'From $9,000',rating:4.8,reviews:176,location:'St Kilda',style:['Contemporary','Waterfront'],packages:'Day or evening',availability:'booked',color:BANNERS[4]},
+      {id:12,name:'Encore Events DJ',cat:'Music',icon:'music',desc:'Professional wedding DJ service with lighting and MC included.',price:'From $1,100',rating:4.7,reviews:67,location:'Melbourne-wide',style:['DJ','Contemporary','Pop'],packages:'5h / 8h',availability:'available',color:BANNERS[6]},
     ];
 
     let activeFilter = 'All';
@@ -1806,10 +1876,25 @@
     function badgeCls(a) { return a === 'available' ? 'b-avail' : a === 'booked' ? 'b-book' : 'b-lim'; }
     function badgeLbl(a) { return a === 'available' ? 'Available' : a === 'booked' ? 'Booked' : 'Limited dates'; }
 
+    const ICONS = {
+      camera: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/><path d="M6.5 9.5h.01"/></svg>`,
+      florals: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M12 7.5a4.5 4.5 0 1 1 4.5 4.5M12 7.5A4.5 4.5 0 1 0 7.5 12M12 7.5V3m0 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4m4.5 9a4.5 4.5 0 1 1-4.5 4.5m4.5-4.5H21m0 0a2 2 0 1 0 4 0 2 2 0 0 0-4 0M7.5 12a4.5 4.5 0 1 0 4.5 4.5M7.5 12H3m0 0a2 2 0 1 0-4 0 2 2 0 0 0 4 0m9 4.5V21m0 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m0-13.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/><circle cx="12" cy="12" r="2.5"/></svg>`,
+      catering: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>`,
+      music: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>`,
+      venue: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M3 21h18M9 21V7l9-4v18M3 21V11l6-4"/><path d="M13 13h2v2h-2zm0 4h2v2h-2zm4-4h2v2h-2zm0 4h2v2h-2z"/></svg>`,
+      cake: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"/><path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1"/><path d="M2 21h20"/><path d="M7 8v2"/><path d="M12 8v2"/><path d="M17 8v2"/><path d="M7 4h.01"/><path d="M12 4h.01"/><path d="M17 4h.01"/></svg>`,
+      beauty: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M12 2a5 5 0 0 1 5 5c0 3-5 7-5 7S7 10 7 7a5 5 0 0 1 5-5z"/><path d="M12 14c-4 0-8 2-8 4v2h16v-2c0-2-4-4-8-4z"/><circle cx="12" cy="7" r="2"/></svg>`,
+      transport: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><path d="M14 3v5h5"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/><path d="M3 9h18"/></svg>`,
+    };
+
+    function vendorIcon(key) {
+      return ICONS[key] || ICONS['camera'];
+    }
+
     function cardHTML(v) {
       return `<div class="vcard" onclick="openModal(${v.id})">
         <div class="vcard-banner" style="background:${v.color}">
-          <span style="font-size:28px">${v.icon}</span>
+          <div class="vcard-icon">${vendorIcon(v.icon)}</div>
           <span class="vbadge ${badgeCls(v.availability)}">${badgeLbl(v.availability)}</span>
         </div>
         <div class="vcard-body">
@@ -1828,8 +1913,15 @@
     function openModal(id) {
       const v = vendors.find(x => x.id === id);
       if (!v) return;
+
+      // Track vendor card click in Google Analytics
+      gtag('event', 'vendor_click', {
+        vendor_name: v.name,
+        vendor_category: v.cat,
+        vendor_location: v.location
+      });
       document.getElementById('modal').innerHTML = `
-        <div class="modal-banner" style="background:${v.color}">${v.icon}</div>
+        <div class="modal-banner" style="background:${v.color}"><div class="vcard-icon modal-icon">${vendorIcon(v.icon)}</div></div>
         <div class="modal-body">
           <p class="modal-cat">${v.cat}</p>
           <p class="modal-name">${v.name}</p>
@@ -1841,12 +1933,55 @@
             <div class="det"><div class="det-lbl">Availability</div><div class="det-val" style="text-transform:capitalize">${v.availability}</div></div>
           </div>
           <div class="modal-tags">${v.style.map(s => `<span class="tag">${s}</span>`).join('')}</div>
-          <div class="modal-actions">
-            <button class="mbtn-primary" onclick="showToast('Opening enquiry for ${v.name}...')">Enquire now</button>
-            <button class="mbtn-secondary" onclick="closeModal()">Close</button>
+
+          <div class="enquiry-form" id="enquiryForm-${v.id}">
+            <p class="enquiry-form-title">Send an enquiry</p>
+            <input type="text" id="enq-name-${v.id}" placeholder="Your name" class="enq-input">
+            <input type="tel" id="enq-phone-${v.id}" placeholder="Contact number" class="enq-input">
+            <input type="email" id="enq-email-${v.id}" placeholder="Email address" class="enq-input">
+            <div class="modal-actions" style="margin-top:0.75rem">
+              <button class="mbtn-primary" onclick="submitEnquiry(${v.id}, '${v.name.replace(/'/g, "\\'")}')">Send enquiry</button>
+              <button class="mbtn-secondary" onclick="closeModal()">Close</button>
+            </div>
+          </div>
+
+          <div class="enquiry-thankyou" id="enquiryThanks-${v.id}" style="display:none;">
+            <div style="text-align:center; padding: 1.5rem 0;">
+              <div style="font-size:36px; margin-bottom:0.75rem;">✓</div>
+              <p style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--charcoal); margin-bottom:0.5rem;">Enquiry sent!</p>
+              <p style="font-size:13px; color:var(--mid);">Thanks for reaching out to <strong>${v.name}</strong>. They'll be in touch soon.</p>
+              <button class="mbtn-secondary" onclick="closeModal()" style="margin-top:1.25rem;">Close</button>
+            </div>
           </div>
         </div>`;
       document.getElementById('modalOverlay').classList.add('open');
+    }
+
+    function submitEnquiry(vendorId, vendorName) {
+      const name = document.getElementById('enq-name-' + vendorId).value.trim();
+      const phone = document.getElementById('enq-phone-' + vendorId).value.trim();
+      const email = document.getElementById('enq-email-' + vendorId).value.trim();
+
+      if (!name || !email) {
+        showToast('Please enter your name and email.');
+        return;
+      }
+
+      const subject = encodeURIComponent('Enquiry via Aisle & Bloom — ' + vendorName);
+      const body = encodeURIComponent(
+        'Vendor: ' + vendorName + '\n\n' +
+        'Name: ' + name + '\n' +
+        'Phone: ' + (phone || 'Not provided') + '\n' +
+        'Email: ' + email
+      );
+
+      window.location.href = 'mailto:infoaislebloom@gmail.com?subject=' + subject + '&body=' + body;
+
+      // Track enquiry submission
+      gtag('event', 'enquiry_sent', { vendor_name: vendorName });
+
+      document.getElementById('enquiryForm-' + vendorId).style.display = 'none';
+      document.getElementById('enquiryThanks-' + vendorId).style.display = 'block';
     }
 
     function closeModal(e) {
@@ -1871,6 +2006,24 @@
     document.getElementById('navToggle').addEventListener('click', () => {
       document.getElementById('navLinks').classList.toggle('open');
     });
+
+    // Populate category grid with luxury SVG icons
+    const CATS = [
+      { key: 'Photography',  icon: 'camera',    label: 'Photography' },
+      { key: 'Florals',      icon: 'florals',   label: 'Florals' },
+      { key: 'Catering',     icon: 'catering',  label: 'Catering' },
+      { key: 'Music',        icon: 'music',     label: 'Music' },
+      { key: 'Venue',        icon: 'venue',     label: 'Venues' },
+      { key: 'Cake',         icon: 'cake',      label: 'Cakes' },
+      { key: 'Hair & Makeup',icon: 'beauty',    label: 'Hair & Makeup' },
+      { key: 'Transport',    icon: 'transport', label: 'Transport' },
+    ];
+    document.getElementById('catGrid').innerHTML = CATS.map(c =>
+      `<a class="cat-pill" href="#" onclick="filterAndGo('${c.key}'); return false;">
+        <span class="cat-pill-icon">${vendorIcon(c.icon)}</span>
+        <span class="cat-pill-name">${c.label}</span>
+      </a>`
+    ).join('');
 
     filterVendors();
 
