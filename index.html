@@ -48,7 +48,7 @@
       z-index: 100;
       background: rgba(250,248,244,0.95);
       backdrop-filter: blur(8px);
-      border-bottom: 0.5px solid var(--border);
+      border-bottom: 0.5px solid rgba(184,151,90,0.35);
       padding: 0 2rem;
       display: flex;
       align-items: center;
@@ -68,7 +68,7 @@
     .nav-logo em {
       font-style: italic;
       font-weight: 300;
-      color: var(--dusty-rose);
+      color: var(--gold);
     }
 
     .nav-links {
@@ -91,12 +91,14 @@
 
     .nav-cta {
       padding: 8px 20px;
-      background: var(--charcoal);
-      color: var(--cream) !important;
+      background: var(--gold);
+      color: var(--charcoal) !important;
       border-radius: 999px;
       font-size: 12px !important;
       letter-spacing: 0.08em !important;
     }
+
+    .nav-cta:hover { opacity: 0.85; background: var(--gold) !important; }
 
     .nav-cta:hover { opacity: 0.85; }
 
@@ -224,7 +226,7 @@
 
     .hero h1 em {
       font-style: italic;
-      color: var(--deep-rose);
+      color: var(--gold);
     }
 
     .hero-sub {
@@ -289,7 +291,7 @@
       justify-content: center;
       margin-top: 4rem;
       padding-top: 3rem;
-      border-top: 0.5px solid var(--border);
+      border-top: 0.5px solid rgba(184,151,90,0.35);
       animation: fadeUp 0.9s 0.3s ease both;
     }
 
@@ -371,7 +373,7 @@
       font-size: 48px;
       font-weight: 300;
       color: var(--dusty-rose);
-      opacity: 0.6;
+      opacity: 0.7;
       line-height: 1;
       margin-bottom: 1rem;
     }
@@ -1088,7 +1090,7 @@
       padding: 1.5rem;
     }
 
-    .tcard-stars { color: #c4973a; font-size: 13px; margin-bottom: 0.75rem; }
+    .tcard-stars { color: var(--gold); font-size: 13px; margin-bottom: 0.75rem; }
 
     .tcard-quote {
       font-family: 'Cormorant Garamond', serif;
@@ -1454,79 +1456,179 @@
     <section class="hero">
       <div class="hero-bg"></div>
 
-      <!-- Symmetrical rose art flanking hero text -->
+      <!-- Baby's breath art flanking hero text -->
       <svg style="position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0;" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
 
-        <!-- LEFT ROSE CLUSTER -->
+        <!-- LEFT BABY'S BREATH -->
         <g stroke="#8b5e52" fill="none" stroke-linecap="round">
-          <!-- Main stem -->
-          <path d="M160 620 C158 560 154 510 162 460 C168 420 162 375 170 330 C176 295 172 255 180 220 C185 193 192 178 202 168" stroke-width="2.2"/>
-          <!-- Rose bloom -->
-          <circle cx="202" cy="164" r="22" stroke-width="1.8" fill="#f5ede6"/>
-          <path d="M202 142 C207 150 216 155 216 164 C216 175 207 182 202 185 C197 182 188 175 188 164 C188 155 197 150 202 142Z" stroke-width="1.4" fill="#e8c8b8"/>
-          <path d="M180 156 C187 160 190 168 187 176" stroke-width="1.2"/>
-          <path d="M224 156 C217 160 214 168 217 176" stroke-width="1.2"/>
-          <path d="M202 142 C196 146 192 153 194 160" stroke-width="1.2"/>
-          <path d="M202 142 C208 146 212 153 210 160" stroke-width="1.2"/>
-          <path d="M190 158 C193 162 193 168 190 172" stroke-width="0.9"/>
-          <path d="M214 158 C211 162 211 168 214 172" stroke-width="0.9"/>
-          <!-- Large leaf left -->
-          <path d="M164 430 C142 418 118 426 110 442 C128 450 152 440 164 430Z" stroke-width="1.6" fill="#e8d5c8"/>
-          <path d="M164 430 C146 436 128 440 110 442" stroke-width="1.0"/>
-          <!-- Large leaf left 2 -->
-          <path d="M168 375 C144 362 118 372 112 388 C132 395 156 384 168 375Z" stroke-width="1.6" fill="#e8d5c8"/>
-          <path d="M168 375 C148 382 130 386 112 388" stroke-width="1.0"/>
-          <!-- Leaf right of stem -->
-          <path d="M172 335 C196 322 220 330 224 346 C205 352 182 342 172 335Z" stroke-width="1.6" fill="#e8d5c8"/>
-          <path d="M172 335 C194 342 212 346 224 346" stroke-width="1.0"/>
-          <!-- Leaf right 2 -->
-          <path d="M176 285 C200 274 222 284 226 300 C207 305 184 296 176 285Z" stroke-width="1.4" fill="#e8d5c8"/>
-          <path d="M176 285 C198 292 216 298 226 300" stroke-width="0.9"/>
-          <!-- Small bud on side branch -->
-          <path d="M148 470 C136 452 126 444 130 432" stroke-width="1.6"/>
-          <ellipse cx="130" cy="430" rx="8" ry="14" stroke-width="1.6" fill="#f0ddd0"/>
-          <!-- Second small bud -->
-          <path d="M156 510 C140 496 128 492 128 502" stroke-width="1.4"/>
-          <ellipse cx="128" cy="503" rx="6" ry="11" stroke-width="1.4" fill="#f0ddd0"/>
-          <!-- Trailing lower leaves -->
-          <path d="M160 555 C138 545 118 553 112 567 C128 572 150 562 160 555Z" stroke-width="1.4" fill="#e8d5c8"/>
-          <path d="M160 555 C142 560 126 564 112 567" stroke-width="0.9"/>
-          <!-- Small accent flowers -->
-          <circle cx="192" cy="255" r="6" stroke-width="1.4" fill="#f0ddd0"/>
-          <path d="M192 249 C195 252 198 255 198 259 C198 264 195 267 192 268 C189 267 186 264 186 259 C186 255 189 252 192 249Z" stroke-width="0.9" fill="#e8c8b8"/>
-          <path d="M180 250 C175 242 168 240 164 246" stroke-width="1.2"/>
-          <circle cx="164" cy="247" r="5" stroke-width="1.2" fill="#f0ddd0"/>
+          <!-- Main stems -->
+          <path d="M140 620 C142 570 138 520 145 470 C150 430 145 390 152 350 C158 315 154 275 162 240 C167 215 172 195 180 178" stroke-width="1.8"/>
+          <path d="M165 620 C162 575 158 530 164 485 C168 450 162 415 168 378 C173 345 170 308 176 275 C180 250 185 228 192 210" stroke-width="1.6"/>
+          <path d="M118 620 C122 575 120 530 128 488 C134 452 130 415 138 378 C143 348 140 315 148 282 C152 258 156 238 164 220" stroke-width="1.5"/>
+
+          <!-- Branch left-1 from main -->
+          <path d="M152 350 C138 338 122 335 110 342" stroke-width="1.2"/>
+          <path d="M110 342 C100 328 88 320 78 326" stroke-width="1.0"/>
+          <path d="M110 342 C104 328 96 320 90 324" stroke-width="0.9"/>
+          <path d="M78 326 C68 314 56 312 48 320" stroke-width="0.9"/>
+
+          <!-- Branch left-2 -->
+          <path d="M145 470 C130 458 114 456 103 465" stroke-width="1.2"/>
+          <path d="M103 465 C92 452 78 448 68 456" stroke-width="1.0"/>
+          <path d="M103 465 C96 450 84 445 75 450" stroke-width="0.9"/>
+
+          <!-- Branch left-3 upper -->
+          <path d="M162 240 C148 228 132 226 120 234" stroke-width="1.2"/>
+          <path d="M120 234 C108 220 94 218 84 226" stroke-width="1.0"/>
+          <path d="M120 234 C112 220 100 215 90 220" stroke-width="0.9"/>
+          <path d="M84 226 C74 213 60 210 50 218" stroke-width="0.8"/>
+
+          <!-- Branch right from stem-2 -->
+          <path d="M176 275 C190 263 206 262 215 270" stroke-width="1.1"/>
+          <path d="M215 270 C226 258 240 255 250 263" stroke-width="0.9"/>
+          <path d="M215 270 C222 256 235 251 245 257" stroke-width="0.8"/>
+
+          <!-- Branch right-2 -->
+          <path d="M168 378 C183 366 200 365 210 374" stroke-width="1.1"/>
+          <path d="M210 374 C222 362 238 360 248 368" stroke-width="0.9"/>
+
+          <!-- Branch lower left -->
+          <path d="M138 488 C124 476 108 474 97 482" stroke-width="1.1"/>
+          <path d="M97 482 C85 469 70 466 60 474" stroke-width="0.9"/>
+
+          <!-- Baby's breath tiny flowers — LEFT clusters -->
+          <!-- cluster top-far-left -->
+          <circle cx="48" cy="320" r="3.5" fill="#f5e6c8" stroke-width="1.2"/>
+          <circle cx="44" cy="313" r="2.5" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="52" cy="312" r="2" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="40" cy="320" r="2" fill="#f5e6c8" stroke-width="0.9"/>
+          <circle cx="56" cy="320" r="2.5" fill="#f5e6c8" stroke-width="0.9"/>
+
+          <!-- cluster mid-far-left -->
+          <circle cx="68" cy="456" r="3.5" fill="#f5e6c8" stroke-width="1.2"/>
+          <circle cx="63" cy="448" r="2.5" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="74" cy="448" r="2" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="60" cy="456" r="2" fill="#f5e6c8" stroke-width="0.9"/>
+          <circle cx="76" cy="457" r="2.5" fill="#f5e6c8" stroke-width="0.9"/>
+
+          <!-- cluster top branch end -->
+          <circle cx="84" cy="226" r="3.5" fill="#f5e6c8" stroke-width="1.2"/>
+          <circle cx="78" cy="218" r="2.5" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="90" cy="219" r="2" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="50" cy="218" r="3" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="44" cy="212" r="2" fill="#f5e6c8" stroke-width="0.9"/>
+          <circle cx="56" cy="212" r="2" fill="#f5e6c8" stroke-width="0.9"/>
+
+          <!-- cluster right side upper -->
+          <circle cx="250" cy="263" r="3.5" fill="#f5e6c8" stroke-width="1.2"/>
+          <circle cx="245" cy="255" r="2.5" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="256" cy="256" r="2" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="242" cy="263" r="2" fill="#f5e6c8" stroke-width="0.9"/>
+
+          <!-- cluster right side lower -->
+          <circle cx="248" cy="368" r="3.5" fill="#f5e6c8" stroke-width="1.2"/>
+          <circle cx="243" cy="360" r="2.5" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="254" cy="361" r="2" fill="#f5e6c8" stroke-width="1.0"/>
+
+          <!-- cluster far left lower -->
+          <circle cx="60" cy="474" r="3.5" fill="#f5e6c8" stroke-width="1.2"/>
+          <circle cx="55" cy="466" r="2.5" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="66" cy="467" r="2" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="52" cy="474" r="2" fill="#f5e6c8" stroke-width="0.9"/>
+
+          <!-- scattered small blooms along stems -->
+          <circle cx="192" cy="210" r="3" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="186" cy="203" r="2" fill="#f5e6c8" stroke-width="0.9"/>
+          <circle cx="198" cy="204" r="2" fill="#f5e6c8" stroke-width="0.9"/>
+          <circle cx="164" cy="220" r="3" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="180" cy="178" r="3.5" fill="#f5e6c8" stroke-width="1.2"/>
+          <circle cx="174" cy="170" r="2.5" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="186" cy="171" r="2" fill="#f5e6c8" stroke-width="0.9"/>
+          <circle cx="90" cy="324" r="2.5" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="86" cy="318" r="2" fill="#f5e6c8" stroke-width="0.9"/>
+          <circle cx="75" cy="450" r="2.5" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="97" cy="482" r="3" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="91" cy="475" r="2" fill="#f5e6c8" stroke-width="0.9"/>
+          <circle cx="103" cy="465" r="2.5" fill="#f5e6c8" stroke-width="1.0"/>
         </g>
 
-        <!-- RIGHT ROSE CLUSTER (mirrored) -->
+        <!-- RIGHT BABY'S BREATH (mirrored) -->
         <g stroke="#8b5e52" fill="none" stroke-linecap="round">
-          <path d="M1040 620 C1042 560 1046 510 1038 460 C1032 420 1038 375 1030 330 C1024 295 1028 255 1020 220 C1015 193 1008 178 998 168" stroke-width="2.2"/>
-          <circle cx="998" cy="164" r="22" stroke-width="1.8" fill="#f5ede6"/>
-          <path d="M998 142 C993 150 984 155 984 164 C984 175 993 182 998 185 C1003 182 1012 175 1012 164 C1012 155 1003 150 998 142Z" stroke-width="1.4" fill="#e8c8b8"/>
-          <path d="M1020 156 C1013 160 1010 168 1013 176" stroke-width="1.2"/>
-          <path d="M976 156 C983 160 986 168 983 176" stroke-width="1.2"/>
-          <path d="M998 142 C1004 146 1008 153 1006 160" stroke-width="1.2"/>
-          <path d="M998 142 C992 146 988 153 990 160" stroke-width="1.2"/>
-          <path d="M1010 158 C1007 162 1007 168 1010 172" stroke-width="0.9"/>
-          <path d="M986 158 C989 162 989 168 986 172" stroke-width="0.9"/>
-          <path d="M1036 430 C1058 418 1082 426 1090 442 C1072 450 1048 440 1036 430Z" stroke-width="1.6" fill="#e8d5c8"/>
-          <path d="M1036 430 C1054 436 1072 440 1090 442" stroke-width="1.0"/>
-          <path d="M1032 375 C1056 362 1082 372 1088 388 C1068 395 1044 384 1032 375Z" stroke-width="1.6" fill="#e8d5c8"/>
-          <path d="M1032 375 C1052 382 1070 386 1088 388" stroke-width="1.0"/>
-          <path d="M1028 335 C1004 322 980 330 976 346 C995 352 1018 342 1028 335Z" stroke-width="1.6" fill="#e8d5c8"/>
-          <path d="M1028 335 C1006 342 988 346 976 346" stroke-width="1.0"/>
-          <path d="M1024 285 C1000 274 978 284 974 300 C993 305 1016 296 1024 285Z" stroke-width="1.4" fill="#e8d5c8"/>
-          <path d="M1024 285 C1002 292 984 298 974 300" stroke-width="0.9"/>
-          <path d="M1052 470 C1064 452 1074 444 1070 432" stroke-width="1.6"/>
-          <ellipse cx="1070" cy="430" rx="8" ry="14" stroke-width="1.6" fill="#f0ddd0"/>
-          <path d="M1044 510 C1060 496 1072 492 1072 502" stroke-width="1.4"/>
-          <ellipse cx="1072" cy="503" rx="6" ry="11" stroke-width="1.4" fill="#f0ddd0"/>
-          <path d="M1040 555 C1062 545 1082 553 1088 567 C1072 572 1050 562 1040 555Z" stroke-width="1.4" fill="#e8d5c8"/>
-          <path d="M1040 555 C1058 560 1074 564 1088 567" stroke-width="0.9"/>
-          <circle cx="1008" cy="255" r="6" stroke-width="1.4" fill="#f0ddd0"/>
-          <path d="M1008 249 C1005 252 1002 255 1002 259 C1002 264 1005 267 1008 268 C1011 267 1014 264 1014 259 C1014 255 1011 252 1008 249Z" stroke-width="0.9" fill="#e8c8b8"/>
-          <path d="M1020 250 C1025 242 1032 240 1036 246" stroke-width="1.2"/>
-          <circle cx="1036" cy="247" r="5" stroke-width="1.2" fill="#f0ddd0"/>
+          <path d="M1060 620 C1058 570 1062 520 1055 470 C1050 430 1055 390 1048 350 C1042 315 1046 275 1038 240 C1033 215 1028 195 1020 178" stroke-width="1.8"/>
+          <path d="M1035 620 C1038 575 1042 530 1036 485 C1032 450 1038 415 1032 378 C1027 345 1030 308 1024 275 C1020 250 1015 228 1008 210" stroke-width="1.6"/>
+          <path d="M1082 620 C1078 575 1080 530 1072 488 C1066 452 1070 415 1062 378 C1057 348 1060 315 1052 282 C1048 258 1044 238 1036 220" stroke-width="1.5"/>
+
+          <path d="M1048 350 C1062 338 1078 335 1090 342" stroke-width="1.2"/>
+          <path d="M1090 342 C1100 328 1112 320 1122 326" stroke-width="1.0"/>
+          <path d="M1090 342 C1096 328 1104 320 1110 324" stroke-width="0.9"/>
+          <path d="M1122 326 C1132 314 1144 312 1152 320" stroke-width="0.9"/>
+
+          <path d="M1055 470 C1070 458 1086 456 1097 465" stroke-width="1.2"/>
+          <path d="M1097 465 C1108 452 1122 448 1132 456" stroke-width="1.0"/>
+          <path d="M1097 465 C1104 450 1116 445 1125 450" stroke-width="0.9"/>
+
+          <path d="M1038 240 C1052 228 1068 226 1080 234" stroke-width="1.2"/>
+          <path d="M1080 234 C1092 220 1106 218 1116 226" stroke-width="1.0"/>
+          <path d="M1080 234 C1088 220 1100 215 1110 220" stroke-width="0.9"/>
+          <path d="M1116 226 C1126 213 1140 210 1150 218" stroke-width="0.8"/>
+
+          <path d="M1024 275 C1010 263 994 262 985 270" stroke-width="1.1"/>
+          <path d="M985 270 C974 258 960 255 950 263" stroke-width="0.9"/>
+          <path d="M985 270 C978 256 965 251 955 257" stroke-width="0.8"/>
+
+          <path d="M1032 378 C1017 366 1000 365 990 374" stroke-width="1.1"/>
+          <path d="M990 374 C978 362 962 360 952 368" stroke-width="0.9"/>
+
+          <path d="M1062 488 C1076 476 1092 474 1103 482" stroke-width="1.1"/>
+          <path d="M1103 482 C1115 469 1130 466 1140 474" stroke-width="0.9"/>
+
+          <!-- Right clusters -->
+          <circle cx="1152" cy="320" r="3.5" fill="#f5e6c8" stroke-width="1.2"/>
+          <circle cx="1156" cy="313" r="2.5" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="1148" cy="312" r="2" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="1160" cy="320" r="2" fill="#f5e6c8" stroke-width="0.9"/>
+          <circle cx="1144" cy="320" r="2.5" fill="#f5e6c8" stroke-width="0.9"/>
+
+          <circle cx="1132" cy="456" r="3.5" fill="#f5e6c8" stroke-width="1.2"/>
+          <circle cx="1137" cy="448" r="2.5" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="1126" cy="448" r="2" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="1140" cy="456" r="2" fill="#f5e6c8" stroke-width="0.9"/>
+          <circle cx="1124" cy="457" r="2.5" fill="#f5e6c8" stroke-width="0.9"/>
+
+          <circle cx="1116" cy="226" r="3.5" fill="#f5e6c8" stroke-width="1.2"/>
+          <circle cx="1122" cy="218" r="2.5" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="1110" cy="219" r="2" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="1150" cy="218" r="3" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="1156" cy="212" r="2" fill="#f5e6c8" stroke-width="0.9"/>
+          <circle cx="1144" cy="212" r="2" fill="#f5e6c8" stroke-width="0.9"/>
+
+          <circle cx="950" cy="263" r="3.5" fill="#f5e6c8" stroke-width="1.2"/>
+          <circle cx="955" cy="255" r="2.5" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="944" cy="256" r="2" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="958" cy="263" r="2" fill="#f5e6c8" stroke-width="0.9"/>
+
+          <circle cx="952" cy="368" r="3.5" fill="#f5e6c8" stroke-width="1.2"/>
+          <circle cx="957" cy="360" r="2.5" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="946" cy="361" r="2" fill="#f5e6c8" stroke-width="1.0"/>
+
+          <circle cx="1140" cy="474" r="3.5" fill="#f5e6c8" stroke-width="1.2"/>
+          <circle cx="1145" cy="466" r="2.5" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="1134" cy="467" r="2" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="1148" cy="474" r="2" fill="#f5e6c8" stroke-width="0.9"/>
+
+          <circle cx="1008" cy="210" r="3" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="1014" cy="203" r="2" fill="#f5e6c8" stroke-width="0.9"/>
+          <circle cx="1002" cy="204" r="2" fill="#f5e6c8" stroke-width="0.9"/>
+          <circle cx="1036" cy="220" r="3" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="1020" cy="178" r="3.5" fill="#f5e6c8" stroke-width="1.2"/>
+          <circle cx="1026" cy="170" r="2.5" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="1014" cy="171" r="2" fill="#f5e6c8" stroke-width="0.9"/>
+          <circle cx="1110" cy="324" r="2.5" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="1114" cy="318" r="2" fill="#f5e6c8" stroke-width="0.9"/>
+          <circle cx="1125" cy="450" r="2.5" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="1103" cy="482" r="3" fill="#f5e6c8" stroke-width="1.0"/>
+          <circle cx="1109" cy="475" r="2" fill="#f5e6c8" stroke-width="0.9"/>
+          <circle cx="1097" cy="465" r="2.5" fill="#f5e6c8" stroke-width="1.0"/>
         </g>
 
         <!-- Subtle corner frames -->
