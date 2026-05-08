@@ -1431,11 +1431,8 @@
   <nav>
     <a href="#" class="nav-logo">Aisle <em>&</em> Bloom</a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#directory">Vendors</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#vendors">For vendors</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#pricing" class="nav-cta">Get started</a></li>
+      <li><a href="#faq" onclick="showSection('home', document.querySelectorAll('.ptab')[0]); setTimeout(()=>document.getElementById('faq-section')?.scrollIntoView({behavior:'smooth'}),300); return false;">FAQ</a></li>
+      <li><a href="mailto:infoaislebloom@gmail.com" class="nav-cta">Contact us</a></li>
     </ul>
     <button class="nav-toggle" id="navToggle" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -1703,16 +1700,19 @@
     </section>
 
     <!-- FAQ ON PRICING PAGE -->
-    <section class="section faq-section">
+    <section class="section faq-section" id="faq-section">
       <div class="section-inner">
         <p class="section-eyebrow">Questions</p>
         <h2 class="section-title">Common <em>questions</em></h2>
         <div class="faq-inner">
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Why does the budget tracker cost $1,199? <span class="faq-ch">▾</span></button><div class="faq-a">The tracker is purpose-built to link directly to vendors you choose from the directory — so your budget updates live as you shortlist. It includes deposit tracking, overspend alerts, and a shareable partner view. Given the average Australian wedding costs over $30,000, the tracker pays for itself by keeping you in control of every dollar.</div></div>
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is this a subscription? <span class="faq-ch">▾</span></button><div class="faq-a">No. It is a single one-off payment. You will never be billed again. Access is yours from the moment you pay until 3 months after your wedding date.</div></div>
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How does the tracker link to vendors I choose? <span class="faq-ch">▾</span></button><div class="faq-a">When you save a vendor to your shortlist, their pricing is pulled directly into your budget dashboard. You then set your agreed quote, log deposits, and mark payments — all in one place, always in sync with your vendor list.</div></div>
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can my partner access the budget tracker too? <span class="faq-ch">▾</span></button><div class="faq-a">Yes. The tracker includes a shareable link so both partners can view and update the budget together in real time.</div></div>
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can I add vendors not in the directory? <span class="faq-ch">▾</span></button><div class="faq-a">Yes — you can add custom line items manually, such as a family friend doing florals or travel costs, and they appear alongside your directory vendors.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is Aisle & Bloom free for couples? <span class="faq-ch">▾</span></button><div class="faq-a">Yes — browsing and contacting vendors through Aisle & Bloom is completely free for couples. You can search, filter, view vendor profiles, and send enquiries at no cost.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What is the budget tracker and how much does it cost? <span class="faq-ch">▾</span></button><div class="faq-a">The budget tracker is a one-off $299 tool that helps you manage every dollar of your wedding spend in one place — tracking deposits, payments, and outstanding balances across all your vendors. It's a single payment, no subscription, and yours to keep until 3 months after your wedding date.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How do I contact a vendor? <span class="faq-ch">▾</span></button><div class="faq-a">Simply click on any vendor card, fill in your name, phone number and email, and hit Send Enquiry. Your details go directly to the vendor and to our team. There's no middleman — vendors will follow up with you directly.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Are all vendors based in Melbourne? <span class="faq-ch">▾</span></button><div class="faq-a">Yes. Every vendor listed on Aisle & Bloom is based in or services the Greater Melbourne area. We manually review each application before anyone is listed.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What do the availability badges mean? <span class="faq-ch">▾</span></button><div class="faq-a">Each vendor card shows one of three badges — Available, Limited Dates, or Booked. These are updated by vendors so you can quickly see who is free for your date before reaching out.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How do I list my business on Aisle & Bloom? <span class="faq-ch">▾</span></button><div class="faq-a">Head to the List Your Business tab and fill in the short application form. We review all applications within 48 hours. Right now we're offering early vendors 3 months free — after that it's $49/month with no lock-in contract.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is there a commission on bookings made through the site? <span class="faq-ch">▾</span></button><div class="faq-a">No. We never take a commission on any booking. Your subscription covers your listing and enquiry management — that's it. All payment arrangements are made directly between you and your couples.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How do I get in touch if I have more questions? <span class="faq-ch">▾</span></button><div class="faq-a">You can reach us anytime at infoaislebloom@gmail.com. We typically respond within 24 hours Monday to Friday.</div></div>
         </div>
       </div>
     </section>
@@ -1725,16 +1725,25 @@
         <div class="vendor-copy">
           <p class="section-eyebrow" style="text-align:left">For wedding vendors</p>
           <h2>Reach couples <em>already planning</em></h2>
-          <p>Aisle &amp; Bloom connects you with engaged couples who are actively searching for vendors in your category. No cold outreach — just warm leads from people ready to book.</p>
-          <ul class="vendor-perks">
-            <li><span class="perk-dot"></span>Featured listing in your category with photos, pricing, and reviews</li>
-            <li><span class="perk-dot"></span>Direct enquiries from couples — no commissions on bookings</li>
-            <li><span class="perk-dot"></span>Availability badge so only available-date couples enquire</li>
-            <li><span class="perk-dot"></span>Priority placement available for maximum visibility</li>
-            <li><span class="perk-dot"></span>Dashboard to manage enquiries and update your profile</li>
-            <li><span class="perk-dot"></span>Listed on a platform trusted by 500+ Melbourne couples</li>
-          </ul>
-          <a href="mailto:infoaislebloom@gmail.com?subject=Vendor%20Application&body=Hi%2C%20I%27d%20like%20to%20list%20my%20business%20on%20Aisle%20%26%20Bloom." class="btn-primary" style="display:none"></a>
+          <p>Aisle &amp; Bloom connects you with engaged couples who are actively searching for vendors in your category. No cold outreach — just warm leads from people ready to book. <strong>Get your first 3 months free.</strong></p>
+
+          <div style="background:white; border:0.5px solid var(--border); border-radius:16px; padding:1.5rem; margin:1.5rem 0;">
+            <p style="font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--dusty-rose); margin-bottom:0.75rem;">Limited time — early vendor offer</p>
+            <div style="display:flex; align-items:baseline; gap:4px; margin-bottom:0.25rem;">
+              <span style="font-family:'Cormorant Garamond',serif; font-size:36px; font-weight:300; color:var(--charcoal);">Free</span>
+              <span style="font-size:13px; color:var(--light);">for 3 months</span>
+            </div>
+            <p style="font-size:13px; color:var(--mid); margin-bottom:1rem;">Then $49/month — cancel anytime, no lock-in.</p>
+            <ul class="vendor-perks">
+              <li><span class="perk-dot"></span>Featured listing in your category with photos, pricing, and reviews</li>
+              <li><span class="perk-dot"></span>Direct enquiries from couples — no commissions on bookings</li>
+              <li><span class="perk-dot"></span>Enquiry management dashboard to track and respond to leads</li>
+              <li><span class="perk-dot"></span>Availability badge so only available-date couples enquire</li>
+              <li><span class="perk-dot"></span>Update your profile, pricing and photos anytime</li>
+              <li><span class="perk-dot"></span>Listed on a platform trusted by 500+ Melbourne couples</li>
+            </ul>
+            <p style="font-size:11px; color:var(--light); margin-top:0.5rem;">You won't be charged until after your free trial ends.</p>
+          </div>
 
           <div id="vendorAppForm">
             <p style="font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:600; color:var(--charcoal); margin:1.5rem 0 1rem;">Apply to be listed</p>
@@ -1754,14 +1763,14 @@
             <input type="email" id="vaf-email" placeholder="Email address" class="enq-input">
             <input type="text" id="vaf-website" placeholder="Website or Instagram" class="enq-input">
             <textarea id="vaf-message" placeholder="Tell us about your business..." class="enq-input" rows="3" style="resize:vertical;"></textarea>
-            <button class="btn-primary" id="vafBtn" onclick="submitVendorApp()" style="width:100%; margin-top:0.5rem;">Send application</button>
-            <p style="font-size:11px; color:var(--light); margin-top:0.75rem;">We review all applications within 48 hours. No listing fees to get started.</p>
+            <button class="btn-primary" id="vafBtn" onclick="submitVendorApp()" style="width:100%; margin-top:0.5rem;">Apply — 3 months free</button>
+            <p style="font-size:11px; color:var(--light); margin-top:0.75rem;">We review all applications within 48 hours. Free for 3 months, then $49/month. Cancel anytime.</p>
           </div>
 
           <div id="vendorAppThanks" style="display:none; padding: 2rem 0; text-align:center;">
             <div style="font-size:40px; margin-bottom:0.75rem;">✓</div>
             <p style="font-family:'Cormorant Garamond',serif; font-size:24px; color:var(--charcoal); margin-bottom:0.5rem;">Application received!</p>
-            <p style="font-size:14px; color:var(--mid);">Thanks for applying to Aisle & Bloom. We'll be in touch within 48 hours.</p>
+            <p style="font-size:14px; color:var(--mid);">Thanks for applying to Aisle & Bloom. We'll be in touch within 48 hours to get your listing set up.</p>
           </div>
         </div>
       </div>
