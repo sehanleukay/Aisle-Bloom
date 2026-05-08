@@ -1734,7 +1734,35 @@
             <li><span class="perk-dot"></span>Dashboard to manage enquiries and update your profile</li>
             <li><span class="perk-dot"></span>Listed on a platform trusted by 500+ Melbourne couples</li>
           </ul>
-          <a href="mailto:infoaislebloom@gmail.com?subject=Vendor%20Application&body=Hi%2C%20I%27d%20like%20to%20list%20my%20business%20on%20Aisle%20%26%20Bloom." class="btn-primary">Apply to be listed</a>
+          <a href="mailto:infoaislebloom@gmail.com?subject=Vendor%20Application&body=Hi%2C%20I%27d%20like%20to%20list%20my%20business%20on%20Aisle%20%26%20Bloom." class="btn-primary" style="display:none"></a>
+
+          <div id="vendorAppForm">
+            <p style="font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:600; color:var(--charcoal); margin:1.5rem 0 1rem;">Apply to be listed</p>
+            <input type="text" id="vaf-business" placeholder="Business name" class="enq-input">
+            <select id="vaf-category" class="enq-input" style="background:white; color:var(--charcoal);">
+              <option value="">Select your category</option>
+              <option>Photography</option>
+              <option>Florals</option>
+              <option>Venue</option>
+              <option>Catering</option>
+              <option>Music</option>
+              <option>Hair & Makeup</option>
+              <option>Transport</option>
+              <option>Cake</option>
+            </select>
+            <input type="text" id="vaf-name" placeholder="Your name" class="enq-input">
+            <input type="email" id="vaf-email" placeholder="Email address" class="enq-input">
+            <input type="text" id="vaf-website" placeholder="Website or Instagram" class="enq-input">
+            <textarea id="vaf-message" placeholder="Tell us about your business..." class="enq-input" rows="3" style="resize:vertical;"></textarea>
+            <button class="btn-primary" id="vafBtn" onclick="submitVendorApp()" style="width:100%; margin-top:0.5rem;">Send application</button>
+            <p style="font-size:11px; color:var(--light); margin-top:0.75rem;">We review all applications within 48 hours. No listing fees to get started.</p>
+          </div>
+
+          <div id="vendorAppThanks" style="display:none; padding: 2rem 0; text-align:center;">
+            <div style="font-size:40px; margin-bottom:0.75rem;">✓</div>
+            <p style="font-family:'Cormorant Garamond',serif; font-size:24px; color:var(--charcoal); margin-bottom:0.5rem;">Application received!</p>
+            <p style="font-size:14px; color:var(--mid);">Thanks for applying to Aisle & Bloom. We'll be in touch within 48 hours.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -1957,7 +1985,7 @@
       document.getElementById('modalOverlay').classList.add('open');
     }
 
-    function submitEnquiry(vendorId, vendorName) {
+    async function submitEnquiry(vendorId, vendorName) {
       const name = document.getElementById('enq-name-' + vendorId).value.trim();
       const phone = document.getElementById('enq-phone-' + vendorId).value.trim();
       const email = document.getElementById('enq-email-' + vendorId).value.trim();
@@ -1967,21 +1995,38 @@
         return;
       }
 
-      const subject = encodeURIComponent('Enquiry via Aisle & Bloom — ' + vendorName);
-      const body = encodeURIComponent(
-        'Vendor: ' + vendorName + '\n\n' +
-        'Name: ' + name + '\n' +
-        'Phone: ' + (phone || 'Not provided') + '\n' +
-        'Email: ' + email
-      );
+      const btn = document.querySelector(`#enquiryForm-${vendorId} .mbtn-primary`);
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
 
-      window.location.href = 'mailto:infoaislebloom@gmail.com?subject=' + subject + '&body=' + body;
+      try {
+        const res = await fetch('https://formspree.io/f/xykodqdo', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            vendor: vendorName,
+            name: name,
+            phone: phone || 'Not provided',
+            email: email,
+            _subject: 'Enquiry via Aisle & Bloom — ' + vendorName
+          })
+        });
 
-      // Track enquiry submission
-      gtag('event', 'enquiry_sent', { vendor_name: vendorName });
-
-      document.getElementById('enquiryForm-' + vendorId).style.display = 'none';
-      document.getElementById('enquiryThanks-' + vendorId).style.display = 'block';
+        if (res.ok) {
+          // Track enquiry submission
+          gtag('event', 'enquiry_sent', { vendor_name: vendorName });
+          document.getElementById('enquiryForm-' + vendorId).style.display = 'none';
+          document.getElementById('enquiryThanks-' + vendorId).style.display = 'block';
+        } else {
+          showToast('Something went wrong — please try again.');
+          btn.textContent = 'Send enquiry';
+          btn.disabled = false;
+        }
+      } catch (e) {
+        showToast('Something went wrong — please try again.');
+        btn.textContent = 'Send enquiry';
+        btn.disabled = false;
+      }
     }
 
     function closeModal(e) {
@@ -2027,32 +2072,51 @@
 
     filterVendors();
 
-    function submitVendorForm() {
-      const fields = document.querySelectorAll('#signupForm input, #signupForm select, #signupForm textarea');
-      const businessName = fields[0].value.trim();
-      const category = fields[1].value.trim();
-      const contactName = fields[2].value.trim();
-      const emailAddr = fields[3].value.trim();
-      const website = fields[4].value.trim();
-      const description = fields[5].value.trim();
+    async function submitVendorApp() {
+      const business = document.getElementById('vaf-business').value.trim();
+      const category = document.getElementById('vaf-category').value.trim();
+      const name     = document.getElementById('vaf-name').value.trim();
+      const email    = document.getElementById('vaf-email').value.trim();
+      const website  = document.getElementById('vaf-website').value.trim();
+      const message  = document.getElementById('vaf-message').value.trim();
 
-      if (!businessName || !contactName || !emailAddr) {
-        showToast('Please fill in at least your business name, contact name and email.');
+      if (!business || !name || !email) {
+        showToast('Please fill in your business name, contact name and email.');
         return;
       }
 
-      const subject = encodeURIComponent('Vendor Application — ' + businessName);
-      const body = encodeURIComponent(
-        'Business Name: ' + businessName + '\n' +
-        'Category: ' + category + '\n' +
-        'Contact Name: ' + contactName + '\n' +
-        'Email: ' + emailAddr + '\n' +
-        'Website / Instagram: ' + website + '\n\n' +
-        'About the business:\n' + description
-      );
+      const btn = document.getElementById('vafBtn');
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
 
-      window.location.href = 'mailto:infoaislebloom@gmail.com?subject=' + subject + '&body=' + body;
-      showToast("Application received — we'll be in touch within 48 hours.");
+      try {
+        const res = await fetch('https://formspree.io/f/xrejawyp', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            business_name: business,
+            category: category,
+            contact_name: name,
+            email: email,
+            website_instagram: website,
+            about: message,
+            _subject: 'Vendor Application — ' + business
+          })
+        });
+
+        if (res.ok) {
+          document.getElementById('vendorAppForm').style.display = 'none';
+          document.getElementById('vendorAppThanks').style.display = 'block';
+        } else {
+          showToast('Something went wrong — please try again.');
+          btn.textContent = 'Send application';
+          btn.disabled = false;
+        }
+      } catch(e) {
+        showToast('Something went wrong — please try again.');
+        btn.textContent = 'Send application';
+        btn.disabled = false;
+      }
     }
   </script>
 </body>
