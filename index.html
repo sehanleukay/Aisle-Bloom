@@ -1234,7 +1234,6 @@
     /* ── FAQ ── */
     .faq-section { background: var(--blush); }
     .faq-inner { max-width: 640px; margin: 0 auto; }
-
     .faq-item { border-bottom: 0.5px solid var(--border); }
 
     .faq-q {
@@ -1254,21 +1253,23 @@
       gap: 1rem;
     }
 
-    .faq-ch { font-size: 16px; color: var(--light); transition: transform 0.2s; flex-shrink: 0; }
+    .faq-ch { font-size: 16px; color: var(--light); transition: transform 0.3s; flex-shrink: 0; }
     .faq-ch.open { transform: rotate(180deg); }
 
     .faq-a {
       font-size: 13px;
       color: var(--mid);
       line-height: 1.7;
-      padding: 0 1.25rem;
-      max-height: 0;
       overflow: hidden;
+      max-height: 0;
+      padding: 0;
       transition: max-height 0.35s ease, padding 0.35s ease;
-      display: block;
     }
 
-    .faq-a.open { max-height: 300px; padding: 0 1.25rem 1.25rem; }
+    .faq-a.open {
+      max-height: 400px;
+      padding: 0 0 1.25rem 0;
+    }
 
     /* ── FOOTER ── */
     footer {
@@ -2162,11 +2163,20 @@
         document.getElementById('modalOverlay').classList.remove('open');
     }
 
-    function toggleFaq(el) {
-      const a = el.nextElementSibling;
-      const ch = el.querySelector('.faq-ch');
-      a.classList.toggle('open');
-      ch.classList.toggle('open');
+    function toggleFaq(btn) {
+      const answer = btn.nextElementSibling;
+      const chevron = btn.querySelector('.faq-ch');
+      const isOpen = answer.classList.contains('open');
+
+      // Close all open FAQs first
+      document.querySelectorAll('.faq-a.open').forEach(a => a.classList.remove('open'));
+      document.querySelectorAll('.faq-ch.open').forEach(c => c.classList.remove('open'));
+
+      // If it wasn't open, open it
+      if (!isOpen) {
+        answer.classList.add('open');
+        chevron.classList.add('open');
+      }
     }
 
     function showToast(msg) {
