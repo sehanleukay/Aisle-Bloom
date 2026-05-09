@@ -1257,18 +1257,25 @@
     .faq-ch.open { transform: rotate(180deg); }
 
     .faq-a {
-      font-size: 13px;
-      color: var(--mid);
-      line-height: 1.7;
-      overflow: hidden;
-      max-height: 0;
-      padding: 0;
-      transition: max-height 0.35s ease, padding 0.35s ease;
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.35s ease;
     }
 
     .faq-a.open {
-      max-height: 400px;
-      padding: 0 0 1.25rem 0;
+      grid-template-rows: 1fr;
+    }
+
+    .faq-a-inner {
+      overflow: hidden;
+      font-size: 13px;
+      color: var(--mid);
+      line-height: 1.7;
+      min-height: 0;
+    }
+
+    .faq-a.open .faq-a-inner {
+      padding-bottom: 1.25rem;
     }
 
     /* ── FOOTER ── */
@@ -1825,14 +1832,14 @@
         <p class="section-eyebrow">Questions</p>
         <h2 class="section-title">Common <em>questions</em></h2>
         <div class="faq-inner">
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is Aisle & Bloom free for couples? <span class="faq-ch">▾</span></button><div class="faq-a">Yes — browsing and contacting vendors through Aisle & Bloom is completely free for couples. You can search, filter, view vendor profiles, and send enquiries at no cost.</div></div>
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What is the budget tracker and how much does it cost? <span class="faq-ch">▾</span></button><div class="faq-a">The budget tracker is a one-off $299 tool that helps you manage every dollar of your wedding spend in one place — tracking deposits, payments, and outstanding balances across all your vendors. It's a single payment, no subscription, and yours to keep until 3 months after your wedding date.</div></div>
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How do I contact a vendor? <span class="faq-ch">▾</span></button><div class="faq-a">Simply click on any vendor card, fill in your name, phone number and email, and hit Send Enquiry. Your details go directly to the vendor and to our team. There's no middleman — vendors will follow up with you directly.</div></div>
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Are all vendors based in Melbourne? <span class="faq-ch">▾</span></button><div class="faq-a">Yes. Every vendor listed on Aisle & Bloom is based in or services the Greater Melbourne area. We manually review each application before anyone is listed.</div></div>
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What do the availability badges mean? <span class="faq-ch">▾</span></button><div class="faq-a">Each vendor card shows one of three badges — Available, Limited Dates, or Booked. These are updated by vendors so you can quickly see who is free for your date before reaching out.</div></div>
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How do I list my business on Aisle & Bloom? <span class="faq-ch">▾</span></button><div class="faq-a">Head to the List Your Business tab and fill in the short application form. We review all applications within 48 hours. Right now we're offering early vendors 3 months free — after that it's $49/month with no lock-in contract.</div></div>
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is there a commission on bookings made through the site? <span class="faq-ch">▾</span></button><div class="faq-a">No. We never take a commission on any booking. Your subscription covers your listing and enquiry management — that's it. All payment arrangements are made directly between you and your couples.</div></div>
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How do I get in touch if I have more questions? <span class="faq-ch">▾</span></button><div class="faq-a">You can reach us anytime at infoaislebloom@gmail.com. We typically respond within 24 hours Monday to Friday.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is Aisle & Bloom free for couples? <span class="faq-ch">▾</span></button><div class="faq-a"><div class="faq-a-inner">Yes — browsing and contacting vendors through Aisle & Bloom is completely free for couples. You can search, filter, view vendor profiles, and send enquiries at no cost.</div></div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What is the budget tracker and how much does it cost? <span class="faq-ch">▾</span></button><div class="faq-a"><div class="faq-a-inner">The budget tracker is a one-off $299 tool that helps you manage every dollar of your wedding spend in one place — tracking deposits, payments, and outstanding balances across all your vendors. It's a single payment, no subscription, and yours to keep until 3 months after your wedding date.</div></div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How do I contact a vendor? <span class="faq-ch">▾</span></button><div class="faq-a"><div class="faq-a-inner">Simply click on any vendor card, fill in your name, phone number and email, and hit Send Enquiry. Your details go directly to the vendor and to our team. There's no middleman — vendors will follow up with you directly.</div></div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Are all vendors based in Melbourne? <span class="faq-ch">▾</span></button><div class="faq-a"><div class="faq-a-inner">Yes. Every vendor listed on Aisle & Bloom is based in or services the Greater Melbourne area. We manually review each application before anyone is listed.</div></div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What do the availability badges mean? <span class="faq-ch">▾</span></button><div class="faq-a"><div class="faq-a-inner">Each vendor card shows one of three badges — Available, Limited Dates, or Booked. These are updated by vendors so you can quickly see who is free for your date before reaching out.</div></div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How do I list my business on Aisle & Bloom? <span class="faq-ch">▾</span></button><div class="faq-a"><div class="faq-a-inner">Head to the List Your Business tab and fill in the short application form. We review all applications within 48 hours. Right now we're offering early vendors 3 months free — after that it's $49/month with no lock-in contract.</div></div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is there a commission on bookings made through the site? <span class="faq-ch">▾</span></button><div class="faq-a"><div class="faq-a-inner">No. We never take a commission on any booking. Your subscription covers your listing and enquiry management — that's it. All payment arrangements are made directly between you and your couples.</div></div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How do I get in touch if I have more questions? <span class="faq-ch">▾</span></button><div class="faq-a"><div class="faq-a-inner">You can reach us anytime at infoaislebloom@gmail.com. We typically respond within 24 hours Monday to Friday.</div></div></div>
         </div>
       </div>
     </section>
