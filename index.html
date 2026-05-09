@@ -1200,7 +1200,67 @@
       cursor: pointer;
     }
 
-    .enquiry-form {
+    /* ── VENDOR GALLERY ── */
+    .vendor-gallery { margin-bottom: 1.25rem; }
+    .gallery-main {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      border-radius: 10px;
+      background: var(--blush);
+      display: block;
+      margin-bottom: 8px;
+    }
+    .gallery-main-placeholder {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: 10px;
+      background: var(--blush);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+      color: var(--light);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+    }
+    .gallery-thumbs {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 6px;
+    }
+    .gallery-thumb {
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 6px;
+      cursor: pointer;
+      opacity: 0.65;
+      transition: opacity 0.2s, outline 0.2s;
+      background: var(--blush);
+      display: block;
+      width: 100%;
+    }
+    .gallery-thumb.active, .gallery-thumb:hover { opacity: 1; outline: 2px solid var(--dusty-rose); }
+    .gallery-thumb-placeholder {
+      aspect-ratio: 1;
+      border-radius: 6px;
+      background: var(--blush);
+      border: 0.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      color: var(--light);
+      letter-spacing: 0.06em;
+    }
+    .gallery-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--dusty-rose);
+      margin-bottom: 0.6rem;
+    }
       margin-top: 1.25rem;
       padding-top: 1.25rem;
       border-top: 0.5px solid var(--border);
@@ -1971,18 +2031,19 @@
     ];
 
     const vendors = [
-      {id:1,name:'Clara Holt Photography',cat:'Photography',icon:'camera',desc:'Candid, film-inspired wedding photography with a warm editorial touch.',price:'From $3,200',rating:4.9,reviews:84,location:'Melbourne CBD',style:['Candid','Film','Editorial'],packages:'3 packages',availability:'available',color:BANNERS[1]},
-      {id:2,name:'The Bloom Studio',cat:'Florals',icon:'florals',desc:'Lush, garden-style arrangements. Specialises in dried and seasonal florals.',price:'From $800',rating:4.8,reviews:61,location:'Fitzroy',style:['Garden','Dried','Seasonal'],packages:'Custom quotes',availability:'limited',color:BANNERS[0]},
-      {id:3,name:'Savour Catering Co.',cat:'Catering',icon:'catering',desc:'Farm-to-table menus with flexible dietary options. Sit-down or roaming.',price:'From $85 pp',rating:4.7,reviews:112,location:'Inner Melbourne',style:['Farm-to-table','Modern'],packages:'4 menus',availability:'available',color:BANNERS[2]},
-      {id:4,name:'Harmony Strings',cat:'Music',icon:'music',desc:'Classic string quartet performing contemporary and classical wedding music.',price:'From $900',rating:5.0,reviews:39,location:'Melbourne',style:['Classical','Contemporary'],packages:'3h / 5h',availability:'booked',color:BANNERS[5]},
-      {id:5,name:'Rippon Lea Estate',cat:'Venue',icon:'venue',desc:'Historic 19th-century estate with manicured gardens and a grand ballroom.',price:'From $6,500',rating:4.9,reviews:203,location:'Elsternwick',style:['Heritage','Garden','Ballroom'],packages:'Full day hire',availability:'available',color:BANNERS[4]},
-      {id:6,name:'Sugar & Lace Cakes',cat:'Cake',icon:'cake',desc:'Sculptural wedding cakes crafted to match your aesthetic. All flavours.',price:'From $650',rating:4.8,reviews:55,location:'Collingwood',style:['Modern','Minimalist','Floral'],packages:'Tasting sessions',availability:'available',color:BANNERS[3]},
-      {id:7,name:'Luminous Beauty Co.',cat:'Hair & Makeup',icon:'beauty',desc:'Bridal beauty team specialising in soft glam and natural luminous looks.',price:'From $420',rating:4.9,reviews:97,location:'Mobile — all Melbourne',style:['Soft glam','Natural','Editorial'],packages:'1–6 people',availability:'available',color:BANNERS[7]},
-      {id:8,name:'Vintage Rides Melbourne',cat:'Transport',icon:'transport',desc:'Restored vintage cars for bride and groom transport. Perfect for photos.',price:'From $550',rating:4.7,reviews:28,location:'Melbourne',style:['Vintage','Classic'],packages:'3h / full day',availability:'available',color:BANNERS[5]},
-      {id:9,name:'James Archer Films',cat:'Photography',icon:'camera',desc:'Cinematic videography capturing every emotion of your wedding day.',price:'From $2,800',rating:4.8,reviews:44,location:'Melbourne & Yarra Valley',style:['Cinematic','Documentary'],packages:'2 packages',availability:'booked',color:BANNERS[1]},
-      {id:10,name:'Wild & Whimsy Florals',cat:'Florals',icon:'florals',desc:'Boho and free-spirited floral designs using local native Australian flowers.',price:'From $600',rating:4.6,reviews:33,location:'Northcote',style:['Boho','Native','Whimsical'],packages:'Custom quotes',availability:'available',color:BANNERS[0]},
-      {id:11,name:'The Grand Pavilion',cat:'Venue',icon:'venue',desc:'Contemporary waterfront venue with floor-to-ceiling views and flexible spaces.',price:'From $9,000',rating:4.8,reviews:176,location:'St Kilda',style:['Contemporary','Waterfront'],packages:'Day or evening',availability:'booked',color:BANNERS[4]},
-      {id:12,name:'Encore Events DJ',cat:'Music',icon:'music',desc:'Professional wedding DJ service with lighting and MC included.',price:'From $1,100',rating:4.7,reviews:67,location:'Melbourne-wide',style:['DJ','Contemporary','Pop'],packages:'5h / 8h',availability:'available',color:BANNERS[6]},
+      {id:1,name:'Clara Holt Photography',cat:'Photography',icon:'camera',desc:'Candid, film-inspired wedding photography with a warm editorial touch.',price:'From $3,200',rating:4.9,reviews:84,location:'Melbourne CBD',style:['Candid','Film','Editorial'],packages:'3 packages',availability:'available',color:BANNERS[1],gallery:['images/gallery/clara-1.jpg','images/gallery/clara-2.jpg','images/gallery/clara-3.jpg','images/gallery/clara-4.jpg','images/gallery/clara-5.jpg','images/gallery/clara-6.jpg']},
+      {id:13,name:'Studio Eminence',cat:'Photography',icon:'camera',desc:'Melbourne\'s leading Indian & South Asian wedding photography and videography studio. Specialists in multicultural celebrations with same-day edits available.',price:'Custom packages',rating:5.0,reviews:3,location:'Mulgrave, Melbourne',style:['Multicultural','Cinematic','Romantic'],packages:'3 packages',availability:'available',color:BANNERS[3],gallery:['images/gallery/eminence-1.jpg','images/gallery/eminence-2.jpg','images/gallery/eminence-3.jpg','images/gallery/eminence-4.jpg','images/gallery/eminence-5.jpg','images/gallery/eminence-6.jpg']},
+      {id:2,name:'The Bloom Studio',cat:'Florals',icon:'florals',desc:'Lush, garden-style arrangements. Specialises in dried and seasonal florals.',price:'From $800',rating:4.8,reviews:61,location:'Fitzroy',style:['Garden','Dried','Seasonal'],packages:'Custom quotes',availability:'limited',color:BANNERS[0],gallery:['images/gallery/bloom-1.jpg','images/gallery/bloom-2.jpg','images/gallery/bloom-3.jpg','images/gallery/bloom-4.jpg','images/gallery/bloom-5.jpg','images/gallery/bloom-6.jpg']},
+      {id:3,name:'Savour Catering Co.',cat:'Catering',icon:'catering',desc:'Farm-to-table menus with flexible dietary options. Sit-down or roaming.',price:'From $85 pp',rating:4.7,reviews:112,location:'Inner Melbourne',style:['Farm-to-table','Modern'],packages:'4 menus',availability:'available',color:BANNERS[2],gallery:['images/gallery/savour-1.jpg','images/gallery/savour-2.jpg','images/gallery/savour-3.jpg','images/gallery/savour-4.jpg','images/gallery/savour-5.jpg','images/gallery/savour-6.jpg']},
+      {id:4,name:'Harmony Strings',cat:'Music',icon:'music',desc:'Classic string quartet performing contemporary and classical wedding music.',price:'From $900',rating:5.0,reviews:39,location:'Melbourne',style:['Classical','Contemporary'],packages:'3h / 5h',availability:'booked',color:BANNERS[5],gallery:['images/gallery/harmony-1.jpg','images/gallery/harmony-2.jpg','images/gallery/harmony-3.jpg','images/gallery/harmony-4.jpg','images/gallery/harmony-5.jpg','images/gallery/harmony-6.jpg']},
+      {id:5,name:'Rippon Lea Estate',cat:'Venue',icon:'venue',desc:'Historic 19th-century estate with manicured gardens and a grand ballroom.',price:'From $6,500',rating:4.9,reviews:203,location:'Elsternwick',style:['Heritage','Garden','Ballroom'],packages:'Full day hire',availability:'available',color:BANNERS[4],gallery:['images/gallery/rippon-1.jpg','images/gallery/rippon-2.jpg','images/gallery/rippon-3.jpg','images/gallery/rippon-4.jpg','images/gallery/rippon-5.jpg','images/gallery/rippon-6.jpg']},
+      {id:6,name:'Sugar & Lace Cakes',cat:'Cake',icon:'cake',desc:'Sculptural wedding cakes crafted to match your aesthetic. All flavours.',price:'From $650',rating:4.8,reviews:55,location:'Collingwood',style:['Modern','Minimalist','Floral'],packages:'Tasting sessions',availability:'available',color:BANNERS[3],gallery:['images/gallery/sugar-1.jpg','images/gallery/sugar-2.jpg','images/gallery/sugar-3.jpg','images/gallery/sugar-4.jpg','images/gallery/sugar-5.jpg','images/gallery/sugar-6.jpg']},
+      {id:7,name:'Luminous Beauty Co.',cat:'Hair & Makeup',icon:'beauty',desc:'Bridal beauty team specialising in soft glam and natural luminous looks.',price:'From $420',rating:4.9,reviews:97,location:'Mobile — all Melbourne',style:['Soft glam','Natural','Editorial'],packages:'1–6 people',availability:'available',color:BANNERS[7],gallery:['images/gallery/luminous-1.jpg','images/gallery/luminous-2.jpg','images/gallery/luminous-3.jpg','images/gallery/luminous-4.jpg','images/gallery/luminous-5.jpg','images/gallery/luminous-6.jpg']},
+      {id:8,name:'Vintage Rides Melbourne',cat:'Transport',icon:'transport',desc:'Restored vintage cars for bride and groom transport. Perfect for photos.',price:'From $550',rating:4.7,reviews:28,location:'Melbourne',style:['Vintage','Classic'],packages:'3h / full day',availability:'available',color:BANNERS[5],gallery:['images/gallery/vintage-1.jpg','images/gallery/vintage-2.jpg','images/gallery/vintage-3.jpg','images/gallery/vintage-4.jpg','images/gallery/vintage-5.jpg','images/gallery/vintage-6.jpg']},
+      {id:9,name:'James Archer Films',cat:'Photography',icon:'camera',desc:'Cinematic videography capturing every emotion of your wedding day.',price:'From $2,800',rating:4.8,reviews:44,location:'Melbourne & Yarra Valley',style:['Cinematic','Documentary'],packages:'2 packages',availability:'booked',color:BANNERS[1],gallery:['images/gallery/james-1.jpg','images/gallery/james-2.jpg','images/gallery/james-3.jpg','images/gallery/james-4.jpg','images/gallery/james-5.jpg','images/gallery/james-6.jpg']},
+      {id:10,name:'Wild & Whimsy Florals',cat:'Florals',icon:'florals',desc:'Boho and free-spirited floral designs using local native Australian flowers.',price:'From $600',rating:4.6,reviews:33,location:'Northcote',style:['Boho','Native','Whimsical'],packages:'Custom quotes',availability:'available',color:BANNERS[0],gallery:['images/gallery/wild-1.jpg','images/gallery/wild-2.jpg','images/gallery/wild-3.jpg','images/gallery/wild-4.jpg','images/gallery/wild-5.jpg','images/gallery/wild-6.jpg']},
+      {id:11,name:'The Grand Pavilion',cat:'Venue',icon:'venue',desc:'Contemporary waterfront venue with floor-to-ceiling views and flexible spaces.',price:'From $9,000',rating:4.8,reviews:176,location:'St Kilda',style:['Contemporary','Waterfront'],packages:'Day or evening',availability:'booked',color:BANNERS[4],gallery:['images/gallery/pavilion-1.jpg','images/gallery/pavilion-2.jpg','images/gallery/pavilion-3.jpg','images/gallery/pavilion-4.jpg','images/gallery/pavilion-5.jpg','images/gallery/pavilion-6.jpg']},
+      {id:12,name:'Encore Events DJ',cat:'Music',icon:'music',desc:'Professional wedding DJ service with lighting and MC included.',price:'From $1,100',rating:4.7,reviews:67,location:'Melbourne-wide',style:['DJ','Contemporary','Pop'],packages:'5h / 8h',availability:'available',color:BANNERS[6],gallery:['images/gallery/encore-1.jpg','images/gallery/encore-2.jpg','images/gallery/encore-3.jpg','images/gallery/encore-4.jpg','images/gallery/encore-5.jpg','images/gallery/encore-6.jpg']},
     ];
 
     let activeFilter = 'All';
@@ -2078,12 +2139,28 @@
       const v = vendors.find(x => x.id === id);
       if (!v) return;
 
-      // Track vendor card click in Google Analytics
       gtag('event', 'vendor_click', {
         vendor_name: v.name,
         vendor_category: v.cat,
         vendor_location: v.location
       });
+
+      // Build gallery HTML
+      const galleryHTML = v.gallery && v.gallery.length ? `
+        <div class="vendor-gallery">
+          <p class="gallery-label">Gallery</p>
+          <img id="galleryMain-${v.id}" class="gallery-main" src="${v.gallery[0]}" alt="${v.name} gallery"
+            onerror="this.style.display='none'; document.getElementById('galleryPlaceholder-${v.id}').style.display='flex'">
+          <div id="galleryPlaceholder-${v.id}" class="gallery-main-placeholder" style="display:none;">No photos uploaded yet</div>
+          <div class="gallery-thumbs">
+            ${v.gallery.map((img, i) => `
+              <img class="gallery-thumb ${i === 0 ? 'active' : ''}" src="${img}" alt="Photo ${i+1}"
+                onclick="switchGalleryImg('${img}', this, '${v.id}')"
+                onerror="this.style.display='none'">`
+            ).join('')}
+          </div>
+        </div>` : '';
+
       document.getElementById('modal').innerHTML = `
         <div class="modal-banner" style="background:${v.color}"><div class="vcard-icon modal-icon">${vendorIcon(v.icon)}</div></div>
         <div class="modal-body">
@@ -2097,6 +2174,8 @@
             <div class="det"><div class="det-lbl">Availability</div><div class="det-val" style="text-transform:capitalize">${v.availability}</div></div>
           </div>
           <div class="modal-tags">${v.style.map(s => `<span class="tag">${s}</span>`).join('')}</div>
+
+          ${galleryHTML}
 
           <div class="enquiry-form" id="enquiryForm-${v.id}">
             <p class="enquiry-form-title">Send an enquiry</p>
@@ -2119,6 +2198,18 @@
           </div>
         </div>`;
       document.getElementById('modalOverlay').classList.add('open');
+    }
+
+    function switchGalleryImg(src, thumb, vendorId) {
+      const main = document.getElementById('galleryMain-' + vendorId);
+      const placeholder = document.getElementById('galleryPlaceholder-' + vendorId);
+      if (main) {
+        main.src = src;
+        main.style.display = 'block';
+        if (placeholder) placeholder.style.display = 'none';
+      }
+      document.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
+      thumb.classList.add('active');
     }
 
     async function submitEnquiry(vendorId, vendorName) {
