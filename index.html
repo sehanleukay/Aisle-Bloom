@@ -100,8 +100,6 @@
 
     .nav-cta:hover { opacity: 0.85; background: var(--gold) !important; }
 
-    .nav-cta:hover { opacity: 0.85; }
-
     .nav-toggle {
       display: none;
       background: none;
@@ -309,7 +307,6 @@
       text-transform: uppercase;
       color: var(--light);
     }
-
 
     .section {
       padding: 6rem 2rem;
@@ -1175,7 +1172,7 @@
       color: var(--mid);
     }
 
- display: flex; gap: 8px; }
+    .modal-actions { display: flex; gap: 8px; }
 
     .mbtn-primary {
       flex: 1;
@@ -1261,6 +1258,8 @@
       color: var(--dusty-rose);
       margin-bottom: 0.6rem;
     }
+
+    .enquiry-form {
       margin-top: 1.25rem;
       padding-top: 1.25rem;
       border-top: 0.5px solid var(--border);
@@ -1322,9 +1321,7 @@
       transition: grid-template-rows 0.35s ease;
     }
 
-    .faq-a.open {
-      grid-template-rows: 1fr;
-    }
+    .faq-a.open { grid-template-rows: 1fr; }
 
     .faq-a-inner {
       overflow: hidden;
@@ -1334,9 +1331,7 @@
       min-height: 0;
     }
 
-    .faq-a.open .faq-a-inner {
-      padding-bottom: 1.25rem;
-    }
+    .faq-a.open .faq-a-inner { padding-bottom: 1.25rem; }
 
     /* ── FOOTER ── */
     footer {
@@ -1345,10 +1340,7 @@
       padding: 3rem 2rem 2rem;
     }
 
-    .footer-inner {
-      max-width: 1080px;
-      margin: 0 auto;
-    }
+    .footer-inner { max-width: 1080px; margin: 0 auto; }
 
     .footer-top {
       display: grid;
@@ -1369,11 +1361,7 @@
 
     .footer-brand h3 em { font-style: italic; font-weight: 300; color: var(--dusty-rose); }
 
-    .footer-brand p {
-      font-size: 13px;
-      line-height: 1.7;
-      max-width: 280px;
-    }
+    .footer-brand p { font-size: 13px; line-height: 1.7; max-width: 280px; }
 
     .footer-col h4 {
       font-size: 11px;
@@ -1385,18 +1373,13 @@
     }
 
     .footer-col ul { list-style: none; }
-
-    .footer-col ul li {
-      margin-bottom: 8px;
-    }
-
+    .footer-col ul li { margin-bottom: 8px; }
     .footer-col ul li a {
       font-size: 13px;
       color: rgba(250,248,244,0.6);
       text-decoration: none;
       transition: color 0.2s;
     }
-
     .footer-col ul li a:hover { color: var(--cream); }
 
     .footer-bottom {
@@ -1414,18 +1397,13 @@
       max-width: 600px;
     }
 
-    .footer-links {
-      display: flex;
-      gap: 1.5rem;
-    }
-
+    .footer-links { display: flex; gap: 1.5rem; }
     .footer-links a {
       font-size: 11px;
       color: rgba(250,248,244,0.4);
       text-decoration: none;
       transition: color 0.2s;
     }
-
     .footer-links a:hover { color: rgba(250,248,244,0.8); }
 
     /* ── TOAST ── */
@@ -1450,7 +1428,6 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       nav { padding: 0 1rem; }
-
       .nav-links { display: none; }
       .nav-links.open {
         display: flex;
@@ -1465,27 +1442,15 @@
         gap: 1rem;
         z-index: 99;
       }
-
       .nav-toggle { display: flex; }
-
       .hero { padding: 4rem 1.25rem 3rem; }
       .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
-
       .section { padding: 4rem 1.25rem; }
-
       .dir-stats { grid-template-columns: repeat(2, 1fr); }
-
-      .vendor-inner {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-      }
-
+      .vendor-inner { grid-template-columns: 1fr; gap: 2.5rem; }
       .footer-top { grid-template-columns: 1fr; gap: 2rem; }
-
       .footer-bottom { flex-direction: column; }
-
       .plans { grid-template-columns: 1fr; }
-
       .modal-details { grid-template-columns: 1fr 1fr; }
     }
   </style>
@@ -1504,7 +1469,6 @@
   <nav>
     <a href="#" class="nav-logo">Aisle <em>&</em> Bloom</a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#faq" onclick="showSection('home', document.querySelectorAll('.ptab')[0]); setTimeout(()=>document.getElementById('faq-section')?.scrollIntoView({behavior:'smooth'}),300); return false;">FAQ</a></li>
       <li><a href="mailto:infoaislebloom@gmail.com" class="nav-cta">Contact us</a></li>
     </ul>
     <button class="nav-toggle" id="navToggle" aria-label="Menu">
@@ -1518,6 +1482,7 @@
     <button class="ptab" onclick="showSection('directory', this)">Vendor directory</button>
     <button class="ptab" onclick="showSection('pricing', this)">Pricing for couples</button>
     <button class="ptab" onclick="showSection('vendors', this)">For vendors</button>
+    <button class="ptab" onclick="showSection('faq', this)">FAQ</button>
   </div>
 
   <!-- ══ HOME ══ -->
@@ -1527,7 +1492,6 @@
     <section class="hero">
       <div class="hero-bg"></div>
 
-      <!-- Floral line art matching rest of page -->
       <svg style="position:absolute; inset:0; width:100%; height:100%; pointer-events:none; z-index:0;" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
         <g opacity="0.14" stroke="#8b5e52" fill="none">
           <path d="M60 620 C80 560 100 500 95 430 C90 360 65 310 75 230 C82 175 100 120 118 60 C125 35 135 10 148 -10" stroke-width="1.8"/>
@@ -1562,8 +1526,8 @@
         <h1>Find your perfect<br><em>wedding team</em></h1>
         <p class="hero-sub">Every vendor you need — photographers, florists, caterers, venues, and more — in one beautifully curated directory.</p>
         <div class="hero-actions">
-          <a href="#" class="btn-primary" onclick="showSection('directory', document.querySelectorAll('.ptab')[1])">Browse vendors</a>
-          <a href="#" class="btn-outline" onclick="showSection('pricing', document.querySelectorAll('.ptab')[2])">See pricing</a>
+          <a href="#" class="btn-primary" onclick="showSection('directory', document.querySelectorAll('.ptab')[1]); return false;">Browse vendors</a>
+          <a href="#" class="btn-outline" onclick="showSection('pricing', document.querySelectorAll('.ptab')[2]); return false;">See pricing</a>
         </div>
         <div class="hero-stats">
           <div>
@@ -1597,14 +1561,6 @@
           <path d="M1120 170 C1120 170 1155 155 1170 130" stroke-width="1.2"/><circle cx="1170" cy="130" r="8" fill="#8b5e52"/>
           <path d="M1125 230 C1125 230 1090 215 1075 192" stroke-width="1.2"/><circle cx="1075" cy="192" r="6" fill="#8b5e52"/>
           <path d="M1135 290 C1135 290 1165 278 1180 255" stroke-width="1.2"/><circle cx="1180" cy="255" r="9" fill="#8b5e52"/>
-        </g>
-        <g opacity="0.10" stroke="#b8975a" fill="none">
-          <path d="M600 -10 C610 40 605 90 595 130" stroke-width="0.9"/>
-          <circle cx="595" cy="130" r="5" fill="#b8975a" opacity="0.8"/>
-          <path d="M595 130 C595 130 572 118 565 100" stroke-width="0.8"/>
-          <path d="M595 130 C595 130 618 118 625 100" stroke-width="0.8"/>
-          <circle cx="565" cy="100" r="4" fill="#b8975a" opacity="0.7"/>
-          <circle cx="625" cy="100" r="4" fill="#b8975a" opacity="0.7"/>
         </g>
       </svg>
       <div class="section-inner" style="position:relative; z-index:1;">
@@ -1695,14 +1651,6 @@
           <path d="M1085 250 C1085 250 1052 235 1040 210" stroke-width="1.2"/><circle cx="1040" cy="210" r="7" fill="#8b5e52"/>
           <path d="M1075 190 C1075 190 1105 175 1118 152" stroke-width="1.2"/><circle cx="1118" cy="152" r="8" fill="#8b5e52"/>
         </g>
-        <g opacity="0.10" stroke="#b8975a" fill="none">
-          <path d="M400 500 C410 460 408 420 400 380" stroke-width="1.0"/>
-          <path d="M400 380 C400 380 378 368 368 348" stroke-width="0.8"/><circle cx="368" cy="348" r="5" fill="#b8975a" opacity="0.7"/>
-          <path d="M400 380 C400 380 422 368 432 348" stroke-width="0.8"/><circle cx="432" cy="348" r="5" fill="#b8975a" opacity="0.7"/>
-          <path d="M800 0 C808 40 806 80 798 120" stroke-width="1.0"/>
-          <path d="M798 120 C798 120 776 108 766 88" stroke-width="0.8"/><circle cx="766" cy="88" r="5" fill="#b8975a" opacity="0.7"/>
-          <path d="M798 120 C798 120 820 108 830 88" stroke-width="0.8"/><circle cx="830" cy="88" r="5" fill="#b8975a" opacity="0.7"/>
-        </g>
       </svg>
       <div class="section-inner" style="position:relative; z-index:1;">
         <p class="section-eyebrow">Browse by category</p>
@@ -1728,12 +1676,6 @@
           <path d="M1090 220 C1090 220 1058 205 1043 182" stroke-width="1.2"/><circle cx="1043" cy="182" r="6" fill="#8b5e52"/>
           <path d="M1105 290 C1105 290 1135 278 1148 255" stroke-width="1.2"/><circle cx="1148" cy="255" r="9" fill="#8b5e52"/>
           <path d="M1098 350 C1098 350 1068 337 1053 315" stroke-width="1.2"/><circle cx="1053" cy="315" r="7" fill="#8b5e52"/>
-        </g>
-        <g opacity="0.08" stroke="#b8975a" fill="none">
-          <path d="M600 510 C602 465 598 420 590 380" stroke-width="1.0"/>
-          <path d="M590 380 C590 380 568 368 558 345" stroke-width="0.8"/><circle cx="558" cy="345" r="5" fill="#b8975a" opacity="0.8"/>
-          <path d="M590 380 C590 380 612 368 622 345" stroke-width="0.8"/><circle cx="622" cy="345" r="5" fill="#b8975a" opacity="0.8"/>
-          <circle cx="590" cy="380" r="3" fill="#b8975a" opacity="0.7"/>
         </g>
       </svg>
       <div class="section-inner" style="position:relative; z-index:1;">
@@ -1775,7 +1717,7 @@
       </div>
     </section>
 
-  </div>
+  </div><!-- end #sec-home -->
 
   <!-- ══ DIRECTORY ══ -->
   <div id="sec-directory" style="display:none">
@@ -1839,7 +1781,7 @@
               <li><span class="cx">–</span><span style="color:var(--light)">Deposit &amp; payment tracking</span></li>
               <li><span class="cx">–</span><span style="color:var(--light)">Spending breakdown by category</span></li>
             </ul>
-            <a href="#directory" class="plan-btn plan-btn-ghost" onclick="showSection('directory', document.querySelectorAll('.ptab')[1])">Start browsing — it's free</a>
+            <a href="#" class="plan-btn plan-btn-ghost" onclick="showSection('directory', document.querySelectorAll('.ptab')[1]); return false;">Start browsing — it's free</a>
           </div>
 
           <div class="plan featured">
@@ -1860,7 +1802,7 @@
               <li><span class="ck">✓</span>Shareable budget view with your partner</li>
               <li><span class="ck">✓</span>Access retained 3 months post-wedding</li>
             </ul>
-            <a href="#" class="plan-btn plan-btn-solid" onclick="showToast('Redirecting to secure checkout...')">Unlock budget tracker — $299</a>
+            <a href="#" class="plan-btn plan-btn-solid" onclick="showToast('Redirecting to secure checkout...'); return false;">Unlock budget tracker — $299</a>
           </div>
         </div>
 
@@ -1882,24 +1824,6 @@
 
         <div style="max-width:540px;margin:2rem auto 0;background:var(--blush);border-radius:16px;padding:1.5rem;text-align:center;border:0.5px solid var(--border)">
           <p style="font-size:13px;color:var(--mid);line-height:1.7"><strong style="color:var(--charcoal)">30-day money-back guarantee.</strong> If you purchase and decide it's not right for you within 30 days, we'll refund you in full — no questions asked.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ ON PRICING PAGE -->
-    <section class="section faq-section" id="faq-section">
-      <div class="section-inner">
-        <p class="section-eyebrow">Questions</p>
-        <h2 class="section-title">Common <em>questions</em></h2>
-        <div class="faq-inner">
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is Aisle & Bloom free for couples? <span class="faq-ch">▾</span></button><div class="faq-a"><div class="faq-a-inner">Yes — browsing and contacting vendors through Aisle & Bloom is completely free for couples. You can search, filter, view vendor profiles, and send enquiries at no cost.</div></div></div>
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What is the budget tracker and how much does it cost? <span class="faq-ch">▾</span></button><div class="faq-a"><div class="faq-a-inner">The budget tracker is a one-off $299 tool that helps you manage every dollar of your wedding spend in one place — tracking deposits, payments, and outstanding balances across all your vendors. It's a single payment, no subscription, and yours to keep until 3 months after your wedding date.</div></div></div>
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How do I contact a vendor? <span class="faq-ch">▾</span></button><div class="faq-a"><div class="faq-a-inner">Simply click on any vendor card, fill in your name, phone number and email, and hit Send Enquiry. Your details go directly to the vendor and to our team. There's no middleman — vendors will follow up with you directly.</div></div></div>
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Are all vendors based in Melbourne? <span class="faq-ch">▾</span></button><div class="faq-a"><div class="faq-a-inner">Yes. Every vendor listed on Aisle & Bloom is based in or services the Greater Melbourne area. We manually review each application before anyone is listed.</div></div></div>
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What do the availability badges mean? <span class="faq-ch">▾</span></button><div class="faq-a"><div class="faq-a-inner">Each vendor card shows one of three badges — Available, Limited Dates, or Booked. These are updated by vendors so you can quickly see who is free for your date before reaching out.</div></div></div>
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How do I list my business on Aisle & Bloom? <span class="faq-ch">▾</span></button><div class="faq-a"><div class="faq-a-inner">Head to the List Your Business tab and fill in the short application form. We review all applications within 48 hours. Right now we're offering early vendors 3 months free — after that it's $49/month with no lock-in contract.</div></div></div>
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is there a commission on bookings made through the site? <span class="faq-ch">▾</span></button><div class="faq-a"><div class="faq-a-inner">No. We never take a commission on any booking. Your subscription covers your listing and enquiry management — that's it. All payment arrangements are made directly between you and your couples.</div></div></div>
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How do I get in touch if I have more questions? <span class="faq-ch">▾</span></button><div class="faq-a"><div class="faq-a-inner">You can reach us anytime at infoaislebloom@gmail.com. We typically respond within 24 hours Monday to Friday.</div></div></div>
         </div>
       </div>
     </section>
@@ -1964,6 +1888,51 @@
     </section>
   </div>
 
+  <!-- ══ FAQ ══ -->
+  <div id="sec-faq" style="display:none">
+    <section class="section faq-section" style="min-height: 70vh;">
+      <div class="section-inner">
+        <p class="section-eyebrow">Questions</p>
+        <h2 class="section-title">Common <em>questions</em></h2>
+        <p class="section-sub">Everything you need to know about Aisle &amp; Bloom — for couples and vendors alike.</p>
+        <div class="faq-inner">
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">Is Aisle &amp; Bloom free for couples? <span class="faq-ch">▾</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Yes — browsing and contacting vendors through Aisle &amp; Bloom is completely free for couples. You can search, filter, view vendor profiles, and send enquiries at no cost.</div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">What is the budget tracker and how much does it cost? <span class="faq-ch">▾</span></button>
+            <div class="faq-a"><div class="faq-a-inner">The budget tracker is a one-off $299 tool that helps you manage every dollar of your wedding spend in one place — tracking deposits, payments, and outstanding balances across all your vendors. It's a single payment, no subscription, and yours to keep until 3 months after your wedding date.</div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">How do I contact a vendor? <span class="faq-ch">▾</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Simply click on any vendor card, fill in your name, phone number and email, and hit Send Enquiry. Your details go directly to the vendor and to our team. There's no middleman — vendors will follow up with you directly.</div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">Are all vendors based in Melbourne? <span class="faq-ch">▾</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Yes. Every vendor listed on Aisle &amp; Bloom is based in or services the Greater Melbourne area. We manually review each application before anyone is listed.</div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">What do the availability badges mean? <span class="faq-ch">▾</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Each vendor card shows one of three badges — Available, Limited Dates, or Booked. These are updated by vendors so you can quickly see who is free for your date before reaching out.</div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">How do I list my business on Aisle &amp; Bloom? <span class="faq-ch">▾</span></button>
+            <div class="faq-a"><div class="faq-a-inner">Head to the For Vendors tab and fill in the short application form. We review all applications within 48 hours. Right now we're offering early vendors 3 months free — after that it's $49/month with no lock-in contract.</div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">Is there a commission on bookings made through the site? <span class="faq-ch">▾</span></button>
+            <div class="faq-a"><div class="faq-a-inner">No. We never take a commission on any booking. Your subscription covers your listing and enquiry management — that's it. All payment arrangements are made directly between you and your couples.</div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)">How do I get in touch if I have more questions? <span class="faq-ch">▾</span></button>
+            <div class="faq-a"><div class="faq-a-inner">You can reach us anytime at <a href="mailto:infoaislebloom@gmail.com" style="color:var(--deep-rose);">infoaislebloom@gmail.com</a>. We typically respond within 24 hours Monday to Friday.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
   <!-- MODAL -->
   <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
     <div class="modal" id="modal"></div>
@@ -1983,21 +1952,22 @@
         <div class="footer-col">
           <h4>Directory</h4>
           <ul>
-            <li><a href="#" onclick="filterAndGo('Photography')">Photography</a></li>
-            <li><a href="#" onclick="filterAndGo('Florals')">Florals</a></li>
-            <li><a href="#" onclick="filterAndGo('Catering')">Catering</a></li>
-            <li><a href="#" onclick="filterAndGo('Venue')">Venues</a></li>
-            <li><a href="#" onclick="filterAndGo('Music')">Music</a></li>
-            <li><a href="#" onclick="filterAndGo('Cake')">Cakes</a></li>
+            <li><a href="#" onclick="filterAndGo('Photography'); return false;">Photography</a></li>
+            <li><a href="#" onclick="filterAndGo('Florals'); return false;">Florals</a></li>
+            <li><a href="#" onclick="filterAndGo('Catering'); return false;">Catering</a></li>
+            <li><a href="#" onclick="filterAndGo('Venue'); return false;">Venues</a></li>
+            <li><a href="#" onclick="filterAndGo('Music'); return false;">Music</a></li>
+            <li><a href="#" onclick="filterAndGo('Cake'); return false;">Cakes</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Company</h4>
           <ul>
             <li><a href="#">About us</a></li>
-            <li><a href="#" onclick="showSection('pricing', document.querySelectorAll('.ptab')[2])">Pricing for couples</a></li>
-            <li><a href="#" onclick="showSection('vendors', document.querySelectorAll('.ptab')[3])">List your business</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#" onclick="showSection('pricing', document.querySelectorAll('.ptab')[2]); return false;">Pricing for couples</a></li>
+            <li><a href="#" onclick="showSection('vendors', document.querySelectorAll('.ptab')[3]); return false;">List your business</a></li>
+            <li><a href="#" onclick="showSection('faq', document.querySelectorAll('.ptab')[4]); return false;">FAQ</a></li>
+            <li><a href="mailto:infoaislebloom@gmail.com">Contact</a></li>
             <li><a href="#">Privacy policy</a></li>
             <li><a href="#">Terms of use</a></li>
           </ul>
@@ -2012,7 +1982,7 @@
         <div class="footer-links">
           <a href="#">Privacy</a>
           <a href="#">Terms</a>
-          <a href="#">Contact</a>
+          <a href="mailto:infoaislebloom@gmail.com">Contact</a>
         </div>
       </div>
     </div>
@@ -2049,7 +2019,7 @@
     let activeFilter = 'All';
 
     function showSection(sec, tabEl) {
-      ['home','directory','pricing','vendors'].forEach(s => {
+      ['home','directory','pricing','vendors','faq'].forEach(s => {
         document.getElementById('sec-' + s).style.display = s === sec ? 'block' : 'none';
       });
       document.querySelectorAll('.ptab').forEach(t => t.classList.remove('active'));
@@ -2145,7 +2115,6 @@
         vendor_location: v.location
       });
 
-      // Build gallery HTML
       const galleryHTML = v.gallery && v.gallery.length ? `
         <div class="vendor-gallery">
           <p class="gallery-label">Gallery</p>
@@ -2240,7 +2209,6 @@
         });
 
         if (res.ok) {
-          // Track enquiry submission
           gtag('event', 'enquiry_sent', { vendor_name: vendorName });
           document.getElementById('enquiryForm-' + vendorId).style.display = 'none';
           document.getElementById('enquiryThanks-' + vendorId).style.display = 'block';
@@ -2265,12 +2233,8 @@
       const answer = btn.nextElementSibling;
       const chevron = btn.querySelector('.faq-ch');
       const isOpen = answer.classList.contains('open');
-
-      // Close all open FAQs first
       document.querySelectorAll('.faq-a.open').forEach(a => a.classList.remove('open'));
       document.querySelectorAll('.faq-ch.open').forEach(c => c.classList.remove('open'));
-
-      // If it wasn't open, open it
       if (!isOpen) {
         answer.classList.add('open');
         chevron.classList.add('open');
@@ -2288,16 +2252,15 @@
       document.getElementById('navLinks').classList.toggle('open');
     });
 
-    // Populate category grid with luxury SVG icons
     const CATS = [
-      { key: 'Photography',  icon: 'camera',    label: 'Photography' },
-      { key: 'Florals',      icon: 'florals',   label: 'Florals' },
-      { key: 'Catering',     icon: 'catering',  label: 'Catering' },
-      { key: 'Music',        icon: 'music',     label: 'Music' },
-      { key: 'Venue',        icon: 'venue',     label: 'Venues' },
-      { key: 'Cake',         icon: 'cake',      label: 'Cakes' },
-      { key: 'Hair & Makeup',icon: 'beauty',    label: 'Hair & Makeup' },
-      { key: 'Transport',    icon: 'transport', label: 'Transport' },
+      { key: 'Photography',   icon: 'camera',    label: 'Photography' },
+      { key: 'Florals',       icon: 'florals',   label: 'Florals' },
+      { key: 'Catering',      icon: 'catering',  label: 'Catering' },
+      { key: 'Music',         icon: 'music',     label: 'Music' },
+      { key: 'Venue',         icon: 'venue',     label: 'Venues' },
+      { key: 'Cake',          icon: 'cake',      label: 'Cakes' },
+      { key: 'Hair & Makeup', icon: 'beauty',    label: 'Hair & Makeup' },
+      { key: 'Transport',     icon: 'transport', label: 'Transport' },
     ];
     document.getElementById('catGrid').innerHTML = CATS.map(c =>
       `<a class="cat-pill" href="#" onclick="filterAndGo('${c.key}'); return false;">
