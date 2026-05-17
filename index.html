@@ -56,6 +56,16 @@
       height: 64px;
     }
 
+    .nav-logo-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 52px;
+      width: auto;
+      pointer-events: none;
+      object-fit: contain;
+    }
+
     .nav-logo {
       font-family: 'Cormorant Garamond', serif;
       font-size: 22px;
@@ -1427,6 +1437,7 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
+      .nav-logo-center { display: none; }
       nav { padding: 0 1rem; }
       .nav-links { display: none; }
       .nav-links.open {
@@ -1468,6 +1479,7 @@
   <!-- NAV -->
   <nav>
     <a href="#" class="nav-logo">Aisle <em>&</em> Bloom</a>
+    <img src="images/logo.png" alt="Aisle & Bloom" class="nav-logo-center">
     <ul class="nav-links" id="navLinks">
       <li><a href="mailto:infoaislebloom@gmail.com" class="nav-cta">Contact us</a></li>
     </ul>
