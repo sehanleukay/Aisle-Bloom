@@ -742,6 +742,79 @@
     .faq-a-inner { overflow: hidden; font-size: 13px; color: var(--mid); line-height: 1.7; min-height: 0; }
     .faq-a.open .faq-a-inner { padding-bottom: 1.25rem; }
 
+    /* ── INSTAGRAM ── */
+    .instagram-section {
+      background: var(--cream);
+      padding: 6rem 2rem;
+    }
+
+    .insta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .insta-tile {
+      position: relative;
+      aspect-ratio: 1;
+      border-radius: 12px;
+      overflow: hidden;
+      display: block;
+      cursor: pointer;
+      background: var(--blush);
+      text-decoration: none;
+    }
+
+    .insta-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      background: var(--blush);
+      transition: transform 0.4s ease;
+    }
+
+    .insta-tile:hover .insta-placeholder {
+      transform: scale(1.08);
+    }
+
+    .insta-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(46,42,30,0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: 12px;
+    }
+
+    .insta-tile:hover .insta-overlay {
+      opacity: 1;
+    }
+
+    .insta-follow-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 13px 28px;
+      background: var(--charcoal);
+      color: var(--cream);
+      border-radius: 999px;
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .insta-follow-btn:hover { opacity: 0.82; }
+
     /* ── FOOTER ── */
     footer { background: var(--charcoal); color: rgba(250,248,244,0.7); padding: 3rem 2rem 2rem; }
     .footer-inner { max-width: 1080px; margin: 0 auto; }
@@ -1098,6 +1171,49 @@
 
   <!-- TOAST -->
   <div class="toast" id="toast"></div>
+
+  <!-- INSTAGRAM SECTION -->
+  <section class="instagram-section">
+    <div class="section-inner">
+      <p class="section-eyebrow">Follow along</p>
+      <h2 class="section-title">Find us on <em>Instagram</em></h2>
+      <p class="section-sub">Real weddings, vendor spotlights and planning inspiration — follow <a href="https://www.instagram.com/aisleandbloomau" target="_blank" rel="noopener" style="color:var(--deep-rose);text-decoration:none;">@aisleandbloomau</a></p>
+
+      <div class="insta-grid">
+        <a href="https://www.instagram.com/aisleandbloomau" target="_blank" rel="noopener" class="insta-tile">
+          <div class="insta-placeholder"><span>📷</span></div>
+          <div class="insta-overlay"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" width="28" height="28"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/></svg></div>
+        </a>
+        <a href="https://www.instagram.com/aisleandbloomau" target="_blank" rel="noopener" class="insta-tile">
+          <div class="insta-placeholder"><span>💐</span></div>
+          <div class="insta-overlay"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" width="28" height="28"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/></svg></div>
+        </a>
+        <a href="https://www.instagram.com/aisleandbloomau" target="_blank" rel="noopener" class="insta-tile">
+          <div class="insta-placeholder"><span>🥂</span></div>
+          <div class="insta-overlay"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" width="28" height="28"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/></svg></div>
+        </a>
+        <a href="https://www.instagram.com/aisleandbloomau" target="_blank" rel="noopener" class="insta-tile">
+          <div class="insta-placeholder"><span>💒</span></div>
+          <div class="insta-overlay"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" width="28" height="28"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/></svg></div>
+        </a>
+        <a href="https://www.instagram.com/aisleandbloomau" target="_blank" rel="noopener" class="insta-tile">
+          <div class="insta-placeholder"><span>🌿</span></div>
+          <div class="insta-overlay"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" width="28" height="28"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/></svg></div>
+        </a>
+        <a href="https://www.instagram.com/aisleandbloomau" target="_blank" rel="noopener" class="insta-tile">
+          <div class="insta-placeholder"><span>🍰</span></div>
+          <div class="insta-overlay"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" width="28" height="28"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/></svg></div>
+        </a>
+      </div>
+
+      <div style="text-align:center; margin-top:2rem;">
+        <a href="https://www.instagram.com/aisleandbloomau" target="_blank" rel="noopener" class="insta-follow-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16" style="margin-right:8px;vertical-align:middle;"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          Follow @aisleandbloomau
+        </a>
+      </div>
+    </div>
+  </section>
 
   <!-- FOOTER -->
   <footer>
