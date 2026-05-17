@@ -130,9 +130,14 @@
     .page-tabs {
       display: flex;
       border-bottom: 0.5px solid var(--border);
-      background: var(--warm-white);
+      background: rgba(250,246,238,0.97);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       overflow-x: auto;
       scrollbar-width: none;
+      position: sticky;
+      top: 68px;
+      z-index: 99;
     }
 
     .page-tabs::-webkit-scrollbar { display: none; }
