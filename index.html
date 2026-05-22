@@ -1115,7 +1115,10 @@
       if (tabEl) tabEl.classList.add('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
       if (sec === 'directory') filterVendors();
-      if (sec === 'budget') btRender();
+      if (sec === 'budget') {
+        // If user is logged in, re-render; otherwise the locked screen is already showing
+        if (btCurrentUser) btRender();
+      }
     }
 
     function filterAndGo(cat) {
@@ -1545,10 +1548,9 @@
     let btItems = [];
     let btTotalBudget = 0;
     let btCurrentUser = null;
-    let btHasPurchased = false;
     const BT_FREE_LIMIT = 3;
 
-    // Called whenever auth state changes
+    // Called whenever auth state changes — show/hide locked vs unlocked
     async function btUpdateAuthState(user) {
       btCurrentUser = user;
       const locked = document.getElementById('budget-locked');
@@ -1557,52 +1559,42 @@
       if (user) {
         locked.style.display = 'none';
         unlocked.style.display = 'block';
-        await btCheckPurchase();
-        await btLoad();
+        // Check purchase status from Supabase
+        const { data } = await _supabase
+          .from('user_purchases')
+          .select('id')
+          .eq('user_id', user.id)
+          .limit(1);
+        btHasPurchased = data && data.length > 0;
+        // Load items from Supabase
+        const { data: budgetData } = await _supabase
+          .from('budget_items')
+          .select('*')
+          .eq('user_id', user.id)
+          .order('created_at', { ascending: true });
+        btItems = budgetData || [];
+        btTotalBudget = parseFloat(localStorage.getItem('bt_budget_' + user.id)) || 0;
+        btRender();
       } else {
         btHasPurchased = false;
+        btItems = [];
+        btTotalBudget = 0;
         locked.style.display = 'block';
         unlocked.style.display = 'none';
       }
-    }
-
-    // Check if user has purchased
-    async function btCheckPurchase() {
-      if (!btCurrentUser) return;
-      const { data } = await _supabase
-        .from('user_purchases')
-        .select('id')
-        .eq('user_id', btCurrentUser.id)
-        .limit(1);
-      btHasPurchased = data && data.length > 0;
-    }
-
-    // Load items from Supabase
-    async function btLoad() {
-      if (!btCurrentUser) return;
-      const { data: budgetData } = await _supabase
-        .from('budget_items')
-        .select('*')
-        .eq('user_id', btCurrentUser.id)
-        .order('created_at', { ascending: true });
-      btItems = budgetData || [];
-
-      // Load total budget from localStorage (lightweight, not sensitive)
-      const key = 'bt_budget_' + btCurrentUser.id;
-      btTotalBudget = parseFloat(localStorage.getItem(key)) || 0;
-      btRender();
-    }
-
-    // Save total budget to localStorage
-    function btSaveBudget() {
-      if (!btCurrentUser) return;
-      localStorage.setItem('bt_budget_' + btCurrentUser.id, btTotalBudget);
     }
 
     const CAT_ICONS = { Photography:'📷', Florals:'🌸', Venue:'🏛️', Catering:'🍽️', Music:'🎵', 'Hair & Makeup':'💄', Transport:'🚗', Cake:'🎂', Other:'📋' };
     const STATUS_OPTS = ['Pending','Deposit paid','Fully paid'];
 
     function btRender() {
+      // Make sure correct panel is visible
+      const locked = document.getElementById('budget-locked');
+      const unlocked = document.getElementById('budget-unlocked');
+      if (locked && unlocked) {
+        locked.style.display = btCurrentUser ? 'none' : 'block';
+        unlocked.style.display = btCurrentUser ? 'block' : 'none';
+      }
       if (!btCurrentUser) return;
 
       // Total budget display
@@ -1618,22 +1610,15 @@
       document.getElementById('bt-alert').textContent = remaining < 0 ? '⚠️ Over budget by $' + Math.abs(remaining).toLocaleString() : '';
       document.getElementById('bt-alert').style.color = 'var(--danger)';
 
-      // Purchase prompt — hide if paid, show if free and at limit
+      // Purchase prompt
       const prompt = document.getElementById('bt-purchase-prompt');
-      if (prompt) {
-        if (btHasPurchased) {
-          prompt.style.display = 'none';
-        } else {
-          prompt.style.display = btItems.length >= BT_FREE_LIMIT ? 'block' : 'none';
-        }
-      }
+      if (prompt) prompt.style.display = (!btHasPurchased && btItems.length >= BT_FREE_LIMIT) ? 'block' : 'none';
 
-      // Add button — disable if at free limit and not purchased
+      // Add button dim if at limit
       const addBtn = document.querySelector('[onclick="btAddItem()"]');
       if (addBtn) {
         const atLimit = !btHasPurchased && btItems.length >= BT_FREE_LIMIT;
         addBtn.style.opacity = atLimit ? '0.4' : '1';
-        addBtn.title = atLimit ? 'Upgrade to add more vendors' : '';
       }
 
       // Vendor list
@@ -1645,14 +1630,15 @@
         return;
       }
       empty.style.display = 'none';
-      list.innerHTML = btItems.map((item, idx) => {
-        const icon = CAT_ICONS[item.category] || '📋';
+      list.innerHTML = btItems.map((item) => {
+        const icon = CAT_ICONS[item.category || item.cat] || '📋';
+        const cat = item.category || item.cat || 'Other';
         const statusColor = item.status === 'Fully paid' ? 'var(--success-bg);color:var(--success)' : item.status === 'Deposit paid' ? 'var(--warning-bg);color:var(--warning)' : 'var(--danger-bg);color:var(--danger)';
         return `<div style="background:white;border-radius:10px;padding:12px 14px;border:0.5px solid var(--border);display:flex;align-items:center;gap:12px;margin-bottom:8px;flex-wrap:wrap;">
           <span style="font-size:18px;flex-shrink:0;">${icon}</span>
           <div style="flex:1;min-width:140px;">
             <div style="font-size:13px;font-weight:500;color:var(--charcoal);">${item.name}</div>
-            <div style="font-size:11px;color:var(--light);">${item.category}</div>
+            <div style="font-size:11px;color:var(--light);">${cat}</div>
           </div>
           <div style="font-size:14px;font-weight:500;color:var(--charcoal);min-width:70px;text-align:right;">$${parseFloat(item.amount).toLocaleString()}</div>
           <select onchange="btChangeStatus('${item.id}', this.value)" style="font-size:11px;padding:3px 8px;border-radius:999px;border:0.5px solid var(--border-strong);font-family:'Jost',sans-serif;cursor:pointer;background:${statusColor};">
@@ -1665,22 +1651,15 @@
 
     async function btAddItem() {
       if (!btCurrentUser) { openLogin(); return; }
-      if (!btHasPurchased && btItems.length >= BT_FREE_LIMIT) {
-        showToast('Upgrade to $299 to add more vendors.');
-        return;
-      }
+      if (!btHasPurchased && btItems.length >= BT_FREE_LIMIT) { showToast('Upgrade to $299 to add more vendors.'); return; }
       const name = document.getElementById('bt-new-name').value.trim();
       const category = document.getElementById('bt-new-cat').value || 'Other';
       const amount = parseFloat(document.getElementById('bt-new-amt').value);
       if (!name || !amount) { showToast('Please enter a vendor name and amount.'); return; }
       const { data, error } = await _supabase.from('budget_items').insert({
-        user_id: btCurrentUser.id,
-        name,
-        category,
-        amount,
-        status: 'Pending'
+        user_id: btCurrentUser.id, name, category, amount, status: 'Pending'
       }).select().single();
-      if (error) { showToast('Error saving — please try again.'); return; }
+      if (error) { showToast('Error saving — please try again.'); console.error(error); return; }
       btItems.push(data);
       btRender();
       document.getElementById('bt-new-name').value = '';
@@ -1708,7 +1687,11 @@
       const val = prompt('Enter your total wedding budget ($):', btTotalBudget);
       if (val === null) return;
       const num = parseFloat(val.replace(/[^0-9.]/g, ''));
-      if (!isNaN(num)) { btTotalBudget = num; btSaveBudget(); btRender(); }
+      if (!isNaN(num)) {
+        btTotalBudget = num;
+        if (btCurrentUser) localStorage.setItem('bt_budget_' + btCurrentUser.id, num);
+        btRender();
+      }
     }
 
     document.addEventListener('keydown', function(e) {
