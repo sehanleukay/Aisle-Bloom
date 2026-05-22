@@ -1661,7 +1661,7 @@
       const { data, error } = await _supabase.from('budget_items').insert({
         user_id: btCurrentUser.id, name, category, amount, status: 'Pending'
       }).select().single();
-      if (error) { showToast('Error saving — please try again.'); console.error(error); return; }
+      if (error) { showToast('Error: ' + error.message); console.error('Supabase error:', error); return; }
       btItems.push(data);
       btRender();
       document.getElementById('bt-new-name').value = '';
