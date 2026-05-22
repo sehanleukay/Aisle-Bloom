@@ -1375,7 +1375,19 @@
     }
 
     async function logOut() {
-      await _supabase.auth.signOut();
+      try {
+        await _supabase.auth.signOut();
+        btCurrentUser = null;
+        btHasPurchased = false;
+        btItems = [];
+        btTotalBudget = 0;
+        updateNavAuth(null);
+        await btUpdateAuthState(null);
+        showToast("You've been logged out.");
+      } catch(e) {
+        console.error("Logout error:", e);
+        window.location.reload();
+      }
     }
 
     function showLoginError(msg) {
