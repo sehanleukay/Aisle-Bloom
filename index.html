@@ -595,7 +595,7 @@
       <div style="position:absolute;inset:0;z-index:0;background:url('images/Hero1.jpg') center center / cover no-repeat;"></div>
 
       <div style="position:relative;z-index:2;max-width:660px;width:100%;background:rgba(255,235,190,0.04);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(210,175,90,0.45);border-radius:28px;padding:4rem 3.5rem;box-shadow:0 8px 48px rgba(80,40,10,0.15);animation:fadeUp 0.9s ease both;">
-        <p class="hero-eyebrow" style="color:#f5ede0;letter-spacing:0.25em;">Melbourne's wedding vendor directory</p>
+        <p class="hero-eyebrow" style="color:#ffffff;letter-spacing:0.25em;text-shadow:0 1px 12px rgba(30,15,0,0.5);font-weight:500;">Melbourne's wedding vendor directory</p>
         <h1 style="color:#fffaf0;text-shadow:0 2px 20px rgba(60,30,5,0.4);">Find your perfect<br><span style="display:block;min-height:1.15em;"><span id="typeword" style="font-family:'Cormorant Garamond',serif;font-style:italic;color:#c4a052;border-right:3px solid #c4a052;padding-right:4px;animation:cursorBlink 0.75s step-end infinite;">photographer</span></span></h1>
         <p class="hero-sub" style="color:rgba(255,245,220,0.92);text-shadow:0 1px 8px rgba(40,20,5,0.3);">Every vendor you need — photographers, florists, caterers, venues, and more — in one beautifully curated directory.</p>
         <div class="hero-actions">
@@ -707,7 +707,7 @@
           <button class="fbtn" onclick="setFilter('Photography',this)">Photography</button>
           <button class="fbtn" onclick="setFilter('Florals',this)">Florals</button>
           <button class="fbtn" onclick="setFilter('Catering',this)">Catering</button>
-          <button class="fbtn" onclick="setFilter('Music',this)">Music</button>
+          <button class="fbtn" onclick="setFilter('Entertainment',this)">Entertainment</button>
           <button class="fbtn" onclick="setFilter('Venue',this)">Venue</button>
           <button class="fbtn" onclick="setFilter('Cake',this)">Cake</button>
           <button class="fbtn" onclick="setFilter('Hair &amp; Makeup',this)">Hair &amp; Makeup</button>
@@ -884,7 +884,7 @@
                   <select id="bt-new-cat" class="enq-input" style="margin:0;background:white;">
                     <option value="">Select…</option>
                     <option>Photography</option><option>Florals</option><option>Venue</option>
-                    <option>Catering</option><option>Music</option><option>Hair &amp; Makeup</option>
+                    <option>Catering</option><option>Entertainment</option><option>Hair &amp; Makeup</option>
                     <option>Transport</option><option>Cake</option><option>Other</option>
                   </select>
                 </div>
@@ -948,7 +948,7 @@
             <select id="vaf-category" class="enq-input" style="background:white;color:var(--charcoal);">
               <option value="">Select your category</option>
               <option>Photography</option><option>Florals</option><option>Venue</option>
-              <option>Catering</option><option>Music</option><option>Hair & Makeup</option>
+              <option>Catering</option><option>Entertainment</option><option>Hair & Makeup</option>
               <option>Transport</option><option>Cake</option>
             </select>
             <input type="text" id="vaf-name" placeholder="Your name" class="enq-input">
@@ -1048,7 +1048,7 @@
             <li><a href="#" onclick="filterAndGo('Florals'); return false;">Florals</a></li>
             <li><a href="#" onclick="filterAndGo('Catering'); return false;">Catering</a></li>
             <li><a href="#" onclick="filterAndGo('Venue'); return false;">Venues</a></li>
-            <li><a href="#" onclick="filterAndGo('Music'); return false;">Music</a></li>
+            <li><a href="#" onclick="filterAndGo('Entertainment'); return false;">Entertainment</a></li>
             <li><a href="#" onclick="filterAndGo('Cake'); return false;">Cakes</a></li>
           </ul>
         </div>
@@ -1094,7 +1094,7 @@
       {id:13,name:'Studio Eminence',cat:'Photography',icon:'camera',desc:"Melbourne's leading Indian & South Asian wedding photography and videography studio.",price:'Custom packages',rating:5.0,reviews:3,location:'Mulgrave, Melbourne',style:['Multicultural','Cinematic','Romantic'],packages:'3 packages',availability:'available',color:BANNERS[3],gallery:['images/gallery/eminence-1.jpg','images/gallery/eminence-2.jpg','images/gallery/eminence-3.jpg','images/gallery/eminence-4.jpg','images/gallery/eminence-5.jpg','images/gallery/eminence-6.jpg']},
       {id:2,name:'The Bloom Studio',cat:'Florals',icon:'florals',desc:'Lush, garden-style arrangements. Specialises in dried and seasonal florals.',price:'From $800',rating:4.8,reviews:61,location:'Fitzroy',style:['Garden','Dried','Seasonal'],packages:'Custom quotes',availability:'limited',color:BANNERS[0],gallery:[]},
       {id:3,name:'Savour Catering Co.',cat:'Catering',icon:'catering',desc:'Farm-to-table menus with flexible dietary options. Sit-down or roaming.',price:'From $85 pp',rating:4.7,reviews:112,location:'Inner Melbourne',style:['Farm-to-table','Modern'],packages:'4 menus',availability:'available',color:BANNERS[2],gallery:[]},
-      {id:4,name:'Harmony Strings',cat:'Music',icon:'music',desc:'Classic string quartet performing contemporary and classical wedding music.',price:'From $900',rating:5.0,reviews:39,location:'Melbourne',style:['Classical','Contemporary'],packages:'3h / 5h',availability:'booked',color:BANNERS[5],gallery:[]},
+      {id:4,name:'Harmony Strings',cat:'Entertainment',icon:'music',desc:'Classic string quartet performing contemporary and classical wedding music.',price:'From $900',rating:5.0,reviews:39,location:'Melbourne',style:['Classical','Contemporary'],packages:'3h / 5h',availability:'booked',color:BANNERS[5],gallery:[]},
       {id:5,name:'Rippon Lea Estate',cat:'Venue',icon:'venue',desc:'Historic 19th-century estate with manicured gardens and a grand ballroom.',price:'From $6,500',rating:4.9,reviews:203,location:'Elsternwick',style:['Heritage','Garden','Ballroom'],packages:'Full day hire',availability:'available',color:BANNERS[4],gallery:[]},
       {id:6,name:'Sugar & Lace Cakes',cat:'Cake',icon:'cake',desc:'Sculptural wedding cakes crafted to match your aesthetic. All flavours.',price:'From $650',rating:4.8,reviews:55,location:'Collingwood',style:['Modern','Minimalist','Floral'],packages:'Tasting sessions',availability:'available',color:BANNERS[3],gallery:[]},
       {id:7,name:'Luminous Beauty Co.',cat:'Hair & Makeup',icon:'beauty',desc:'Bridal beauty team specialising in soft glam and natural luminous looks.',price:'From $420',rating:4.9,reviews:97,location:'Mobile — all Melbourne',style:['Soft glam','Natural','Editorial'],packages:'1–6 people',availability:'available',color:BANNERS[7],gallery:[]},
@@ -1104,7 +1104,7 @@
       {id:15,name:'Faux Botanics',cat:'Florals',icon:'florals',desc:'Beautiful floral arrangements for ceremony and reception, creating stunning atmospheres for your special day.',price:'From $1,000',rating:5.0,reviews:1,location:'Melbourne',style:['Romantic','Elegant','Lush'],packages:'Custom quotes',availability:'available',color:BANNERS[3],gallery:['images/gallery/fauxbotanics-1.jpg','images/gallery/fauxbotanics-2.jpg','images/gallery/fauxbotanics-3.jpg','images/gallery/fauxbotanics-4.jpg','images/gallery/fauxbotanics-5.jpg','images/gallery/fauxbotanics-6.jpg']},
       {id:14,name:'Sankalana Cultural Dance Academy',cat:'Entertainment',icon:'music',desc:'Stunning Sri Lankan traditional dance performances for weddings and cultural celebrations.',price:'From $500',rating:5.0,reviews:1,location:'Melbourne',style:['Traditional','Cultural','Sri Lankan'],packages:'Custom',availability:'available',color:BANNERS[7],gallery:['images/gallery/sankalana-1.jpg','images/gallery/sankalana-2.jpg','images/gallery/sankalana-3.jpg','images/gallery/sankalana-4.jpg','images/gallery/sankalana-5.jpg','images/gallery/sankalana-6.jpg']},
       {id:11,name:'The Grand Pavilion',cat:'Venue',icon:'venue',desc:'Contemporary waterfront venue with floor-to-ceiling views and flexible spaces.',price:'From $9,000',rating:4.8,reviews:176,location:'St Kilda',style:['Contemporary','Waterfront'],packages:'Day or evening',availability:'booked',color:BANNERS[4],gallery:[]},
-      {id:12,name:'Encore Events DJ',cat:'Music',icon:'music',desc:'Professional wedding DJ service with lighting and MC included.',price:'From $1,100',rating:4.7,reviews:67,location:'Melbourne-wide',style:['DJ','Contemporary','Pop'],packages:'5h / 8h',availability:'available',color:BANNERS[6],gallery:[]},
+      {id:12,name:'Encore Events DJ',cat:'Entertainment',icon:'music',desc:'Professional wedding DJ service with lighting and MC included.',price:'From $1,100',rating:4.7,reviews:67,location:'Melbourne-wide',style:['DJ','Contemporary','Pop'],packages:'5h / 8h',availability:'available',color:BANNERS[6],gallery:[]},
     ];
 
     let activeFilter = 'All';
@@ -1480,7 +1480,7 @@
       { key: 'Photography', icon: 'camera', label: 'Photography' },
       { key: 'Florals', icon: 'florals', label: 'Florals' },
       { key: 'Catering', icon: 'catering', label: 'Catering' },
-      { key: 'Music', icon: 'music', label: 'Music' },
+      { key: 'Entertainment', icon: 'music', label: 'Entertainment' },
       { key: 'Venue', icon: 'venue', label: 'Venues' },
       { key: 'Cake', icon: 'cake', label: 'Cakes' },
       { key: 'Hair & Makeup', icon: 'beauty', label: 'Hair & Makeup' },
@@ -1586,7 +1586,7 @@
       }
     }
 
-    const CAT_ICONS = { Photography:'📷', Florals:'🌸', Venue:'🏛️', Catering:'🍽️', Music:'🎵', 'Hair & Makeup':'💄', Transport:'🚗', Cake:'🎂', Other:'📋' };
+    const CAT_ICONS = { Photography:'📷', Florals:'🌸', Venue:'🏛️', Catering:'🍽️', Entertainment:'🎵', 'Hair & Makeup':'💄', Transport:'🚗', Cake:'🎂', Other:'📋' };
     const STATUS_OPTS = ['Pending','Deposit paid','Fully paid'];
 
     function btRender() {
