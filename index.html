@@ -876,8 +876,8 @@
               <p style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--dusty-rose);margin-bottom:0.75rem;">Add a vendor</p>
               <div style="display:grid;grid-template-columns:1fr 1fr 140px auto;gap:8px;align-items:end;">
                 <div>
-                  <label style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--light);display:block;margin-bottom:4px;">Vendor name</label>
-                  <input id="bt-new-name" type="text" placeholder="e.g. Clara Holt Photography" class="enq-input" style="margin:0;">
+                  <label style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--light);display:block;margin-bottom:4px;">Vendor</label>
+                  <select id="bt-new-name" class="enq-input" style="margin:0;background:white;"><option value="">Select vendor…</option><option>Clara Holt Photography</option><option>Studio Eminence</option><option>The Bloom Studio</option><option>Savour Catering Co.</option><option>Harmony Strings</option><option>Rippon Lea Estate</option><option>Sugar &amp; Lace Cakes</option><option>Luminous Beauty Co.</option><option>Vintage Rides Melbourne</option><option>James Archer Films</option><option>Wild &amp; Whimsy Florals</option><option>Faux Botanics</option><option>Sankalana Cultural Dance Academy</option><option>The Grand Pavilion</option><option>Encore Events DJ</option></select>
                 </div>
                 <div>
                   <label style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--light);display:block;margin-bottom:4px;">Category</label>
@@ -1652,7 +1652,12 @@
     }
 
     async function btAddItem() {
-      if (!btCurrentUser) { openLogin(); return; }
+      // Re-check session in case btCurrentUser is not set
+      if (!btCurrentUser) {
+        const { data: { session } } = await _supabase.auth.getSession();
+        if (session) { btCurrentUser = session.user; } else { openLogin(); return; }
+      }
+
       if (!btHasPurchased && btItems.length >= BT_FREE_LIMIT) { showToast('Upgrade to $299 to add more vendors.'); return; }
       const name = document.getElementById('bt-new-name').value.trim();
       const category = document.getElementById('bt-new-cat').value || 'Other';
