@@ -1670,22 +1670,23 @@
         const { data: { session } } = await _supabase.auth.getSession();
         if (session) { btCurrentUser = session.user; } else { openLogin(); return; }
       }
-
-      if (!btHasPurchased && btItems.length >= BT_FREE_LIMIT) { showToast('Upgrade to $299 to add more vendors.'); return; }
-      const name = document.getElementById('bt-new-name').value.trim();
-      const category = document.getElementById('bt-new-cat').value || 'Other';
-      const amount = parseFloat(document.getElementById('bt-new-amt').value);
-      if (!name || !amount) { showToast('Please enter a vendor name and amount.'); return; }
-      const { data, error } = await _supabase.from('budget_items').insert({
-        user_id: btCurrentUser.id, name, category, amount, status: 'Pending'
+      if (!btHasPurchased && btItems.length >= BT_FREE_LIMIT) { showToast("Upgrade to $299 to add more vendors."); return; }
+      const name = document.getElementById("bt-new-name").value;
+      const category = document.getElementById("bt-new-cat").value || "Other";
+      const amtRaw = document.getElementById("bt-new-amt").value;
+      const amount = parseFloat(amtRaw);
+      if (!name || name === "") { showToast("Please select a vendor name."); return; }
+      if (!amtRaw || isNaN(amount)) { showToast("Please enter a valid amount."); return; }
+      const { data, error } = await _supabase.from("budget_items").insert({
+        user_id: btCurrentUser.id, name, category, amount, status: "Pending"
       }).select().single();
-      if (error) { showToast('Error: ' + error.message); console.error('Supabase error:', error); return; }
+      if (error) { showToast("Error: " + error.message); console.error("Supabase error:", error); return; }
       btItems.push(data);
       btRender();
-      document.getElementById('bt-new-name').value = '';
-      document.getElementById('bt-new-cat').value = '';
-      document.getElementById('bt-new-amt').value = '';
-      showToast(name + ' added to your tracker!');
+      document.getElementById("bt-new-name").value = "";
+      document.getElementById("bt-new-cat").value = "";
+      document.getElementById("bt-new-amt").value = "";
+      showToast(name + " added to your tracker!");
     }
 
     async function btChangeStatus(id, val) {
