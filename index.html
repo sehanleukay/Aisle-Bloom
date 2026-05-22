@@ -460,9 +460,16 @@
     .footer-links a { font-size: 11px; color: rgba(250,248,244,0.4); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: rgba(250,248,244,0.8); }
 
-    .nav-user { display: flex; align-items: center; gap: 8px; }
-    .nav-avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--charcoal); color: var(--gold); font-family: 'Cormorant Garamond', serif; font-size: 14px; font-weight: 600; display: flex; align-items: center; justify-content: center; border: 1.5px solid var(--gold); cursor: pointer; }
+    .nav-user { position: relative; display: flex; align-items: center; }
+    .nav-avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--charcoal); color: var(--gold); font-family: 'Cormorant Garamond', serif; font-size: 15px; font-weight: 600; display: flex; align-items: center; justify-content: center; border: 1.5px solid var(--gold); cursor: pointer; transition: opacity 0.2s; flex-shrink: 0; }
+    .nav-avatar:hover { opacity: 0.82; }
     .nav-user-email { font-size: 12px; color: var(--mid); max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .nav-dropdown { position: absolute; top: calc(100% + 10px); right: 0; background: white; border: 0.5px solid var(--border-strong); border-radius: 12px; box-shadow: 0 8px 24px rgba(44,40,37,0.12); min-width: 200px; z-index: 200; overflow: hidden; display: none; animation: fadeUp 0.18s ease; }
+    .nav-dropdown.open { display: block; }
+    .nav-dropdown-email { padding: 12px 14px 8px; font-size: 11px; color: var(--light); border-bottom: 0.5px solid var(--border); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .nav-dropdown-item { display: flex; align-items: center; gap: 8px; padding: 10px 14px; font-size: 13px; color: var(--charcoal); cursor: pointer; transition: background 0.15s; font-family: 'Jost', sans-serif; border: none; background: none; width: 100%; text-align: left; }
+    .nav-dropdown-item:hover { background: var(--cream); }
+    .nav-dropdown-item.danger { color: var(--danger); }
     .login-error { background: var(--danger-bg); color: var(--danger); border-radius: 8px; padding: 8px 12px; font-size: 12px; margin-bottom: 0.85rem; display: none; }
     .login-error.show { display: block; }
 
@@ -1282,9 +1289,18 @@
         const displayEmail = user.email || '';
         item.innerHTML = `
           <div class="nav-user">
-            <span class="nav-user-email">${displayEmail}</span>
-            <div class="nav-avatar" title="Account" onclick="showUserMenu()">${initials}</div>
-            <button class="nav-pill-btn" onclick="logOut()" style="font-size:11px;padding:0 10px;">Log out</button>
+            <div class="nav-avatar" onclick="toggleNavDropdown()" title="Account">${initials}</div>
+            <div class="nav-dropdown" id="navDropdown">
+              <div class="nav-dropdown-email">${displayEmail}</div>
+              <button class="nav-dropdown-item" onclick="showSection('budget', document.querySelectorAll('.ptab')[3]); toggleNavDropdown();">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+                Budget tracker
+              </button>
+              <button class="nav-dropdown-item danger" onclick="logOut()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                Log out
+              </button>
+            </div>
           </div>`;
       } else {
         item.innerHTML = `
@@ -1294,6 +1310,19 @@
           </button>`;
       }
     }
+
+    function toggleNavDropdown() {
+      const dd = document.getElementById('navDropdown');
+      if (dd) dd.classList.toggle('open');
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+      const dd = document.getElementById('navDropdown');
+      if (dd && dd.classList.contains('open')) {
+        if (!dd.closest('.nav-user').contains(e.target)) dd.classList.remove('open');
+      }
+    });
 
     // Listen for auth changes
     _supabase.auth.onAuthStateChange((event, session) => {
