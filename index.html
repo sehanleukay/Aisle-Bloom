@@ -460,6 +460,12 @@
     .footer-links a { font-size: 11px; color: rgba(250,248,244,0.4); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: rgba(250,248,244,0.8); }
 
+    .nav-user { display: flex; align-items: center; gap: 8px; }
+    .nav-avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--charcoal); color: var(--gold); font-family: 'Cormorant Garamond', serif; font-size: 14px; font-weight: 600; display: flex; align-items: center; justify-content: center; border: 1.5px solid var(--gold); cursor: pointer; }
+    .nav-user-email { font-size: 12px; color: var(--mid); max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .login-error { background: var(--danger-bg); color: var(--danger); border-radius: 8px; padding: 8px 12px; font-size: 12px; margin-bottom: 0.85rem; display: none; }
+    .login-error.show { display: block; }
+
     .toast { position: fixed; bottom: 2rem; right: 2rem; background: var(--charcoal); color: var(--cream); padding: 12px 20px; border-radius: 999px; font-size: 13px; z-index: 500; opacity: 0; transform: translateY(10px); transition: all 0.3s; pointer-events: none; }
     .toast.show { opacity: 1; transform: translateY(0); }
 
@@ -522,6 +528,7 @@
       .login-card { max-width: 100%; }
     }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KR0Q3TS3TL"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -546,7 +553,7 @@
             Instagram
           </a>
         </li>
-        <li>
+        <li id="navAuthItem">
           <button class="nav-pill-btn" onclick="openLogin()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
             Log in
@@ -872,7 +879,7 @@
         </div>
       </div>
       <div class="login-body">
-        <button class="login-google">
+        <button class="login-google" onclick="loginWithGoogle()">
           <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844a4.14 4.14 0 0 1-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615Z"/><path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18Z"/><path fill="#FBBC05" d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332Z"/><path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58Z"/></svg>
           Continue with Google
         </button>
@@ -880,10 +887,11 @@
         <div id="loginVendorNote" class="login-vendor-note">
           <strong>Vendor portal.</strong> Log in to manage your listing, update availability, and respond to couple enquiries.
         </div>
+        <div id="loginError" class="login-error"></div>
         <div class="login-field"><label>Email address</label><input type="email" placeholder="hello@example.com"></div>
         <div class="login-field"><label>Password</label><input type="password" placeholder="••••••••"></div>
         <a class="login-forgot">Forgot password?</a>
-        <button class="login-submit" id="loginSubmit" onclick="loginSubmitBtn()">Log in</button>
+        <button class="login-submit" id="loginSubmit" onclick="loginSubmitSupabase()">Log in</button>
         <p class="login-switch" id="loginSwitch">
           Don't have an account? <span class="login-switch-lnk" onclick="loginToggleSignup()">Sign up free</span>
         </p>
@@ -1135,13 +1143,98 @@
         document.getElementById('modalOverlay').classList.remove('open');
     }
 
-    /* ── LOGIN ── */
+    /* ── SUPABASE AUTH ── */
+    const SUPABASE_URL = 'https://ttqacbklxmraauudqywz.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_U6jvKb4_Iga_AiWZ8XFbzQ_8SrbHICb';
+    const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    // Update nav based on auth state
+    function updateNavAuth(user) {
+      const item = document.getElementById('navAuthItem');
+      if (!item) return;
+      if (user) {
+        const initials = (user.email || '?')[0].toUpperCase();
+        const displayEmail = user.email || '';
+        item.innerHTML = `
+          <div class="nav-user">
+            <span class="nav-user-email">${displayEmail}</span>
+            <div class="nav-avatar" title="Account" onclick="showUserMenu()">${initials}</div>
+            <button class="nav-pill-btn" onclick="logOut()" style="font-size:11px;padding:0 10px;">Log out</button>
+          </div>`;
+      } else {
+        item.innerHTML = `
+          <button class="nav-pill-btn" onclick="openLogin()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Log in
+          </button>`;
+      }
+    }
+
+    // Listen for auth changes
+    _supabase.auth.onAuthStateChange((event, session) => {
+      updateNavAuth(session ? session.user : null);
+      if (event === 'SIGNED_IN') {
+        closeLogin();
+        showToast('Welcome back! You\'re now logged in.');
+      }
+      if (event === 'SIGNED_OUT') {
+        showToast('You\'ve been logged out.');
+      }
+    });
+
+    // Init on load
+    _supabase.auth.getSession().then(({ data: { session } }) => {
+      updateNavAuth(session ? session.user : null);
+    });
+
+    async function loginWithGoogle() {
+      const { error } = await _supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: { redirectTo: window.location.href }
+      });
+      if (error) showLoginError(error.message);
+    }
+
+    async function loginSubmitSupabase() {
+      const email = document.querySelector('#loginCard .login-field input[type="email"]').value.trim();
+      const password = document.querySelector('#loginCard .login-field input[type="password"]').value.trim();
+      if (!email || !password) { showLoginError('Please enter your email and password.'); return; }
+      const btn = document.getElementById('loginSubmit');
+      btn.textContent = 'Loading…'; btn.disabled = true;
+      hideLoginError();
+      if (loginSignup) {
+        const { error } = await _supabase.auth.signUp({ email, password });
+        if (error) { showLoginError(error.message); btn.textContent = 'Create account'; btn.disabled = false; }
+        else { closeLogin(); showToast('Account created! Check your email to confirm.'); btn.textContent = 'Create account'; btn.disabled = false; }
+      } else {
+        const { error } = await _supabase.auth.signInWithPassword({ email, password });
+        if (error) { showLoginError(error.message); btn.textContent = 'Log in'; btn.disabled = false; }
+        else { btn.textContent = 'Log in'; btn.disabled = false; }
+      }
+    }
+
+    async function logOut() {
+      await _supabase.auth.signOut();
+    }
+
+    function showLoginError(msg) {
+      const el = document.getElementById('loginError');
+      if (el) { el.textContent = msg; el.classList.add('show'); }
+    }
+
+    function hideLoginError() {
+      const el = document.getElementById('loginError');
+      if (el) el.classList.remove('show');
+    }
+
+    /* ── LOGIN UI ── */
     var loginMode = 'couple';
     var loginSignup = false;
 
     function openLogin() {
       document.getElementById('loginOverlay').classList.add('open');
       document.body.style.overflow = 'hidden';
+      hideLoginError();
     }
 
     function closeLogin() {
@@ -1171,11 +1264,13 @@
         note.className = 'login-vendor-note';
       }
       loginRefresh();
+      hideLoginError();
     }
 
     function loginToggleSignup() {
       loginSignup = !loginSignup;
       loginRefresh();
+      hideLoginError();
     }
 
     function loginRefresh() {
@@ -1198,14 +1293,6 @@
           ? 'Already listed? <span class="login-switch-lnk" onclick="loginToggleSignup()">Log in</span>'
           : "Not listed yet? <span class='login-switch-lnk' onclick='loginToggleSignup()'>Apply free</span>";
       }
-    }
-
-    function loginSubmitBtn() {
-      var btn = document.getElementById('loginSubmit');
-      var orig = btn.textContent;
-      btn.textContent = 'Loading…';
-      btn.disabled = true;
-      setTimeout(function(){ btn.disabled = false; btn.textContent = orig; }, 1400);
     }
 
     /* ── FAQ ── */
