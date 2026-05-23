@@ -795,128 +795,58 @@
   </div>
 
   <!-- ══ BUDGET TRACKER ══ -->
+  <!-- ══ BUDGET TRACKER ══ -->
   <div id="sec-budget" style="display:none">
+    <section class="section" style="background:var(--warm-white);min-height:70vh;">
+      <div class="section-inner" style="max-width:640px;">
+        <p class="section-eyebrow">Budget tracker</p>
+        <h2 class="section-title">Track every dollar of <em>your wedding</em></h2>
+        <p class="section-sub">A live budget dashboard linked to your chosen vendors — tracking deposits, payments, and outstanding balances all in one place. One-off payment, yours until your wedding day.</p>
 
-    <!-- LOCKED STATE (logged out) -->
-    <div id="budget-locked">
-      <section class="section" style="background:var(--warm-white);min-height:70vh;display:flex;align-items:center;">
-        <div class="section-inner" style="text-align:center;">
-          <div style="width:72px;height:72px;background:var(--charcoal);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;box-shadow:0 4px 20px rgba(44,40,37,0.15);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#c4a052" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="32" height="32"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <!-- What you get -->
+        <div style="background:var(--blush);border-radius:16px;padding:1.5rem 1.75rem;border:0.5px solid var(--border);margin-bottom:2rem;">
+          <p style="font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--dusty-rose);margin-bottom:1rem;">What's included</p>
+          <ul class="feat-list">
+            <li><span class="ck">✓</span>Live budget linked to your chosen vendors</li>
+            <li><span class="ck">✓</span>Deposit &amp; payment tracking per vendor</li>
+            <li><span class="ck">✓</span>Spending breakdown by category</li>
+            <li><span class="ck">✓</span>Budget vs actual progress with overspend alerts</li>
+            <li><span class="ck">✓</span>Add unlimited vendors</li>
+            <li><span class="ck">✓</span>Access retained 3 months post-wedding</li>
+          </ul>
+          <div style="border-top:0.5px solid var(--border);padding-top:1rem;margin-top:0.5rem;display:flex;align-items:baseline;gap:6px;">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:600;color:var(--charcoal);">$299</span>
+            <span style="font-size:13px;color:var(--light);">one-off payment</span>
           </div>
-          <p class="section-eyebrow">Members only</p>
-          <h2 class="section-title">Your <em>budget tracker</em></h2>
-          <p class="section-sub">Create a free account to access your personal wedding budget tracker — track vendors, deposits, and payments all in one place.</p>
-          <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:3rem;">
-            <button class="btn-primary" onclick="openLogin()">Log in or sign up — it's free</button>
-            <a href="#" class="btn-outline" onclick="showSection('pricing', document.querySelectorAll('.ptab')[2]); return false;">See what's included</a>
-          </div>
-          <!-- blurred preview -->
-          <div style="max-width:560px;margin:0 auto;position:relative;">
-            <div style="filter:blur(5px);pointer-events:none;opacity:0.6;">
-              <div style="background:var(--blush);border-radius:16px;padding:1.5rem;border:0.5px solid var(--border);margin-bottom:12px;">
-                <div style="display:flex;justify-content:space-between;margin-bottom:1rem;">
-                  <div><div style="font-size:11px;color:var(--light);letter-spacing:0.06em;">TOTAL BUDGET</div><div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--charcoal);">$28,450</div></div>
-                  <div style="text-align:right"><div style="font-size:11px;color:var(--light);letter-spacing:0.06em;">PAID SO FAR</div><div style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--mid);">$10,700</div></div>
-                </div>
-                <div style="height:6px;background:var(--border);border-radius:999px;overflow:hidden;margin-bottom:6px;"><div style="height:100%;width:38%;background:#5a8a3a;border-radius:999px;"></div></div>
-                <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--light);"><span>38% used</span><span>$17,750 remaining</span></div>
-              </div>
-              <div style="display:flex;flex-direction:column;gap:8px;">
-                <div style="background:white;border-radius:10px;padding:10px 12px;border:0.5px solid var(--border);display:flex;align-items:center;gap:10px;"><span style="font-size:16px;">🏛️</span><div style="flex:1;"><div style="font-size:13px;font-weight:500;">Rippon Lea Estate</div><div style="font-size:11px;color:var(--light);">Venue</div></div><div style="text-align:right;"><div style="font-size:13px;font-weight:500;">$7,500</div><div style="font-size:10px;padding:2px 8px;border-radius:999px;background:var(--warning-bg);color:var(--warning);">Deposit paid</div></div></div>
-                <div style="background:white;border-radius:10px;padding:10px 12px;border:0.5px solid var(--border);display:flex;align-items:center;gap:10px;"><span style="font-size:16px;">📷</span><div style="flex:1;"><div style="font-size:13px;font-weight:500;">Clara Holt Photography</div><div style="font-size:11px;color:var(--light);">Photography</div></div><div style="text-align:right;"><div style="font-size:13px;font-weight:500;">$3,500</div><div style="font-size:10px;padding:2px 8px;border-radius:999px;background:var(--success-bg);color:var(--success);">Fully paid</div></div></div>
-                <div style="background:white;border-radius:10px;padding:10px 12px;border:0.5px solid var(--border);display:flex;align-items:center;gap:10px;"><span style="font-size:16px;">🌸</span><div style="flex:1;"><div style="font-size:13px;font-weight:500;">The Bloom Studio</div><div style="font-size:11px;color:var(--light);">Florals</div></div><div style="text-align:right;"><div style="font-size:13px;font-weight:500;">$1,200</div><div style="font-size:10px;padding:2px 8px;border-radius:999px;background:var(--danger-bg);color:var(--danger);">Pending</div></div></div>
-              </div>
-            </div>
-            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
-              <div style="background:white;border:0.5px solid var(--border-strong);border-radius:16px;padding:1.25rem 2rem;text-align:center;box-shadow:0 8px 32px rgba(44,40,37,0.1);">
-                <div style="font-size:24px;margin-bottom:6px;">🔒</div>
-                <p style="font-size:13px;font-weight:500;color:var(--charcoal);">Log in to unlock your tracker</p>
-              </div>
-            </div>
-          </div>
+          <p style="font-size:12px;color:var(--light);margin-top:4px;">30-day money-back guarantee — no questions asked.</p>
         </div>
-      </section>
-    </div>
 
-    <!-- UNLOCKED STATE (logged in) -->
-    <div id="budget-unlocked" style="display:none">
-      <section class="section" style="background:var(--warm-white);min-height:70vh;">
-        <div class="section-inner">
-          <p class="section-eyebrow">Your dashboard</p>
-          <h2 class="section-title">Wedding <em>budget tracker</em></h2>
-
-          <!-- Budget summary bar -->
-          <div id="bt-summary" style="max-width:700px;margin:0 auto 2rem;background:var(--blush);border-radius:16px;padding:1.5rem;border:0.5px solid var(--border);">
-            <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:1rem;flex-wrap:wrap;gap:1rem;">
-              <div>
-                <div style="font-size:11px;color:var(--light);letter-spacing:0.06em;margin-bottom:2px;">TOTAL BUDGET</div>
-                <div style="display:flex;align-items:center;gap:8px;">
-                  <div id="bt-total-display" style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:var(--charcoal);">$0</div>
-                  <button onclick="editTotalBudget()" style="background:none;border:0.5px solid var(--border-strong);border-radius:6px;padding:3px 8px;font-size:11px;color:var(--mid);cursor:pointer;font-family:'Jost',sans-serif;">Edit</button>
-                </div>
-              </div>
-              <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
-                <div style="text-align:right"><div style="font-size:11px;color:var(--light);letter-spacing:0.06em;">SPENT</div><div id="bt-spent" style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--charcoal);">$0</div></div>
-                <div style="text-align:right"><div style="font-size:11px;color:var(--light);letter-spacing:0.06em;">REMAINING</div><div id="bt-remaining" style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--mid);">$0</div></div>
-              </div>
-            </div>
-            <div style="height:8px;background:rgba(44,42,30,0.1);border-radius:999px;overflow:hidden;margin-bottom:6px;">
-              <div id="bt-progress-bar" style="height:100%;width:0%;background:#5a8a3a;border-radius:999px;transition:width 0.5s ease;"></div>
-            </div>
-            <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--light);">
-              <span id="bt-pct">0% of budget used</span>
-              <span id="bt-alert"></span>
-            </div>
-          </div>
-
-          <!-- Add vendor row -->
-          <div style="max-width:700px;margin:0 auto 1rem;">
-            <div style="background:white;border:0.5px solid var(--border);border-radius:12px;padding:1rem 1.25rem;">
-              <p style="font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--dusty-rose);margin-bottom:0.75rem;">Add a vendor</p>
-              <div style="display:grid;grid-template-columns:1fr 1fr 140px auto;gap:8px;align-items:end;">
-                <div>
-                  <label style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--light);display:block;margin-bottom:4px;">Vendor</label>
-                  <select id="bt-new-name" class="enq-input" style="margin:0;background:white;"><option value="">Select vendor…</option><option>Clara Holt Photography</option><option>Studio Eminence</option><option>The Bloom Studio</option><option>Savour Catering Co.</option><option>Harmony Strings</option><option>Rippon Lea Estate</option><option>Sugar &amp; Lace Cakes</option><option>Luminous Beauty Co.</option><option>Vintage Rides Melbourne</option><option>James Archer Films</option><option>Wild &amp; Whimsy Florals</option><option>Faux Botanics</option><option>Sankalana Cultural Dance Academy</option><option>The Grand Pavilion</option><option>Encore Events DJ</option></select>
-                </div>
-                <div>
-                  <label style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--light);display:block;margin-bottom:4px;">Category</label>
-                  <select id="bt-new-cat" class="enq-input" style="margin:0;background:white;">
-                    <option value="">Select…</option>
-                    <option>Photography</option><option>Florals</option><option>Venue</option>
-                    <option>Catering</option><option>Entertainment</option><option>Hair &amp; Makeup</option>
-                    <option>Transport</option><option>Cake</option><option>Other</option>
-                  </select>
-                </div>
-                <div>
-                  <label style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--light);display:block;margin-bottom:4px;">Amount ($)</label>
-                  <input id="bt-new-amt" type="number" placeholder="0" class="enq-input" style="margin:0;">
-                </div>
-                <button onclick="btAddItem()" style="padding:10px 16px;background:var(--charcoal);color:var(--cream);border:none;border-radius:8px;font-family:'Jost',sans-serif;font-size:13px;cursor:pointer;white-space:nowrap;">+ Add</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Vendor list -->
-          <div style="max-width:700px;margin:0 auto;">
-            <div id="bt-list"></div>
-            <div id="bt-empty" style="text-align:center;padding:3rem 1rem;font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--light);">
-              No vendors added yet — add your first one above!
-            </div>
-          </div>
-
-          <!-- Purchase prompt (shown to free users) -->
-          <div id="bt-purchase-prompt" style="max-width:700px;margin:2rem auto 0;background:var(--blush);border-radius:16px;padding:1.5rem;border:1.5px solid var(--dusty-rose);text-align:center;">
-            <p style="font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--dusty-rose);margin-bottom:0.5rem;">Free preview — 3 vendors max</p>
-            <p style="font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--charcoal);margin-bottom:0.5rem;">Unlock the full tracker</p>
-            <p style="font-size:13px;color:var(--mid);margin-bottom:1rem;">Add unlimited vendors, track deposits and payments, and share with your partner.</p>
-            <a href="https://buy.stripe.com/00wdR9bu4boL5lrabK8EM00" target="_blank" rel="noopener" class="btn-primary" style="display:inline-block;">Unlock for $299 — one-off payment</a>
-          </div>
+        <!-- Enquiry form -->
+        <div style="background:white;border:0.5px solid var(--border);border-radius:16px;padding:1.75rem;" id="btEnqForm">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--charcoal);margin-bottom:0.25rem;">Get started</p>
+          <p style="font-size:13px;color:var(--mid);margin-bottom:1.25rem;">Fill in your details below, then complete your $299 payment to unlock your tracker.</p>
+          <input type="text" id="bt-enq-name" placeholder="Your name" class="enq-input">
+          <input type="email" id="bt-enq-email" placeholder="Email address" class="enq-input">
+          <input type="text" id="bt-enq-date" placeholder="Wedding date (e.g. 14 March 2026)" class="enq-input">
+          <textarea id="bt-enq-msg" placeholder="Any questions or notes for us? (optional)" class="enq-input" rows="3" style="resize:vertical;"></textarea>
+          <a href="https://buy.stripe.com/00wdR9bu4boL5lrabK8EM00" target="_blank" rel="noopener" id="btPayBtn"
+            style="display:block;width:100%;padding:14px;text-align:center;background:var(--charcoal);color:var(--cream);border:none;border-radius:999px;font-family:'Jost',sans-serif;font-size:14px;font-weight:400;letter-spacing:0.08em;cursor:pointer;transition:opacity 0.2s;text-decoration:none;margin-top:0.5rem;"
+            onclick="btSubmitEnquiry(event)">
+            Unlock budget tracker — Pay $299
+          </a>
+          <p style="font-size:11px;color:var(--light);text-align:center;margin-top:0.75rem;">Secure payment via Stripe · 30-day money-back guarantee</p>
         </div>
-      </section>
-    </div>
+
+        <!-- Thank you state -->
+        <div id="btEnqThanks" style="display:none;background:white;border:0.5px solid var(--border);border-radius:16px;padding:2rem;text-align:center;">
+          <div style="font-size:40px;margin-bottom:0.75rem;">✓</div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--charcoal);margin-bottom:0.5rem;">We've received your details!</p>
+          <p style="font-size:14px;color:var(--mid);line-height:1.7;">Complete your payment on the Stripe page that just opened. Once payment is confirmed, we'll set up your budget tracker and be in touch at your email address within 24 hours.</p>
+        </div>
+
+      </div>
+    </section>
   </div>
-
   <!-- ══ FOR VENDORS ══ -->
   <div id="sec-vendors" style="display:none">
     <section class="section vendor-section">
@@ -1119,7 +1049,7 @@
       if (sec === 'directory') filterVendors();
       if (sec === 'budget') {
         // If user is logged in, re-render; otherwise the locked screen is already showing
-        if (btCurrentUser) btRender();
+
       }
     }
 
@@ -1332,7 +1262,7 @@
     // Listen for auth changes
     _supabase.auth.onAuthStateChange(async (event, session) => {
       updateNavAuth(session ? session.user : null);
-      await btUpdateAuthState(session ? session.user : null);
+
       if (event === 'SIGNED_IN') {
         closeLogin();
         showToast('Welcome back! You\'re now logged in.');
@@ -1345,7 +1275,7 @@
     // Init on load
     _supabase.auth.getSession().then(async ({ data: { session } }) => {
       updateNavAuth(session ? session.user : null);
-      await btUpdateAuthState(session ? session.user : null);
+
     });
 
     async function loginWithGoogle() {
@@ -1377,12 +1307,8 @@
     async function logOut() {
       try {
         await _supabase.auth.signOut();
-        btCurrentUser = null;
-        btHasPurchased = false;
-        btItems = [];
-        btTotalBudget = 0;
         updateNavAuth(null);
-        await btUpdateAuthState(null);
+  
         showToast("You've been logged out.");
       } catch(e) {
         console.error("Logout error:", e);
@@ -1558,163 +1484,36 @@
     }
     setTimeout(typeWriter, 800);
 
-    /* ── BUDGET TRACKER ── */
-    let btItems = [];
-    let btTotalBudget = 0;
-    let btCurrentUser = null;
-    let btHasPurchased = false;
-    const BT_FREE_LIMIT = 3;
-
-    // Called whenever auth state changes — show/hide locked vs unlocked
-    async function btUpdateAuthState(user) {
-      btCurrentUser = user;
-      const locked = document.getElementById('budget-locked');
-      const unlocked = document.getElementById('budget-unlocked');
-      if (!locked || !unlocked) return;
-      if (user) {
-        locked.style.display = 'none';
-        unlocked.style.display = 'block';
-        // Check purchase status from Supabase
-        const { data } = await _supabase
-          .from('user_purchases')
-          .select('id')
-          .eq('user_id', user.id)
-          .limit(1);
-        btHasPurchased = data && data.length > 0;
-        // Load items from Supabase
-        const { data: budgetData } = await _supabase
-          .from('budget_items')
-          .select('*')
-          .eq('user_id', user.id)
-          .order('created_at', { ascending: true });
-        btItems = budgetData || [];
-        btTotalBudget = parseFloat(localStorage.getItem('bt_budget_' + user.id)) || 0;
-        btRender();
-      } else {
-        btHasPurchased = false;
-        btItems = [];
-        btTotalBudget = 0;
-        locked.style.display = 'block';
-        unlocked.style.display = 'none';
-      }
-    }
-
-    const CAT_ICONS = { Photography:'📷', Florals:'🌸', Venue:'🏛️', Catering:'🍽️', Entertainment:'🎵', 'Hair & Makeup':'💄', Transport:'🚗', Cake:'🎂', Other:'📋' };
-    const STATUS_OPTS = ['Pending','Deposit paid','Fully paid'];
-
-    function btRender() {
-      // Make sure correct panel is visible
-      const locked = document.getElementById('budget-locked');
-      const unlocked = document.getElementById('budget-unlocked');
-      if (locked && unlocked) {
-        locked.style.display = btCurrentUser ? 'none' : 'block';
-        unlocked.style.display = btCurrentUser ? 'block' : 'none';
-      }
-      if (!btCurrentUser) return;
-
-      // Total budget display
-      document.getElementById('bt-total-display').textContent = '$' + btTotalBudget.toLocaleString();
-      const spent = btItems.reduce((s, i) => s + (parseFloat(i.amount) || 0), 0);
-      const remaining = btTotalBudget - spent;
-      const pct = btTotalBudget > 0 ? Math.min(100, Math.round((spent / btTotalBudget) * 100)) : 0;
-      document.getElementById('bt-spent').textContent = '$' + spent.toLocaleString();
-      document.getElementById('bt-remaining').textContent = '$' + remaining.toLocaleString();
-      document.getElementById('bt-progress-bar').style.width = pct + '%';
-      document.getElementById('bt-progress-bar').style.background = pct > 90 ? '#a03030' : pct > 70 ? '#c47a20' : '#5a8a3a';
-      document.getElementById('bt-pct').textContent = pct + '% of budget used';
-      document.getElementById('bt-alert').textContent = remaining < 0 ? '⚠️ Over budget by $' + Math.abs(remaining).toLocaleString() : '';
-      document.getElementById('bt-alert').style.color = 'var(--danger)';
-
-      // Purchase prompt
-      const prompt = document.getElementById('bt-purchase-prompt');
-      if (prompt) prompt.style.display = (!btHasPurchased && btItems.length >= BT_FREE_LIMIT) ? 'block' : 'none';
-
-      // Add button dim if at limit
-      const addBtn = document.querySelector('[onclick="btAddItem()"]');
-      if (addBtn) {
-        const atLimit = !btHasPurchased && btItems.length >= BT_FREE_LIMIT;
-        addBtn.style.opacity = atLimit ? '0.4' : '1';
-      }
-
-      // Vendor list
-      const list = document.getElementById('bt-list');
-      const empty = document.getElementById('bt-empty');
-      if (btItems.length === 0) {
-        list.innerHTML = '';
-        empty.style.display = 'block';
+    /* ── BUDGET TRACKER ENQUIRY ── */
+    async function btSubmitEnquiry(e) {
+      const name = document.getElementById('bt-enq-name').value.trim();
+      const email = document.getElementById('bt-enq-email').value.trim();
+      const date = document.getElementById('bt-enq-date').value.trim();
+      const msg = document.getElementById('bt-enq-msg').value.trim();
+      if (!name || !email) {
+        e.preventDefault();
+        showToast('Please enter your name and email address.');
         return;
       }
-      empty.style.display = 'none';
-      list.innerHTML = btItems.map((item) => {
-        const icon = CAT_ICONS[item.category || item.cat] || '📋';
-        const cat = item.category || item.cat || 'Other';
-        const statusColor = item.status === 'Fully paid' ? 'var(--success-bg);color:var(--success)' : item.status === 'Deposit paid' ? 'var(--warning-bg);color:var(--warning)' : 'var(--danger-bg);color:var(--danger)';
-        return `<div style="background:white;border-radius:10px;padding:12px 14px;border:0.5px solid var(--border);display:flex;align-items:center;gap:12px;margin-bottom:8px;flex-wrap:wrap;">
-          <span style="font-size:18px;flex-shrink:0;">${icon}</span>
-          <div style="flex:1;min-width:140px;">
-            <div style="font-size:13px;font-weight:500;color:var(--charcoal);">${item.name}</div>
-            <div style="font-size:11px;color:var(--light);">${cat}</div>
-          </div>
-          <div style="font-size:14px;font-weight:500;color:var(--charcoal);min-width:70px;text-align:right;">$${parseFloat(item.amount).toLocaleString()}</div>
-          <select onchange="btChangeStatus('${item.id}', this.value)" style="font-size:11px;padding:3px 8px;border-radius:999px;border:0.5px solid var(--border-strong);font-family:'Jost',sans-serif;cursor:pointer;background:${statusColor};">
-            ${STATUS_OPTS.map(s => `<option value="${s}" ${s === item.status ? 'selected' : ''}>${s}</option>`).join('')}
-          </select>
-          <button onclick="btRemove('${item.id}')" style="background:none;border:none;cursor:pointer;color:var(--light);font-size:16px;padding:2px 4px;flex-shrink:0;" title="Remove">✕</button>
-        </div>`;
-      }).join('');
+      // Send enquiry email via Formspree
+      try {
+        fetch('https://formspree.io/f/xykodqdo', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ name, email, wedding_date: date || 'Not provided', message: msg || 'No notes', _subject: 'Budget Tracker Purchase — ' + name })
+        });
+      } catch(err) { console.error(err); }
+      // Show thank you (Stripe link still opens in new tab)
+      document.getElementById('btEnqForm').style.display = 'none';
+      document.getElementById('btEnqThanks').style.display = 'block';
     }
 
-    async function btAddItem() {
-      // Re-check session in case btCurrentUser is not set
-      if (!btCurrentUser) {
-        const { data: { session } } = await _supabase.auth.getSession();
-        if (session) { btCurrentUser = session.user; } else { openLogin(); return; }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeLogin();
+        document.getElementById('modalOverlay').classList.remove('open');
       }
-      if (!btHasPurchased && btItems.length >= BT_FREE_LIMIT) { showToast("Upgrade to $299 to add more vendors."); return; }
-      const name = document.getElementById("bt-new-name").value;
-      const category = document.getElementById("bt-new-cat").value || "Other";
-      const amtRaw = document.getElementById("bt-new-amt").value;
-      const amount = parseFloat(amtRaw);
-      if (!name || name === "") { showToast("Please select a vendor name."); return; }
-      if (!amtRaw || isNaN(amount)) { showToast("Please enter a valid amount."); return; }
-      const { data, error } = await _supabase.from("budget_items").insert({
-        user_id: btCurrentUser.id, name, category, amount, status: "Pending"
-      }).select().single();
-      if (error) { showToast("Error: " + error.message); console.error("Supabase error:", error); return; }
-      btItems.push(data);
-      btRender();
-      document.getElementById("bt-new-name").value = "";
-      document.getElementById("bt-new-cat").value = "";
-      document.getElementById("bt-new-amt").value = "";
-      showToast(name + " added to your tracker!");
-    }
-
-    async function btChangeStatus(id, val) {
-      await _supabase.from('budget_items').update({ status: val }).eq('id', id);
-      const item = btItems.find(i => i.id === id);
-      if (item) item.status = val;
-      btRender();
-    }
-
-    async function btRemove(id) {
-      const item = btItems.find(i => i.id === id);
-      await _supabase.from('budget_items').delete().eq('id', id);
-      btItems = btItems.filter(i => i.id !== id);
-      btRender();
-      if (item) showToast(item.name + ' removed.');
-    }
-
-    function editTotalBudget() {
-      const val = prompt('Enter your total wedding budget ($):', btTotalBudget);
-      if (val === null) return;
-      const num = parseFloat(val.replace(/[^0-9.]/g, ''));
-      if (!isNaN(num)) {
-        btTotalBudget = num;
-        if (btCurrentUser) localStorage.setItem('bt_budget_' + btCurrentUser.id, num);
-        btRender();
-      }
-    }
-
+    });
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
         closeLogin();
