@@ -1131,24 +1131,17 @@
       if (!business || !name || !email) { showToast('Please fill in your business name, contact name and email.'); return; }
       const btn = document.getElementById('vafBtn');
       btn.textContent = 'Sending…'; btn.disabled = true;
+      // Open Stripe immediately (before await) to avoid popup blocker
+      const stripeWin = window.open('https://buy.stripe.com/6oUaEX1TueAXbJPcjS8EM02', '_blank');
       try {
-        const res = await fetch('https://formspree.io/f/xrejawyp', {
+        await fetch('https://formspree.io/f/xrejawyp', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify({ business_name: business, category, contact_name: name, email, website_instagram: website, about: message, _subject: 'Vendor Application — ' + business })
         });
-        if (res.ok) {
-          window.open('https://buy.stripe.com/6oUaEX1TueAXbJPcjS8EM02', '_blank');
-          document.getElementById('vendorAppForm').style.display = 'none';
-          document.getElementById('vendorAppThanks').style.display = 'block';
-        } else {
-          showToast('Something went wrong — please try again.');
-          btn.textContent = 'Send application'; btn.disabled = false;
-        }
-      } catch(e) {
-        showToast('Something went wrong — please try again.');
-        btn.textContent = 'Send application'; btn.disabled = false;
-      }
+      } catch(e) { console.error(e); }
+      document.getElementById('vendorAppForm').style.display = 'none';
+      document.getElementById('vendorAppThanks').style.display = 'block';
     }
 
     /* ── TYPEWRITER ── */
