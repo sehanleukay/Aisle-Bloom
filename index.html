@@ -460,60 +460,6 @@
     .footer-links a { font-size: 11px; color: rgba(250,248,244,0.4); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: rgba(250,248,244,0.8); }
 
-    .nav-user { position: relative; display: flex; align-items: center; }
-    .nav-avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--charcoal); color: var(--gold); font-family: 'Cormorant Garamond', serif; font-size: 15px; font-weight: 600; display: flex; align-items: center; justify-content: center; border: 1.5px solid var(--gold); cursor: pointer; transition: opacity 0.2s; flex-shrink: 0; }
-    .nav-avatar:hover { opacity: 0.82; }
-    .nav-user-email { font-size: 12px; color: var(--mid); max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .nav-dropdown { position: absolute; top: calc(100% + 10px); right: 0; background: white; border: 0.5px solid var(--border-strong); border-radius: 12px; box-shadow: 0 8px 24px rgba(44,40,37,0.12); min-width: 200px; z-index: 200; overflow: hidden; display: none; animation: fadeUp 0.18s ease; }
-    .nav-dropdown.open { display: block; }
-    .nav-dropdown-email { padding: 12px 14px 8px; font-size: 11px; color: var(--light); border-bottom: 0.5px solid var(--border); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .nav-dropdown-item { display: flex; align-items: center; gap: 8px; padding: 10px 14px; font-size: 13px; color: var(--charcoal); cursor: pointer; transition: background 0.15s; font-family: 'Jost', sans-serif; border: none; background: none; width: 100%; text-align: left; }
-    .nav-dropdown-item:hover { background: var(--cream); }
-    .nav-dropdown-item.danger { color: var(--danger); }
-    .login-error { background: var(--danger-bg); color: var(--danger); border-radius: 8px; padding: 8px 12px; font-size: 12px; margin-bottom: 0.85rem; display: none; }
-    .login-error.show { display: block; }
-
-    .toast { position: fixed; bottom: 2rem; right: 2rem; background: var(--charcoal); color: var(--cream); padding: 12px 20px; border-radius: 999px; font-size: 13px; z-index: 500; opacity: 0; transform: translateY(10px); transition: all 0.3s; pointer-events: none; }
-    .toast.show { opacity: 1; transform: translateY(0); }
-
-    /* ── LOGIN MODAL ── */
-    .login-overlay { display: none; position: fixed; inset: 0; background: rgba(46,42,30,0.55); z-index: 300; align-items: center; justify-content: center; padding: 1rem; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
-    .login-overlay.open { display: flex; }
-    .login-card { background: #faf6ee; border: 0.5px solid rgba(196,160,82,0.4); border-radius: 20px; width: 100%; max-width: 420px; overflow: hidden; animation: fadeUp 0.28s ease both; max-height: 92vh; overflow-y: auto; }
-    .login-hero { background: #ede5d0; border-bottom: 0.5px solid rgba(196,160,82,0.35); padding: 1.75rem 2rem 1.5rem; text-align: center; position: relative; }
-    .login-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 18px; color: var(--mid); cursor: pointer; line-height: 1; padding: 4px 8px; border-radius: 6px; transition: background 0.15s; }
-    .login-close:hover { background: rgba(46,42,30,0.08); }
-    .login-eye { font-family: 'Jost', sans-serif; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: #b8a47e; font-weight: 400; margin-bottom: 0.5rem; }
-    .login-title { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300; color: #2e2a1e; line-height: 1.15; margin-bottom: 1.25rem; }
-    .login-title em { font-style: italic; color: #7a6340; }
-    .login-toggle-wrap { display: flex; justify-content: center; }
-    .login-toggle { position: relative; display: flex; background: rgba(46,42,30,0.07); border: 0.5px solid rgba(196,160,82,0.4); border-radius: 999px; padding: 3px; width: 240px; cursor: pointer; user-select: none; }
-    .login-slider { position: absolute; top: 3px; left: 3px; width: calc(50% - 3px); height: calc(100% - 6px); background: #c4a052; border-radius: 999px; transition: transform 0.3s cubic-bezier(0.4,0,0.2,1); }
-    .login-slider.vendor { transform: translateX(100%); }
-    .login-tog { flex: 1; position: relative; z-index: 1; padding: 7px 0; font-family: 'Jost', sans-serif; font-size: 12px; font-weight: 400; letter-spacing: 0.07em; border: none; background: transparent; color: #a8997a; border-radius: 999px; cursor: pointer; transition: color 0.3s; }
-    .login-tog.on { color: #2e2a1e; font-weight: 500; }
-    .login-body { padding: 1.5rem 1.75rem 1.5rem; }
-    .login-google { width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 10px 16px; background: #fff; border: 0.5px solid rgba(46,42,30,0.18); border-radius: 999px; font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 400; letter-spacing: 0.04em; color: #2e2a1e; cursor: pointer; transition: all 0.2s; margin-bottom: 1.15rem; }
-    .login-google:hover { background: #f5f0e8; border-color: rgba(46,42,30,0.32); }
-    .login-google svg { width: 17px; height: 17px; flex-shrink: 0; }
-    .login-divider { display: flex; align-items: center; gap: 10px; margin-bottom: 1.15rem; }
-    .login-divider-line { flex: 1; height: 0.5px; background: rgba(46,42,30,0.12); }
-    .login-divider span { font-family: 'Jost', sans-serif; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #a8997a; }
-    .login-vendor-note { background: #f5f0e8; border: 0.5px solid rgba(196,160,82,0.35); border-radius: 10px; padding: 0.75rem 1rem; font-family: 'Jost', sans-serif; font-size: 12px; font-weight: 300; color: #6b6248; line-height: 1.65; overflow: hidden; max-height: 0; opacity: 0; transition: max-height 0.35s ease, opacity 0.3s ease, margin-bottom 0.3s ease; margin-bottom: 0; }
-    .login-vendor-note.show { max-height: 80px; opacity: 1; margin-bottom: 1rem; }
-    .login-vendor-note strong { font-weight: 500; color: #2e2a1e; }
-    .login-field { margin-bottom: 0.85rem; }
-    .login-field label { display: block; font-family: 'Jost', sans-serif; font-size: 10px; letter-spacing: 0.13em; text-transform: uppercase; color: #6b6248; margin-bottom: 5px; font-weight: 400; }
-    .login-field input { width: 100%; padding: 10px 14px; border: 0.5px solid rgba(46,42,30,0.18); border-radius: 10px; font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 300; color: #2e2a1e; background: #fff; outline: none; transition: border-color 0.2s; box-sizing: border-box; }
-    .login-field input:focus { border-color: #c4a052; }
-    .login-field input::placeholder { color: #a8997a; }
-    .login-forgot { display: block; text-align: right; font-family: 'Jost', sans-serif; font-size: 11px; color: #b8a47e; margin-top: -4px; margin-bottom: 1rem; cursor: pointer; letter-spacing: 0.02em; text-decoration: none; }
-    .login-forgot:hover { color: #7a6340; }
-    .login-submit { width: 100%; padding: 12px; background: #2e2a1e; color: #f5f0e8; border: none; border-radius: 999px; font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 400; letter-spacing: 0.09em; cursor: pointer; transition: opacity 0.2s; margin-bottom: 1rem; }
-    .login-submit:hover { opacity: 0.82; }
-    .login-submit:disabled { opacity: 0.5; cursor: default; }
-    .login-switch { text-align: center; font-family: 'Jost', sans-serif; font-size: 12px; font-weight: 300; color: #6b6248; }
-    .login-switch-lnk { color: #7a6340; font-weight: 400; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }
 
     @media (max-width: 768px) {
       nav { padding: 0 1rem; display: grid; grid-template-columns: 1fr auto 1fr; }
@@ -532,10 +478,8 @@
       .footer-top { grid-template-columns: 1fr; gap: 2rem; }
       .footer-bottom { flex-direction: column; }
       .plans { grid-template-columns: 1fr; }
-      .login-card { max-width: 100%; }
     }
   </style>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KR0Q3TS3TL"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -559,12 +503,6 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
             Instagram
           </a>
-        </li>
-        <li id="navAuthItem">
-          <button class="nav-pill-btn" onclick="openLogin()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            Log in
-          </button>
         </li>
         <li>
           <a href="mailto:infoaislebloom@gmail.com" class="nav-pill-btn nav-pill-btn--gold">
@@ -893,42 +831,6 @@
     <div class="modal" id="modal"></div>
   </div>
 
-  <!-- ══ LOGIN MODAL ══ -->
-  <div class="login-overlay" id="loginOverlay" onclick="closeLoginOutside(event)">
-    <div class="login-card" id="loginCard">
-      <div class="login-hero">
-        <button class="login-close" onclick="closeLogin()" aria-label="Close">✕</button>
-        <p class="login-eye" id="loginEye">Planning your big day</p>
-        <h2 class="login-title" id="loginTitle">Welcome <em>back</em></h2>
-        <div class="login-toggle-wrap">
-          <div class="login-toggle" onclick="loginToggleType()">
-            <div class="login-slider" id="loginSlider"></div>
-            <button class="login-tog on" id="loginTogC">I'm a couple</button>
-            <button class="login-tog" id="loginTogV">I'm a vendor</button>
-          </div>
-        </div>
-      </div>
-      <div class="login-body">
-        <button class="login-google" onclick="loginWithGoogle()">
-          <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844a4.14 4.14 0 0 1-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615Z"/><path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18Z"/><path fill="#FBBC05" d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332Z"/><path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58Z"/></svg>
-          Continue with Google
-        </button>
-        <div class="login-divider"><div class="login-divider-line"></div><span>or</span><div class="login-divider-line"></div></div>
-        <div id="loginVendorNote" class="login-vendor-note">
-          <strong>Vendor portal.</strong> Log in to manage your listing, update availability, and respond to couple enquiries.
-        </div>
-        <div id="loginError" class="login-error"></div>
-        <div class="login-field"><label>Email address</label><input type="email" placeholder="hello@example.com"></div>
-        <div class="login-field"><label>Password</label><input type="password" placeholder="••••••••"></div>
-        <a class="login-forgot">Forgot password?</a>
-        <button class="login-submit" id="loginSubmit" onclick="loginSubmitSupabase()">Log in</button>
-        <p class="login-switch" id="loginSwitch">
-          Don't have an account? <span class="login-switch-lnk" onclick="loginToggleSignup()">Sign up free</span>
-        </p>
-      </div>
-    </div>
-  </div>
-
   <!-- TOAST -->
   <div class="toast" id="toast"></div>
 
@@ -1179,187 +1081,6 @@
         document.getElementById('modalOverlay').classList.remove('open');
     }
 
-    /* ── SUPABASE AUTH ── */
-    const SUPABASE_URL = 'https://ttqacbklxmraauudqywz.supabase.co';
-    const SUPABASE_KEY = 'sb_publishable_U6jvKb4_Iga_AiWZ8XFbzQ_8SrbHICb';
-    const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-    // Update nav based on auth state
-    function updateNavAuth(user) {
-      const item = document.getElementById('navAuthItem');
-      if (!item) return;
-      if (user) {
-        const initials = (user.email || '?')[0].toUpperCase();
-        const displayEmail = user.email || '';
-        item.innerHTML = `
-          <div class="nav-user">
-            <div class="nav-avatar" onclick="toggleNavDropdown()" title="Account">${initials}</div>
-            <div class="nav-dropdown" id="navDropdown">
-              <div class="nav-dropdown-email">${displayEmail}</div>
-              </button>
-              <button class="nav-dropdown-item danger" onclick="logOut()">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-                Log out
-              </button>
-            </div>
-          </div>`;
-      } else {
-        item.innerHTML = `
-          <button class="nav-pill-btn" onclick="openLogin()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            Log in
-          </button>`;
-      }
-    }
-
-    function toggleNavDropdown() {
-      const dd = document.getElementById('navDropdown');
-      if (dd) dd.classList.toggle('open');
-    }
-
-    // Close dropdown when clicking outside
-    document.addEventListener('click', function(e) {
-      const dd = document.getElementById('navDropdown');
-      if (dd && dd.classList.contains('open')) {
-        if (!dd.closest('.nav-user').contains(e.target)) dd.classList.remove('open');
-      }
-    });
-
-    // Listen for auth changes
-    _supabase.auth.onAuthStateChange(async (event, session) => {
-      updateNavAuth(session ? session.user : null);
-
-      if (event === 'SIGNED_IN') {
-        closeLogin();
-        showToast('Welcome back! You\'re now logged in.');
-      }
-      if (event === 'SIGNED_OUT') {
-        showToast('You\'ve been logged out.');
-      }
-    });
-
-    // Init on load
-    _supabase.auth.getSession().then(async ({ data: { session } }) => {
-      updateNavAuth(session ? session.user : null);
-
-    });
-
-    async function loginWithGoogle() {
-      const { error } = await _supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: { redirectTo: window.location.href }
-      });
-      if (error) showLoginError(error.message);
-    }
-
-    async function loginSubmitSupabase() {
-      const email = document.querySelector('#loginCard .login-field input[type="email"]').value.trim();
-      const password = document.querySelector('#loginCard .login-field input[type="password"]').value.trim();
-      if (!email || !password) { showLoginError('Please enter your email and password.'); return; }
-      const btn = document.getElementById('loginSubmit');
-      btn.textContent = 'Loading…'; btn.disabled = true;
-      hideLoginError();
-      if (loginSignup) {
-        const { error } = await _supabase.auth.signUp({ email, password });
-        if (error) { showLoginError(error.message); btn.textContent = 'Create account'; btn.disabled = false; }
-        else { closeLogin(); showToast('Account created! Check your email to confirm.'); btn.textContent = 'Create account'; btn.disabled = false; }
-      } else {
-        const { error } = await _supabase.auth.signInWithPassword({ email, password });
-        if (error) { showLoginError(error.message); btn.textContent = 'Log in'; btn.disabled = false; }
-        else { btn.textContent = 'Log in'; btn.disabled = false; }
-      }
-    }
-
-    async function logOut() {
-      try {
-        await _supabase.auth.signOut();
-        updateNavAuth(null);
-  
-        showToast("You've been logged out.");
-      } catch(e) {
-        console.error("Logout error:", e);
-        window.location.reload();
-      }
-    }
-
-    function showLoginError(msg) {
-      const el = document.getElementById('loginError');
-      if (el) { el.textContent = msg; el.classList.add('show'); }
-    }
-
-    function hideLoginError() {
-      const el = document.getElementById('loginError');
-      if (el) el.classList.remove('show');
-    }
-
-    /* ── LOGIN UI ── */
-    var loginMode = 'couple';
-    var loginSignup = false;
-
-    function openLogin() {
-      document.getElementById('loginOverlay').classList.add('open');
-      document.body.style.overflow = 'hidden';
-      hideLoginError();
-    }
-
-    function closeLogin() {
-      document.getElementById('loginOverlay').classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    function closeLoginOutside(e) {
-      if (e.target === document.getElementById('loginOverlay')) closeLogin();
-    }
-
-    function loginToggleType() {
-      loginMode = loginMode === 'couple' ? 'vendor' : 'couple';
-      var slider = document.getElementById('loginSlider');
-      var togC = document.getElementById('loginTogC');
-      var togV = document.getElementById('loginTogV');
-      var note = document.getElementById('loginVendorNote');
-      if (loginMode === 'vendor') {
-        slider.className = 'login-slider vendor';
-        togC.className = 'login-tog';
-        togV.className = 'login-tog on';
-        note.className = 'login-vendor-note show';
-      } else {
-        slider.className = 'login-slider';
-        togC.className = 'login-tog on';
-        togV.className = 'login-tog';
-        note.className = 'login-vendor-note';
-      }
-      loginRefresh();
-      hideLoginError();
-    }
-
-    function loginToggleSignup() {
-      loginSignup = !loginSignup;
-      loginRefresh();
-      hideLoginError();
-    }
-
-    function loginRefresh() {
-      var eye = document.getElementById('loginEye');
-      var title = document.getElementById('loginTitle');
-      var btn = document.getElementById('loginSubmit');
-      var sw = document.getElementById('loginSwitch');
-      if (loginMode === 'couple') {
-        eye.textContent = loginSignup ? 'Start planning your big day' : 'Planning your big day';
-        title.innerHTML = loginSignup ? 'Create your <em>account</em>' : 'Welcome <em>back</em>';
-        btn.textContent = loginSignup ? 'Create account' : 'Log in';
-        sw.innerHTML = loginSignup
-          ? 'Already have an account? <span class="login-switch-lnk" onclick="loginToggleSignup()">Log in</span>'
-          : "Don't have an account? <span class='login-switch-lnk' onclick='loginToggleSignup()'>Sign up free</span>";
-      } else {
-        eye.textContent = loginSignup ? 'Join Aisle & Bloom' : 'Vendor portal';
-        title.innerHTML = loginSignup ? 'List your <em>business</em>' : 'Vendor <em>login</em>';
-        btn.textContent = loginSignup ? 'Apply to list' : 'Log in';
-        sw.innerHTML = loginSignup
-          ? 'Already listed? <span class="login-switch-lnk" onclick="loginToggleSignup()">Log in</span>'
-          : "Not listed yet? <span class='login-switch-lnk' onclick='loginToggleSignup()'>Apply free</span>";
-      }
-    }
-
     /* ── FAQ ── */
     function toggleFaq(btn) {
       const answer = btn.nextElementSibling;
@@ -1477,13 +1198,11 @@
 
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
-        closeLogin();
         document.getElementById('modalOverlay').classList.remove('open');
       }
     });
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
-        closeLogin();
         document.getElementById('modalOverlay').classList.remove('open');
       }
     });
