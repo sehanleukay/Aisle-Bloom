@@ -830,7 +830,7 @@
               <span style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;color:var(--charcoal);">Free</span>
               <span style="font-size:13px;color:var(--light);">for 3 months</span>
             </div>
-            <p style="font-size:13px;color:var(--mid);margin-bottom:1rem;">$79/month — cancel anytime, no lock-in.</p>
+            <p style="font-size:13px;color:var(--mid);margin-bottom:1rem;">$89/month — cancel anytime, no lock-in.</p>
             <ul class="vendor-perks">
               <li><span class="perk-dot"></span>Featured listing in your category with photos, pricing, and reviews</li>
               <li><span class="perk-dot"></span>Direct enquiries from couples — no commissions on bookings</li>
@@ -854,8 +854,8 @@
             <input type="email" id="vaf-email" placeholder="Email address" class="enq-input">
             <input type="text" id="vaf-website" placeholder="Website or Instagram" class="enq-input">
             <textarea id="vaf-message" placeholder="Tell us about your business..." class="enq-input" rows="3" style="resize:vertical;"></textarea>
-            <button class="btn-primary" id="vafBtn" onclick="submitVendorApp()" style="width:100%;margin-top:0.5rem;">Apply &amp; subscribe — $79/month</button>
-            <p style="font-size:11px;color:var(--light);margin-top:0.75rem;">We review all applications within 48 hours. $79/month subscription. Cancel anytime.</p>
+            <button class="btn-primary" id="vafBtn" onclick="submitVendorApp()" style="width:100%;margin-top:0.5rem;">Apply &amp; subscribe — $89/month</button>
+            <p style="font-size:11px;color:var(--light);margin-top:0.75rem;">We review all applications within 48 hours. $89/month subscription. Cancel anytime.</p>
           </div>
           <div id="vendorAppThanks" style="display:none;padding:2rem 0;text-align:center;">
             <div style="font-size:40px;margin-bottom:0.75rem;">✓</div>
@@ -880,7 +880,7 @@
           <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How do I contact a vendor? <span class="faq-ch">▾</span></button><div class="faq-a"><div class="faq-a-inner">Simply click on any vendor card, fill in your name, phone number and email, and hit Send Enquiry. Your details go directly to the vendor and to our team.</div></div></div>
           <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Are all vendors based in Melbourne? <span class="faq-ch">▾</span></button><div class="faq-a"><div class="faq-a-inner">Yes. Every vendor listed on Aisle &amp; Bloom is based in or services the Greater Melbourne area. We manually review each application before anyone is listed.</div></div></div>
           <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What do the availability badges mean? <span class="faq-ch">▾</span></button><div class="faq-a"><div class="faq-a-inner">Each vendor card shows one of three badges — Available, Limited Dates, or Booked. These are updated by vendors so you can quickly see who is free for your date before reaching out.</div></div></div>
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How do I list my business on Aisle &amp; Bloom? <span class="faq-ch">▾</span></button><div class="faq-a"><div class="faq-a-inner">Head to the For Vendors tab and fill in the short application form. We review all applications within 48 hours. Early vendors get 3 months free — after that it's $79/month with no lock-in.</div></div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How do I list my business on Aisle &amp; Bloom? <span class="faq-ch">▾</span></button><div class="faq-a"><div class="faq-a-inner">Head to the For Vendors tab and fill in the short application form. We review all applications within 48 hours. Early vendors get 3 months free — after that it's $89/month with no lock-in.</div></div></div>
           <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is there a commission on bookings? <span class="faq-ch">▾</span></button><div class="faq-a"><div class="faq-a-inner">No. We never take a commission on any booking. All payment arrangements are made directly between you and your couples.</div></div></div>
           <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How do I get in touch? <span class="faq-ch">▾</span></button><div class="faq-a"><div class="faq-a-inner">You can reach us anytime at <a href="mailto:infoaislebloom@gmail.com" style="color:var(--deep-rose);">infoaislebloom@gmail.com</a>. We typically respond within 24 hours Monday to Friday.</div></div></div>
         </div>
@@ -1417,7 +1417,7 @@
           body: JSON.stringify({ business_name: business, category, contact_name: name, email, website_instagram: website, about: message, _subject: 'Vendor Application — ' + business })
         });
         if (res.ok) {
-          window.open('https://buy.stripe.com/cNicN5gOo0K7017abK8EM01', '_blank');
+          window.open('https://buy.stripe.com/6oUaEX1TueAXbJPcjS8EM02', '_blank');
           document.getElementById('vendorAppForm').style.display = 'none';
           document.getElementById('vendorAppThanks').style.display = 'block';
         } else {
