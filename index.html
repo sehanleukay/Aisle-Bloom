@@ -830,7 +830,7 @@
               <span style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;color:var(--charcoal);">Free</span>
               <span style="font-size:13px;color:var(--light);">for 3 months</span>
             </div>
-            <p style="font-size:13px;color:var(--mid);margin-bottom:1rem;">Then $49/month — cancel anytime, no lock-in.</p>
+            <p style="font-size:13px;color:var(--mid);margin-bottom:1rem;">$49/month — cancel anytime, no lock-in.</p>
             <ul class="vendor-perks">
               <li><span class="perk-dot"></span>Featured listing in your category with photos, pricing, and reviews</li>
               <li><span class="perk-dot"></span>Direct enquiries from couples — no commissions on bookings</li>
@@ -854,8 +854,8 @@
             <input type="email" id="vaf-email" placeholder="Email address" class="enq-input">
             <input type="text" id="vaf-website" placeholder="Website or Instagram" class="enq-input">
             <textarea id="vaf-message" placeholder="Tell us about your business..." class="enq-input" rows="3" style="resize:vertical;"></textarea>
-            <button class="btn-primary" id="vafBtn" onclick="submitVendorApp()" style="width:100%;margin-top:0.5rem;">Apply — 3 months free</button>
-            <p style="font-size:11px;color:var(--light);margin-top:0.75rem;">We review all applications within 48 hours. Free for 3 months, then $49/month. Cancel anytime.</p>
+            <button class="btn-primary" id="vafBtn" onclick="submitVendorApp()" style="width:100%;margin-top:0.5rem;">Apply &amp; subscribe — $49/month</button>
+            <p style="font-size:11px;color:var(--light);margin-top:0.75rem;">We review all applications within 48 hours. $49/month subscription. Cancel anytime.</p>
           </div>
           <div id="vendorAppThanks" style="display:none;padding:2rem 0;text-align:center;">
             <div style="font-size:40px;margin-bottom:0.75rem;">✓</div>
@@ -1417,6 +1417,7 @@
           body: JSON.stringify({ business_name: business, category, contact_name: name, email, website_instagram: website, about: message, _subject: 'Vendor Application — ' + business })
         });
         if (res.ok) {
+          window.open('https://buy.stripe.com/cNicN5gOo0K7017abK8EM01', '_blank');
           document.getElementById('vendorAppForm').style.display = 'none';
           document.getElementById('vendorAppThanks').style.display = 'block';
         } else {
