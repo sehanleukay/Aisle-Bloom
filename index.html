@@ -633,13 +633,26 @@
 
   <!-- ══ DIRECTORY ══ -->
   <div id="sec-directory" style="display:none">
-    <section class="section dir-section">
+    <!-- Directory Hero Strip -->
+    <div style="position:relative;height:280px;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+      <div style="position:absolute;inset:0;background:url('images/Hero1.jpg') center center / cover no-repeat;"></div>
+      <div style="position:absolute;inset:0;background:rgba(44,40,30,0.35);"></div>
+      <div style="position:relative;z-index:2;width:100%;max-width:660px;margin:0 auto;padding:0 2rem;text-align:center;">
+        <div style="background:rgba(255,235,190,0.06);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(210,175,90,0.4);border-radius:20px;padding:2rem 2.5rem;">
+          <p style="font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:#fff;font-weight:500;margin-bottom:0.75rem;text-shadow:0 1px 8px rgba(30,15,0,0.5);">Melbourne's wedding vendor directory</p>
+          <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,46px);font-weight:300;color:#fffaf0;text-shadow:0 2px 16px rgba(60,30,5,0.4);margin-bottom:1.25rem;line-height:1.1;">Find your <em style="font-style:italic;color:#c4a052;">perfect vendors</em></h1>
+          <div style="position:relative;">
+            <input type="text" class="dir-search" id="searchInput" placeholder="Search by name, style, location..." oninput="filterVendors()"
+              style="background:rgba(255,255,255,0.95);border:none;box-shadow:0 4px 20px rgba(44,40,30,0.15);padding-left:40px;width:100%;">
+            <svg style="position:absolute;left:14px;top:50%;transform:translateY(-50%);opacity:0.4;" viewBox="0 0 24 24" fill="none" stroke="#2e2a1e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="section dir-section" style="padding-top:2.5rem;">
       <div class="section-inner">
-        <p class="section-eyebrow">Vendor directory</p>
-        <h2 class="section-title">Find your <em>perfect vendors</em></h2>
-        <p class="section-sub">Browse Melbourne's best wedding vendors — all verified, reviewed, and available to enquire.</p>
-        <div class="dir-controls">
-          <input type="text" class="dir-search" id="searchInput" placeholder="Search by name, style, location..." oninput="filterVendors()">
+        <div class="dir-controls" style="display:none;">
+          <input type="text" id="searchInputHidden" placeholder="" style="display:none;">
         </div>
         <div class="dir-filters">
           <button class="fbtn active" onclick="setFilter('All',this)">All</button>
@@ -953,7 +966,8 @@
     }
 
     function filterVendors() {
-      const s = (document.getElementById('searchInput') ? document.getElementById('searchInput').value : '').toLowerCase();
+      const searchEl = document.getElementById('searchInput');
+      const s = searchEl ? searchEl.value.toLowerCase() : '';
       const filtered = vendors.filter(v => {
         const mc = activeFilter === 'All' || v.cat === activeFilter;
         const ms = !s || v.name.toLowerCase().includes(s) || v.cat.toLowerCase().includes(s) || v.style.some(x => x.toLowerCase().includes(s)) || v.location.toLowerCase().includes(s);
