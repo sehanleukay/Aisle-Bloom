@@ -481,55 +481,6 @@
       .footer-bottom { flex-direction: column; }
       .plans { grid-template-columns: 1fr; }
     }
-
-    /* ── TICKER STRIP ── */
-    .ticker-wrap {
-      width: 100%;
-      overflow: hidden;
-      background: var(--charcoal);
-      padding: 12px 0;
-      position: relative;
-    }
-    .ticker-wrap::before, .ticker-wrap::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      width: 80px;
-      height: 100%;
-      z-index: 2;
-    }
-    .ticker-wrap::before { left: 0; background: linear-gradient(to right, var(--charcoal), transparent); }
-    .ticker-wrap::after { right: 0; background: linear-gradient(to left, var(--charcoal), transparent); }
-    .ticker-track {
-      display: flex;
-      width: max-content;
-      animation: ticker 30s linear infinite;
-    }
-    .ticker-track:hover { animation-play-state: paused; }
-    @keyframes ticker {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-    .ticker-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 0 2rem;
-      white-space: nowrap;
-      font-family: 'Jost', sans-serif;
-      font-size: 12px;
-      font-weight: 400;
-      letter-spacing: 0.08em;
-      color: rgba(245,240,232,0.85);
-    }
-    .ticker-dot {
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: var(--gold);
-      flex-shrink: 0;
-    }
-    .ticker-item strong { color: var(--gold); font-weight: 500; }
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KR0Q3TS3TL"></script>
   <script>
@@ -736,77 +687,97 @@
 
   <!-- ══ PRICING ══ -->
   <div id="sec-pricing" style="display:none">
-    <!-- Ticker Strip -->
-    <div class="ticker-wrap">
-      <div class="ticker-track" id="tickerTrack">
-        <div class="ticker-item"><span class="ticker-dot"></span>Browse every vendor — <strong>completely free</strong></div>
-        <div class="ticker-item"><span class="ticker-dot"></span><strong>No commissions</strong> on any booking</div>
-        <div class="ticker-item"><span class="ticker-dot"></span>Vendors manually reviewed by our team</div>
-        <div class="ticker-item"><span class="ticker-dot"></span><strong>500+</strong> Melbourne couples</div>
-        <div class="ticker-item"><span class="ticker-dot"></span>Direct enquiries to vendors</div>
-        <div class="ticker-item"><span class="ticker-dot"></span><strong>30-day</strong> money-back guarantee</div>
-        <div class="ticker-item"><span class="ticker-dot"></span>Secure payments via <strong>Stripe</strong></div>
-        <div class="ticker-item"><span class="ticker-dot"></span>Melbourne-based &amp; locally curated</div>
-        <div class="ticker-item"><span class="ticker-dot"></span>Cancel vendor listing <strong>anytime</strong></div>
-        <div class="ticker-item"><span class="ticker-dot"></span>Budget tracker — <strong>one-off $299</strong></div>
-        <!-- Duplicate for seamless loop -->
-        <div class="ticker-item"><span class="ticker-dot"></span>Browse every vendor — <strong>completely free</strong></div>
-        <div class="ticker-item"><span class="ticker-dot"></span><strong>No commissions</strong> on any booking</div>
-        <div class="ticker-item"><span class="ticker-dot"></span>Vendors manually reviewed by our team</div>
-        <div class="ticker-item"><span class="ticker-dot"></span><strong>500+</strong> Melbourne couples</div>
-        <div class="ticker-item"><span class="ticker-dot"></span>Direct enquiries to vendors</div>
-        <div class="ticker-item"><span class="ticker-dot"></span><strong>30-day</strong> money-back guarantee</div>
-        <div class="ticker-item"><span class="ticker-dot"></span>Secure payments via <strong>Stripe</strong></div>
-        <div class="ticker-item"><span class="ticker-dot"></span>Melbourne-based &amp; locally curated</div>
-        <div class="ticker-item"><span class="ticker-dot"></span>Cancel vendor listing <strong>anytime</strong></div>
-        <div class="ticker-item"><span class="ticker-dot"></span>Budget tracker — <strong>one-off $299</strong></div>
-      </div>
-    </div>
-    <section class="section pricing-section">
+    <section class="section pricing-section pricing-section-bg">
       <div class="section-inner">
-        <p class="section-eyebrow">Simple, honest pricing</p>
-        <h2 class="section-title">Free to browse.<br><em>Pay once to plan.</em></h2>
-        <p class="section-sub">No subscriptions. No renewals. Browse every vendor for free — unlock your live budget tracker with a single one-off payment.</p>
-        <div class="plans">
-          <div class="plan">
-            <p class="plan-name">Free browsing</p>
-            <p class="plan-tagline">Explore every vendor in the directory. Search, filter, and enquire — completely free, forever.</p>
-            <div class="plan-price-block">
-              <div class="plan-price-row"><span class="p-dollar">$</span><span class="p-num">0</span></div>
-              <p class="p-once">Always free — no card required</p>
+        <p class="section-eyebrow" style="color:var(--gold);">Simple, honest pricing</p>
+        <h2 class="section-title" style="color:#fffaf0;">Free to browse.<br><em style="color:var(--gold);">Pay once to plan.</em></h2>
+        <p class="section-sub" style="color:rgba(245,240,232,0.6);">No subscriptions. No renewals. Browse every vendor for free — unlock your live budget tracker with a single one-off payment.</p>
+        <div class="flip-cards">
+
+          <!-- Free Card -->
+          <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+              <!-- Front -->
+              <div class="flip-card-front">
+                <p style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--dusty-rose);margin-bottom:1rem;font-weight:500;">For couples</p>
+                <p style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:var(--charcoal);margin-bottom:0.25rem;line-height:1.1;">Free<br><em style="font-style:italic;color:var(--deep-rose);">browsing</em></p>
+                <p style="font-size:13px;color:var(--mid);margin-bottom:1.5rem;line-height:1.6;">Explore every vendor. Search, filter, and enquire — completely free, forever.</p>
+                <div style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:0.5px solid var(--border);">
+                  <div style="display:flex;align-items:baseline;gap:3px;">
+                    <span style="font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--mid);">$</span>
+                    <span style="font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:600;line-height:1;color:var(--charcoal);">0</span>
+                  </div>
+                  <p style="font-size:11px;color:var(--light);letter-spacing:0.06em;margin-top:4px;">Always free — no card required</p>
+                </div>
+                <p style="font-size:11px;color:var(--light);letter-spacing:0.06em;margin-bottom:0.75rem;">INCLUDES</p>
+                <ul style="list-style:none;flex:1;">
+                  <li style="font-size:12px;color:var(--mid);padding:5px 0;display:flex;gap:8px;border-bottom:0.5px solid var(--border);"><span style="color:var(--success);">✓</span>Full vendor directory</li>
+                  <li style="font-size:12px;color:var(--mid);padding:5px 0;display:flex;gap:8px;border-bottom:0.5px solid var(--border);"><span style="color:var(--success);">✓</span>Search &amp; filter by style, location</li>
+                  <li style="font-size:12px;color:var(--mid);padding:5px 0;display:flex;gap:8px;"><span style="color:var(--success);">✓</span>Send direct enquiries</li>
+                </ul>
+                <p class="flip-hint" style="color:var(--light);">Hover to see all features →</p>
+              </div>
+              <!-- Back -->
+              <div class="flip-card-back free-back">
+                <p style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--charcoal);margin-bottom:1.25rem;">What's included</p>
+                <ul class="flip-feat-list" style="flex:1;">
+                  <li style="color:var(--mid);"><span style="color:var(--success);">✓</span>Full vendor directory — all categories</li>
+                  <li style="color:var(--mid);"><span style="color:var(--success);">✓</span>Search &amp; filter by style, location, category</li>
+                  <li style="color:var(--mid);"><span style="color:var(--success);">✓</span>View full vendor profiles and pricing</li>
+                  <li style="color:var(--mid);"><span style="color:var(--success);">✓</span>Send direct enquiries to vendors</li>
+                  <li style="color:var(--mid);"><span style="color:var(--success);">✓</span>Availability status for every vendor</li>
+                  <li style="color:var(--light);"><span style="color:var(--light);">–</span>Live budget tracker</li>
+                  <li style="color:var(--light);"><span style="color:var(--light);">–</span>Deposit &amp; payment tracking</li>
+                  <li style="color:var(--light);"><span style="color:var(--light);">–</span>Spending breakdown by category</li>
+                </ul>
+                <a href="#" class="plan-btn plan-btn-ghost" onclick="showSection('directory', document.querySelectorAll('.ptab')[1]); return false;" style="margin-top:1rem;">Start browsing — it's free</a>
+                <p class="flip-hint" style="color:var(--light);margin-top:0.75rem;">← Flip back</p>
+              </div>
             </div>
-            <ul class="feat-list">
-              <li><span class="ck">✓</span>Full vendor directory — all categories</li>
-              <li><span class="ck">✓</span>Search &amp; filter by style, location, category</li>
-              <li><span class="ck">✓</span>View full vendor profiles and pricing</li>
-              <li><span class="ck">✓</span>Send direct enquiries to vendors</li>
-              <li><span class="ck">✓</span>Availability status for every vendor</li>
-              <li><span class="cx">–</span><span style="color:var(--light)">Live budget tracker linked to your vendors</span></li>
-              <li><span class="cx">–</span><span style="color:var(--light)">Deposit &amp; payment tracking</span></li>
-              <li><span class="cx">–</span><span style="color:var(--light)">Spending breakdown by category</span></li>
-            </ul>
-            <a href="#" class="plan-btn plan-btn-ghost" onclick="showSection('directory', document.querySelectorAll('.ptab')[1]); return false;">Start browsing — it's free</a>
           </div>
-          <div class="plan featured">
-            <span class="plan-pill">One-off purchase</span>
-            <p class="plan-name">Budget tracker</p>
-            <p class="plan-tagline">A live budget dashboard linked to the vendors you choose — tracking every dollar from deposit to final payment.</p>
-            <div class="plan-price-block">
-              <div class="plan-price-row"><span class="p-dollar">$</span><span class="p-num">299</span></div>
-              <p class="p-once">One-off payment — yours until your wedding day</p>
+
+          <!-- Budget Tracker Card -->
+          <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+              <!-- Front -->
+              <div class="flip-card-front featured-front">
+                <p style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;font-weight:500;">One-off purchase</p>
+                <p style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:#fffaf0;margin-bottom:0.25rem;line-height:1.1;">Budget<br><em style="font-style:italic;color:var(--gold);">tracker</em></p>
+                <p style="font-size:13px;color:rgba(245,240,232,0.7);margin-bottom:1.5rem;line-height:1.6;">A live dashboard tracking every dollar — from deposit to final payment.</p>
+                <div style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:0.5px solid rgba(196,160,82,0.25);">
+                  <div style="display:flex;align-items:baseline;gap:3px;">
+                    <span style="font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--gold);">$</span>
+                    <span style="font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:600;line-height:1;color:#fffaf0;">299</span>
+                  </div>
+                  <p style="font-size:11px;color:rgba(196,160,82,0.7);letter-spacing:0.06em;margin-top:4px;">One-off payment · yours until your wedding day</p>
+                </div>
+                <p style="font-size:11px;color:rgba(196,160,82,0.7);letter-spacing:0.06em;margin-bottom:0.75rem;">HIGHLIGHTS</p>
+                <ul style="list-style:none;flex:1;">
+                  <li style="font-size:12px;color:rgba(245,240,232,0.8);padding:5px 0;display:flex;gap:8px;border-bottom:0.5px solid rgba(196,160,82,0.15);"><span style="color:var(--gold);">✓</span>Live budget linked to your vendors</li>
+                  <li style="font-size:12px;color:rgba(245,240,232,0.8);padding:5px 0;display:flex;gap:8px;border-bottom:0.5px solid rgba(196,160,82,0.15);"><span style="color:var(--gold);">✓</span>Deposit &amp; payment tracking</li>
+                  <li style="font-size:12px;color:rgba(245,240,232,0.8);padding:5px 0;display:flex;gap:8px;"><span style="color:var(--gold);">✓</span>Overspend alerts &amp; progress tracking</li>
+                </ul>
+                <p class="flip-hint" style="color:rgba(196,160,82,0.5);">Hover to see all features →</p>
+              </div>
+              <!-- Back -->
+              <div class="flip-card-back">
+                <p style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--gold);margin-bottom:1.25rem;">Everything included</p>
+                <ul class="flip-feat-list" style="flex:1;">
+                  <li style="color:rgba(245,240,232,0.8);"><span style="color:var(--gold);">✓</span>Everything in free browsing</li>
+                  <li style="color:rgba(245,240,232,0.8);"><span style="color:var(--gold);">✓</span>Live budget linked to your chosen vendors</li>
+                  <li style="color:rgba(245,240,232,0.8);"><span style="color:var(--gold);">✓</span>Deposit &amp; payment tracking</li>
+                  <li style="color:rgba(245,240,232,0.8);"><span style="color:var(--gold);">✓</span>Spending breakdown by category</li>
+                  <li style="color:rgba(245,240,232,0.8);"><span style="color:var(--gold);">✓</span>Budget vs actual with overspend alerts</li>
+                  <li style="color:rgba(245,240,232,0.8);"><span style="color:var(--gold);">✓</span>Add custom items outside the directory</li>
+                  <li style="color:rgba(245,240,232,0.8);"><span style="color:var(--gold);">✓</span>Shareable view with your partner</li>
+                  <li style="color:rgba(245,240,232,0.8);"><span style="color:var(--gold);">✓</span>Access retained 3 months post-wedding</li>
+                </ul>
+                <a href="#bt-enquiry-form" class="plan-btn plan-btn-solid" onclick="document.getElementById('bt-enquiry-form').scrollIntoView({behavior:'smooth'}); return false;" style="margin-top:1rem;background:var(--gold);color:var(--charcoal);border:none;">Unlock budget tracker — $299</a>
+                <p class="flip-hint" style="color:rgba(196,160,82,0.4);margin-top:0.75rem;">← Flip back</p>
+              </div>
             </div>
-            <ul class="feat-list">
-              <li><span class="ck">✓</span>Everything in free browsing</li>
-              <li><span class="ck">✓</span><strong>Live budget linked to your chosen vendors</strong></li>
-              <li><span class="ck">✓</span><strong>Deposit &amp; payment tracking</strong></li>
-              <li><span class="ck">✓</span><strong>Spending breakdown by category</strong></li>
-              <li><span class="ck">✓</span>Budget vs actual progress with overspend alerts</li>
-              <li><span class="ck">✓</span>Add custom items outside the directory</li>
-              <li><span class="ck">✓</span>Shareable budget view with your partner</li>
-              <li><span class="ck">✓</span>Access retained 3 months post-wedding</li>
-            </ul>
-            <a href="#bt-enquiry-form" class="plan-btn plan-btn-solid" onclick="document.getElementById('bt-enquiry-form').scrollIntoView({behavior:'smooth'}); return false;">Unlock budget tracker — $299</a>
           </div>
+
         </div>
         <div class="budget-preview">
           <p class="bp-title">What the budget tracker looks like</p>
