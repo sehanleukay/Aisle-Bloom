@@ -1455,15 +1455,15 @@
       }, 3500);
     }
 
-    // Init feed when vendors tab is shown
-    const _origShowSection = showSection;
-    function showSection(sec, tabEl) {
-      _origShowSection(sec, tabEl);
-      if (sec === 'vendors' && !window._feedInited) {
-        window._feedInited = true;
-        setTimeout(initFeed, 400);
-      }
-    }
+    // Init feed when vendors tab is shown — hooked into original showSection
+    document.querySelectorAll('.ptab').forEach(tab => {
+      tab.addEventListener('click', function() {
+        if (this.textContent.trim() === 'For vendors' && !window._feedInited) {
+          window._feedInited = true;
+          setTimeout(initFeed, 400);
+        }
+      });
+    });
 
   </script>
 </body>
