@@ -516,6 +516,25 @@
     .flip-feat-list li:last-child { border-bottom: none; }
     .pricing-section-bg { background: linear-gradient(160deg, #2e2a1e 0%, #1a1710 60%, #2e2a1e 100%); }
 
+
+    /* ── ENQUIRY FEED ── */
+    .enq-feed { display: flex; flex-direction: column; gap: 10px; max-width: 320px; }
+    .enq-feed-header { display: flex; align-items: center; gap: 8px; margin-bottom: 0.5rem; }
+    .enq-feed-dot { width: 8px; height: 8px; border-radius: 50%; background: #4caf50; box-shadow: 0 0 0 3px rgba(76,175,80,0.2); animation: pulse-dot 2s infinite; flex-shrink: 0; }
+    @keyframes pulse-dot { 0%, 100% { box-shadow: 0 0 0 3px rgba(76,175,80,0.2); } 50% { box-shadow: 0 0 0 6px rgba(76,175,80,0.1); } }
+    .enq-feed-title { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); }
+    .enq-card { background: white; border: 0.5px solid var(--border); border-radius: 12px; padding: 12px 14px; display: flex; align-items: flex-start; gap: 10px; opacity: 0; transform: translateY(8px); transition: opacity 0.5s ease, transform 0.5s ease; box-shadow: 0 2px 12px rgba(44,40,30,0.06); }
+    .enq-card.visible { opacity: 1; transform: translateY(0); }
+    .enq-card.fading { opacity: 0.35; }
+    .enq-card-icon { width: 36px; height: 36px; border-radius: 50%; background: var(--charcoal); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 15px; }
+    .enq-card-body { flex: 1; min-width: 0; }
+    .enq-card-label { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #4caf50; margin-bottom: 2px; }
+    .enq-card-vendor { font-size: 13px; font-weight: 500; color: var(--charcoal); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .enq-card-meta { font-size: 11px; color: var(--light); margin-top: 1px; }
+    .enq-card-time { font-size: 10px; color: var(--light); flex-shrink: 0; margin-top: 2px; }
+    .enq-counter { background: var(--blush); border: 0.5px solid var(--border); border-radius: 12px; padding: 14px 16px; text-align: center; margin-top: 0.5rem; }
+    .enq-counter-num { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 600; color: var(--charcoal); line-height: 1; }
+    .enq-counter-lbl { font-size: 11px; color: var(--mid); letter-spacing: 0.08em; margin-top: 4px; }
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KR0Q3TS3TL"></script>
   <script>
@@ -855,6 +874,33 @@
             <p style="font-size:14px;color:var(--mid);line-height:1.7;">Complete your payment on the Stripe page that just opened. Once confirmed, we'll set up your budget tracker and be in touch within 24 hours.</p>
           </div>
         </div>
+
+        <!-- Instagram Tiles -->
+        <div style="margin-top:4rem;padding-top:4rem;border-top:0.5px solid var(--border);">
+          <p class="section-eyebrow">Follow along</p>
+          <h2 class="section-title">Find us on <em>Instagram</em></h2>
+          <p class="section-sub">Real weddings, vendor spotlights and planning inspiration — follow <a href="https://www.instagram.com/aisleandbloomau" target="_blank" rel="noopener" style="color:var(--deep-rose);text-decoration:none;">@aisleandbloomau</a></p>
+          <div class="insta-grid">
+            <a href="https://www.instagram.com/p/DYbIQvWNCVt/" target="_blank" rel="noopener" class="insta-tile">
+              <img src="images/IMG_1186.JPG" alt="Aisle & Bloom on Instagram">
+              <div class="insta-overlay"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" width="28" height="28"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/></svg></div>
+            </a>
+            <a href="https://www.instagram.com/p/DYZEZuutedB/" target="_blank" rel="noopener" class="insta-tile">
+              <img src="images/20241026_Hanna%2BSehan_6047.jpg" alt="Aisle & Bloom on Instagram">
+              <div class="insta-overlay"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" width="28" height="28"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/></svg></div>
+            </a>
+            <a href="https://www.instagram.com/p/DYZDiktNRXN/" target="_blank" rel="noopener" class="insta-tile">
+              <img src="images/20241026_Hanna%2BSehan_3050.jpg" alt="Aisle & Bloom on Instagram">
+              <div class="insta-overlay"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" width="28" height="28"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/></svg></div>
+            </a>
+          </div>
+          <div style="text-align:center;margin-top:2rem;">
+            <a href="https://www.instagram.com/aisleandbloomau" target="_blank" rel="noopener" class="insta-follow-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16" style="margin-right:8px;vertical-align:middle;"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+              Follow @aisleandbloomau
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   </div>
@@ -904,6 +950,20 @@
             <div style="font-size:40px;margin-bottom:0.75rem;">✓</div>
             <p style="font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--charcoal);margin-bottom:0.5rem;">Application received!</p>
             <p style="font-size:14px;color:var(--mid);">Thanks for applying to Aisle & Bloom. We'll be in touch within 48 hours to get your listing set up.</p>
+          </div>
+        </div>
+        <!-- Enquiry Feed -->
+        <div>
+          <div class="enq-feed">
+            <div class="enq-feed-header">
+              <div class="enq-feed-dot"></div>
+              <p class="enq-feed-title">Live enquiry feed</p>
+            </div>
+            <div id="enqFeed"></div>
+            <div class="enq-counter">
+              <div class="enq-counter-num" id="enqCount">0</div>
+              <div class="enq-counter-lbl">Enquiries this month</div>
+            </div>
           </div>
         </div>
       </div>
@@ -1309,6 +1369,102 @@
         document.getElementById('modalOverlay').classList.remove('open');
       }
     });
+
+    /* ── ENQUIRY FEED ANIMATION ── */
+    const FEED_VENDORS = [
+      { name: 'Clara Holt Photography', cat: 'Photography', icon: '📷' },
+      { name: 'Studio Eminence', cat: 'Photography', icon: '📷' },
+      { name: 'Faux Botanics', cat: 'Florals', icon: '🌸' },
+      { name: 'Rippon Lea Estate', cat: 'Venue', icon: '🏛️' },
+      { name: 'Savour Catering Co.', cat: 'Catering', icon: '🍽️' },
+      { name: 'Sugar & Lace Cakes', cat: 'Cake', icon: '🎂' },
+      { name: 'Luminous Beauty Co.', cat: 'Hair & Makeup', icon: '💄' },
+      { name: 'Sankalana Dance Academy', cat: 'Entertainment', icon: '🎵' },
+      { name: 'James Archer Films', cat: 'Videography', icon: '🎬' },
+      { name: 'Vintage Rides Melbourne', cat: 'Transport', icon: '🚗' },
+      { name: 'Wild & Whimsy Florals', cat: 'Florals', icon: '🌿' },
+      { name: 'Encore Events DJ', cat: 'Entertainment', icon: '🎵' },
+    ];
+    const FEED_TIMES = ['Just now', '2m ago', '5m ago', '8m ago', '12m ago', '15m ago'];
+    const FEED_LOCATIONS = ['Brunswick', 'Fitzroy', 'South Yarra', 'Richmond', 'St Kilda', 'Toorak', 'Hawthorn', 'Collingwood', 'Prahran', 'Northcote'];
+    let feedCount = 0;
+    let enqTotal = Math.floor(Math.random() * 40) + 60;
+
+    function createFeedCard(vendor, timeLabel) {
+      const card = document.createElement('div');
+      card.className = 'enq-card';
+      const location = FEED_LOCATIONS[Math.floor(Math.random() * FEED_LOCATIONS.length)];
+      card.innerHTML = `
+        <div class="enq-card-icon">${vendor.icon}</div>
+        <div class="enq-card-body">
+          <p class="enq-card-label">New enquiry</p>
+          <p class="enq-card-vendor">${vendor.name}</p>
+          <p class="enq-card-meta">${vendor.cat} · ${location}</p>
+        </div>
+        <div class="enq-card-time">${timeLabel}</div>`;
+      return card;
+    }
+
+    function initFeed() {
+      const feed = document.getElementById('enqFeed');
+      const counter = document.getElementById('enqCount');
+      if (!feed || !counter) return;
+
+      // Seed with 4 existing cards
+      const shuffled = [...FEED_VENDORS].sort(() => Math.random() - 0.5);
+      for (let i = 0; i < 4; i++) {
+        const card = createFeedCard(shuffled[i], FEED_TIMES[i + 1]);
+        feed.appendChild(card);
+        setTimeout(() => card.classList.add('visible'), i * 200);
+      }
+
+      // Animate counter up
+      let c = 0;
+      const target = enqTotal;
+      const step = Math.ceil(target / 40);
+      const counterInterval = setInterval(() => {
+        c = Math.min(c + step, target);
+        counter.textContent = c;
+        if (c >= target) clearInterval(counterInterval);
+      }, 40);
+
+      // Add new cards periodically
+      setInterval(() => {
+        const vendor = FEED_VENDORS[Math.floor(Math.random() * FEED_VENDORS.length)];
+        const card = createFeedCard(vendor, 'Just now');
+        feed.insertBefore(card, feed.firstChild);
+
+        // Update existing card times
+        feed.querySelectorAll('.enq-card-time').forEach((el, i) => {
+          if (i > 0) el.textContent = FEED_TIMES[Math.min(i, FEED_TIMES.length - 1)];
+        });
+
+        setTimeout(() => card.classList.add('visible'), 50);
+
+        // Fade and remove oldest if more than 5
+        const cards = feed.querySelectorAll('.enq-card');
+        if (cards.length > 5) {
+          const oldest = cards[cards.length - 1];
+          oldest.classList.add('fading');
+          setTimeout(() => oldest.remove(), 600);
+        }
+
+        // Increment counter
+        enqTotal++;
+        counter.textContent = enqTotal;
+      }, 3500);
+    }
+
+    // Init feed when vendors tab is shown
+    const _origShowSection = showSection;
+    function showSection(sec, tabEl) {
+      _origShowSection(sec, tabEl);
+      if (sec === 'vendors' && !window._feedInited) {
+        window._feedInited = true;
+        setTimeout(initFeed, 400);
+      }
+    }
+
   </script>
 </body>
 </html>
