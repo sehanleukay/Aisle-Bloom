@@ -489,18 +489,14 @@
     .flip-card:hover .flip-card-inner, .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
     .flip-card-front, .flip-card-back { position: absolute; inset: 0; border-radius: 20px; backface-visibility: hidden; -webkit-backface-visibility: hidden; padding: 2rem; display: flex; flex-direction: column; }
     .flip-card-front {
-      background: rgba(255,248,238,0.12);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(196,160,82,0.3);
-      box-shadow: 0 8px 40px rgba(44,40,30,0.12), inset 0 1px 0 rgba(255,255,255,0.15);
+      background: white;
+      border: 0.5px solid var(--border);
+      box-shadow: 0 4px 20px rgba(44,40,30,0.06);
     }
     .flip-card-front.featured-front {
-      background: rgba(46,42,30,0.82);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(196,160,82,0.5);
-      box-shadow: 0 8px 40px rgba(44,40,30,0.25), inset 0 1px 0 rgba(196,160,82,0.2);
+      background: var(--charcoal);
+      border: 1.5px solid var(--dusty-rose);
+      box-shadow: 0 4px 20px rgba(44,40,30,0.15);
     }
     .flip-card-back {
       background: rgba(46,42,30,0.9);
@@ -726,11 +722,11 @@
 
   <!-- ══ PRICING ══ -->
   <div id="sec-pricing" style="display:none">
-    <section class="section pricing-section pricing-section-bg">
+    <section class="section pricing-section">
       <div class="section-inner">
-        <p class="section-eyebrow" style="color:var(--gold);">Simple, honest pricing</p>
-        <h2 class="section-title" style="color:#fffaf0;">Free to browse.<br><em style="color:var(--gold);">Pay once to plan.</em></h2>
-        <p class="section-sub" style="color:rgba(245,240,232,0.6);">No subscriptions. No renewals. Browse every vendor for free — unlock your live budget tracker with a single one-off payment.</p>
+        <p class="section-eyebrow">Simple, honest pricing</p>
+        <h2 class="section-title">Free to browse.<br><em>Pay once to plan.</em></h2>
+        <p class="section-sub">No subscriptions. No renewals. Browse every vendor for free — unlock your live budget tracker with a single one-off payment.</p>
         <div class="flip-cards">
 
           <!-- Free Card -->
