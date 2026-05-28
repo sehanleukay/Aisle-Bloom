@@ -535,6 +535,231 @@
     .enq-counter { background: var(--blush); border: 0.5px solid var(--border); border-radius: 12px; padding: 14px 16px; text-align: center; margin-top: 0.5rem; }
     .enq-counter-num { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 600; color: var(--charcoal); line-height: 1; }
     .enq-counter-lbl { font-size: 11px; color: var(--mid); letter-spacing: 0.08em; margin-top: 4px; }
+
+
+    /* ── REFINED DESIGN SYSTEM ── */
+
+    /* Smoother tab transitions */
+    .sec-transition {
+      animation: secFadeUp 0.45s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    @keyframes secFadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* Gold section divider */
+    .gold-divider {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 2rem;
+      opacity: 0.6;
+    }
+
+    /* Enhanced section titles */
+    .section-eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--dusty-rose);
+      margin-bottom: 0.6rem;
+      font-weight: 500;
+      text-align: center;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(30px, 4vw, 48px);
+      font-weight: 300;
+      text-align: center;
+      color: var(--charcoal);
+      margin-bottom: 0.75rem;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+    .section-sub {
+      text-align: center;
+      font-size: 15px;
+      color: var(--mid);
+      max-width: 460px;
+      margin: 0 auto 1rem;
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    /* Enhanced vendor cards */
+    .vcard {
+      background: white;
+      border: 0.5px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease, border-color 0.2s;
+    }
+    .vcard:hover {
+      border-color: rgba(196,160,82,0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(44,40,30,0.1);
+    }
+    .vcard-body { padding: 1.25rem 1.35rem 1.35rem; }
+    .vcard-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 6px;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+    .vcard-banner { height: 220px; }
+
+    /* Enhanced step cards */
+    .step {
+      text-align: center;
+      padding: 2.5rem 1.75rem;
+      background: var(--warm-white);
+      border-radius: 20px;
+      border: 0.5px solid var(--border);
+      transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease, border-color 0.2s;
+    }
+    .step:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(44,40,30,0.08);
+      border-color: rgba(196,160,82,0.35);
+    }
+
+    /* Enhanced page tabs */
+    .ptab {
+      flex-shrink: 0;
+      padding: 1rem 1.75rem;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--mid);
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.25s;
+      font-family: 'Jost', sans-serif;
+      text-transform: uppercase;
+    }
+    .ptab.active { color: var(--charcoal); border-bottom-color: var(--gold); }
+    .ptab:hover { color: var(--charcoal); }
+
+    /* Enhanced nav */
+    nav {
+      height: 72px;
+      border-bottom: 0.5px solid rgba(196,160,82,0.25);
+    }
+
+    /* Gold dividers between major sections */
+    .section-gold-rule {
+      width: 100%;
+      height: 0.5px;
+      background: linear-gradient(to right, transparent, rgba(196,160,82,0.3), transparent);
+      margin: 0;
+    }
+
+    /* Tighter testimonial cards */
+    .tcard {
+      background: white;
+      border: 0.5px solid var(--border);
+      border-radius: 20px;
+      padding: 1.75rem;
+      transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease;
+    }
+    .tcard:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(44,40,30,0.07);
+    }
+
+    /* Enhanced vendor button */
+    .vcard-btn {
+      display: block;
+      width: 100%;
+      margin-top: 12px;
+      padding: 10px;
+      text-align: center;
+      border: 0.5px solid var(--border-strong);
+      border-radius: 999px;
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      background: transparent;
+      color: var(--charcoal);
+      cursor: pointer;
+      transition: all 0.2s;
+      text-transform: uppercase;
+    }
+    .vcard-btn:hover { background: var(--charcoal); color: var(--cream); border-color: var(--charcoal); }
+
+
+    /* ── BACKGROUND PATTERNS ── */
+
+    /* Grain texture overlay on entire page */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.028;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23grain)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 300px 300px;
+    }
+
+    /* Botanical SVG pattern for cream/blush sections */
+    .pattern-bg {
+      position: relative;
+    }
+    .pattern-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.045;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cg fill='none' stroke='%232e2a1e' stroke-width='0.8'%3E%3C!-- Main stem --%3E%3Cpath d='M60 110 Q55 85 60 60 Q65 35 60 10' /%3E%3C!-- Left branch --%3E%3Cpath d='M60 80 Q45 72 35 65' /%3E%3Cpath d='M35 65 Q30 58 28 50' /%3E%3C!-- Left leaf --%3E%3Cpath d='M35 65 Q22 60 20 50 Q25 55 35 65' /%3E%3C!-- Right branch --%3E%3Cpath d='M60 68 Q75 60 85 53' /%3E%3C!-- Right leaf --%3E%3Cpath d='M85 53 Q98 48 100 38 Q92 45 85 53' /%3E%3C!-- Upper left branch --%3E%3Cpath d='M60 45 Q48 38 40 30' /%3E%3C!-- Upper left leaf --%3E%3Cpath d='M40 30 Q28 25 26 15 Q33 22 40 30' /%3E%3C!-- Upper right branch --%3E%3Cpath d='M60 35 Q72 28 80 20' /%3E%3C!-- Upper right leaf --%3E%3Cpath d='M80 20 Q92 15 94 5 Q86 12 80 20' /%3E%3C!-- Small berries --%3E%3Ccircle cx='28' cy='49' r='2.5' stroke-width='0.6'/%3E%3Ccircle cx='100' cy='37' r='2.5' stroke-width='0.6'/%3E%3Ccircle cx='26' cy='14' r='2' stroke-width='0.6'/%3E%3Ccircle cx='94' cy='4' r='2' stroke-width='0.6'/%3E%3C!-- Small flower at top --%3E%3Ccircle cx='60' cy='10' r='3' stroke-width='0.7'/%3E%3Cpath d='M57 7 Q60 2 63 7' stroke-width='0.6'/%3E%3Cpath d='M63 10 Q68 8 65 13' stroke-width='0.6'/%3E%3Cpath d='M57 13 Q52 11 55 7' stroke-width='0.6'/%3E%3C/g%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 120px 120px;
+    }
+    .pattern-bg > * { position: relative; z-index: 1; }
+
+    /* Diamond grid for dark/charcoal sections */
+    .pattern-dark {
+      position: relative;
+    }
+    .pattern-dark::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.06;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M20 2 L38 20 L20 38 L2 20 Z' fill='none' stroke='%23c4a052' stroke-width='0.5'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 40px 40px;
+    }
+    .pattern-dark > * { position: relative; z-index: 1; }
+
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KR0Q3TS3TL"></script>
   <script>
@@ -603,24 +828,26 @@
       </div>
     </section>
 
-    <section class="section" style="background:#f7f0e4;">
+    <section class="section pattern-bg" style="background:#f7f0e4;">
       <div class="section-inner">
-        <p class="section-eyebrow">How it works</p>
-        <h2 class="section-title">Planning made <em>simple</em></h2>
+        <p class="section-eyebrow reveal">How it works</p>
+        <h2 class="section-title reveal reveal-delay-1">Planning made <em>simple</em></h2>
+        <div class="gold-divider reveal reveal-delay-2"></div>
         <p class="section-sub">From discovery to booking, we make finding the right vendors effortless.</p>
         <div class="steps">
-          <div class="step"><div class="step-num">01</div><h3>Browse</h3><p>Explore verified vendors across every category. Filter by style, location, and availability.</p></div>
-          <div class="step"><div class="step-num">02</div><h3>Shortlist</h3><p>Save your favourites, compare pricing, and read real reviews from couples like you.</p></div>
-          <div class="step"><div class="step-num">03</div><h3>Enquire</h3><p>Contact vendors directly from their profile. No middlemen, no hidden fees.</p></div>
-          <div class="step"><div class="step-num">04</div><h3>Track</h3><p>Unlock the budget tracker to manage deposits, payments, and spending in one place.</p></div>
+          <div class="step reveal reveal-delay-1"><div class="step-num">01</div><h3>Browse</h3><p>Explore verified vendors across every category. Filter by style, location, and availability.</p></div>
+          <div class="step reveal reveal-delay-2"><div class="step-num">02</div><h3>Shortlist</h3><p>Save your favourites, compare pricing, and read real reviews from couples like you.</p></div>
+          <div class="step reveal reveal-delay-3"><div class="step-num">03</div><h3>Enquire</h3><p>Contact vendors directly from their profile. No middlemen, no hidden fees.</p></div>
+          <div class="step reveal reveal-delay-4"><div class="step-num">04</div><h3>Track</h3><p>Unlock the budget tracker to manage deposits, payments, and spending in one place.</p></div>
         </div>
       </div>
     </section>
 
-    <section class="section gallery-section">
+    <section class="section gallery-section pattern-bg">
       <div class="section-inner">
-        <p class="section-eyebrow">Real weddings</p>
-        <h2 class="section-title">Inspiration from <em>our vendors</em></h2>
+        <p class="section-eyebrow reveal">Real weddings</p>
+        <h2 class="section-title reveal reveal-delay-1">Inspiration from <em>our vendors</em></h2>
+        <div class="gold-divider reveal reveal-delay-2"></div>
         <p class="section-sub">A glimpse of the beautiful moments captured by our Melbourne vendors.</p>
         <div class="gallery-grid">
           <div class="gallery-item"><img src="images/Ceromony1.jpg" alt="Wedding photo 1"><div class="gallery-overlay"><div class="gallery-overlay-line"></div><span class="gallery-overlay-label">Photography</span><span class="gallery-overlay-sub">Browse vendors</span></div></div>
@@ -631,27 +858,29 @@
       </div>
     </section>
 
-    <section class="section cats-section">
+    <section class="section cats-section pattern-bg">
       <div class="section-inner">
-        <p class="section-eyebrow">Browse by category</p>
-        <h2 class="section-title">Everything your <em>day needs</em></h2>
+        <p class="section-eyebrow reveal">Browse by category</p>
+        <h2 class="section-title reveal reveal-delay-1">Everything your <em>day needs</em></h2>
+        <div class="gold-divider reveal reveal-delay-2"></div>
         <p class="section-sub">From the ceremony to the dance floor, we have every vendor covered.</p>
         <div class="cat-grid" id="catGrid"></div>
       </div>
     </section>
 
-    <section class="section testimonials-section">
+    <section class="section testimonials-section pattern-bg">
       <div class="section-inner">
-        <p class="section-eyebrow">Couples love us</p>
-        <h2 class="section-title">Real stories from <em>real weddings</em></h2>
+        <p class="section-eyebrow reveal">Couples love us</p>
+        <h2 class="section-title reveal reveal-delay-1">Real stories from <em>real weddings</em></h2>
+        <div class="gold-divider reveal reveal-delay-2"></div>
         <p class="section-sub">Over 500 couples have used Aisle &amp; Bloom to plan their perfect day.</p>
         <div class="testimonials-grid">
-          <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-quote">"We found our photographer, florist, and caterer all in one afternoon. Having everything in one place made the whole process so much less overwhelming."</p><p class="tcard-author"><strong>Sophie &amp; James</strong> · Married March 2026</p></div>
-          <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-quote">"The availability badges were a game changer. We didn't waste a single enquiry on a vendor who couldn't do our date — saved us so much back and forth."</p><p class="tcard-author"><strong>Mia &amp; Tom</strong> · Married January 2026</p></div>
-          <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-quote">"I was dreading the vendor search but Aisle & Bloom made it actually enjoyable. Found our florist within 20 minutes and she was exactly what we were after."</p><p class="tcard-author"><strong>Priya &amp; Daniel</strong> · Married November 2025</p></div>
-          <div class="tcard"><div class="tcard-stars">★★★★☆</div><p class="tcard-quote">"Really love that it's Melbourne-specific. Every vendor we contacted actually knew the venues we were considering. So much better than generic national directories."</p><p class="tcard-author"><strong>Lauren &amp; Chris</strong> · Married February 2026</p></div>
-          <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-quote">"We booked our photographer and cake maker through here. Both were incredible on the day. The enquiry form made it so easy — heard back within a few hours each time."</p><p class="tcard-author"><strong>Amelia &amp; Ben</strong> · Married April 2026</p></div>
-          <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-quote">"As someone who had no idea where to start, this site was a lifesaver. The categories made it easy to work through everything one step at a time. Highly recommend."</p><p class="tcard-author"><strong>Jess &amp; Marcus</strong> · Married December 2025</p></div>
+          <div class="tcard reveal reveal-delay-1"><div class="tcard-stars">★★★★★</div><p class="tcard-quote">"We found our photographer, florist, and caterer all in one afternoon. Having everything in one place made the whole process so much less overwhelming."</p><p class="tcard-author"><strong>Sophie &amp; James</strong> · Married March 2026</p></div>
+          <div class="tcard reveal reveal-delay-2"><div class="tcard-stars">★★★★★</div><p class="tcard-quote">"The availability badges were a game changer. We didn't waste a single enquiry on a vendor who couldn't do our date — saved us so much back and forth."</p><p class="tcard-author"><strong>Mia &amp; Tom</strong> · Married January 2026</p></div>
+          <div class="tcard reveal reveal-delay-3"><div class="tcard-stars">★★★★★</div><p class="tcard-quote">"I was dreading the vendor search but Aisle & Bloom made it actually enjoyable. Found our florist within 20 minutes and she was exactly what we were after."</p><p class="tcard-author"><strong>Priya &amp; Daniel</strong> · Married November 2025</p></div>
+          <div class="tcard reveal reveal-delay-4"><div class="tcard-stars">★★★★☆</div><p class="tcard-quote">"Really love that it's Melbourne-specific. Every vendor we contacted actually knew the venues we were considering. So much better than generic national directories."</p><p class="tcard-author"><strong>Lauren &amp; Chris</strong> · Married February 2026</p></div>
+          <div class="tcard reveal reveal-delay-1"><div class="tcard-stars">★★★★★</div><p class="tcard-quote">"We booked our photographer and cake maker through here. Both were incredible on the day. The enquiry form made it so easy — heard back within a few hours each time."</p><p class="tcard-author"><strong>Amelia &amp; Ben</strong> · Married April 2026</p></div>
+          <div class="tcard reveal reveal-delay-2"><div class="tcard-stars">★★★★★</div><p class="tcard-quote">"As someone who had no idea where to start, this site was a lifesaver. The categories made it easy to work through everything one step at a time. Highly recommend."</p><p class="tcard-author"><strong>Jess &amp; Marcus</strong> · Married December 2025</p></div>
         </div>
       </div>
     </section>
@@ -688,12 +917,12 @@
   <!-- ══ DIRECTORY ══ -->
   <div id="sec-directory" style="display:none">
     <!-- Directory Hero Strip -->
-    <div style="position:relative;height:280px;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+    <div style="position:relative;min-height:300px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:3rem 2rem;">
       <div style="position:absolute;inset:0;background:url('images/Hero1.jpg') center center / cover no-repeat;"></div>
       <div style="position:absolute;inset:0;background:rgba(44,40,30,0.35);"></div>
       <div style="position:relative;z-index:2;width:100%;max-width:660px;margin:0 auto;padding:0 2rem;text-align:center;">
-        <div style="background:rgba(255,235,190,0.06);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(210,175,90,0.4);border-radius:20px;padding:2rem 2.5rem;">
-          <p style="font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:#fff;font-weight:500;margin-bottom:0.75rem;text-shadow:0 1px 8px rgba(30,15,0,0.5);">Melbourne's wedding vendor directory</p>
+        <div style="background:rgba(30,15,5,0.45);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(210,175,90,0.45);border-radius:28px;box-shadow:0 8px 48px rgba(80,40,10,0.25);padding:2.5rem 3rem;">
+          <p style="font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:#ffffff;font-weight:600;margin-bottom:0.75rem;text-shadow:0 2px 16px rgba(0,0,0,0.8);">Melbourne's wedding vendor directory</p>
           <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,46px);font-weight:300;color:#fffaf0;text-shadow:0 2px 16px rgba(60,30,5,0.4);margin-bottom:1.25rem;line-height:1.1;">Find your <em style="font-style:italic;color:#c4a052;">perfect vendors</em></h1>
           <div style="position:relative;">
             <input type="text" class="dir-search" id="searchInput" placeholder="Search by name, style, location..." oninput="filterVendors()"
@@ -743,14 +972,14 @@
   <div id="sec-pricing" style="display:none">
 
     <!-- Pricing Hero Strip -->
-    <div style="position:relative;min-height:420px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:3rem 2rem;">
+    <div style="position:relative;min-height:300px;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:3rem 2rem;">
       <div style="position:absolute;inset:0;background:url('images/Hero1.jpg') center 40% / cover no-repeat;"></div>
       <div style="position:absolute;inset:0;background:rgba(44,40,30,0.42);"></div>
       <div style="position:relative;z-index:2;width:100%;max-width:700px;margin:0 auto;text-align:center;">
-        <div style="background:rgba(255,235,190,0.06);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(210,175,90,0.4);border-radius:20px;padding:2.5rem 3rem;">
+        <div style="background:rgba(30,15,5,0.45);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(210,175,90,0.45);border-radius:28px;box-shadow:0 8px 48px rgba(80,40,10,0.25);padding:2.5rem 3rem;">
 
           <!-- Heading -->
-          <p style="font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:#fff;font-weight:500;margin-bottom:0.5rem;text-shadow:0 1px 8px rgba(30,15,0,0.5);">Simple, honest pricing</p>
+          <p style="font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:#ffffff;font-weight:600;margin-bottom:0.5rem;text-shadow:0 2px 16px rgba(0,0,0,0.8);">Simple, honest pricing</p>
           <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,46px);font-weight:300;color:#fffaf0;text-shadow:0 2px 16px rgba(60,30,5,0.4);margin-bottom:0.5rem;line-height:1.1;">Free to browse.<br><em style="font-style:italic;color:#c4a052;">Pay once to plan.</em></h1>
           <p style="font-size:13px;color:rgba(255,245,220,0.75);margin-bottom:1.75rem;line-height:1.6;">No subscriptions. No renewals. Browse every vendor for free — unlock your live budget tracker with a single one-off payment.</p>
 
@@ -779,7 +1008,7 @@
       </div>
     </div>
 
-    <section class="section pricing-section">
+    <section class="section pricing-section pattern-bg">
       <div class="section-inner">
         <div class="flip-cards">
 
@@ -942,7 +1171,7 @@
 
   <!-- ══ FOR VENDORS ══ -->
   <div id="sec-vendors" style="display:none">
-    <section class="section vendor-section">
+    <section class="section vendor-section pattern-bg">
       <div class="vendor-inner">
         <div class="vendor-copy">
           <p class="section-eyebrow" style="text-align:left">For wedding vendors</p>
@@ -1007,7 +1236,7 @@
 
   <!-- ══ FAQ ══ -->
   <div id="sec-faq" style="display:none">
-    <section class="section faq-section" style="min-height:70vh;">
+    <section class="section faq-section pattern-bg" style="min-height:70vh;">
       <div class="section-inner">
         <p class="section-eyebrow">Questions</p>
         <h2 class="section-title">Common <em>questions</em></h2>
@@ -1035,7 +1264,7 @@
   <div class="toast" id="toast"></div>
 
   <!-- FOOTER -->
-  <footer>
+  <footer class="pattern-dark">
     <div class="footer-inner">
       <div class="footer-top">
         <div class="footer-brand">
@@ -1112,16 +1341,21 @@
 
     function showSection(sec, tabEl) {
       ['home','directory','pricing','vendors','faq'].forEach(s => {
-        document.getElementById('sec-' + s).style.display = s === sec ? 'block' : 'none';
+        const el = document.getElementById('sec-' + s);
+        if (s === sec) {
+          el.style.display = 'block';
+          el.classList.remove('sec-transition');
+          void el.offsetWidth;
+          el.classList.add('sec-transition');
+        } else {
+          el.style.display = 'none';
+        }
       });
       document.querySelectorAll('.ptab').forEach(t => t.classList.remove('active'));
       if (tabEl) tabEl.classList.add('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
       if (sec === 'directory') filterVendors();
-      if (sec === 'budget') {
-        // If user is logged in, re-render; otherwise the locked screen is already showing
-
-      }
+      setTimeout(initReveal, 100);
     }
 
     function filterAndGo(cat) {
@@ -1534,6 +1768,29 @@
       document.getElementById('calcInput').value = slider.value;
       updateCalc();
     }
+
+
+    /* ── SCROLL REVEAL ── */
+    function initReveal() {
+      const els = document.querySelectorAll('.reveal:not(.visible)');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            observer.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      els.forEach(el => observer.observe(el));
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initReveal();
+      // Apply sec-transition to initial home section
+      const home = document.getElementById('sec-home');
+      if (home) { home.classList.add('sec-transition'); }
+    });
+
 
   </script>
 </body>
