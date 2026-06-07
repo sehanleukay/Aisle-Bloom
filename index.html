@@ -1288,7 +1288,7 @@
 
     <!-- Hero Strip + How it works on single image -->
     <div style="position:relative;overflow:hidden;">
-      <div style="position:absolute;inset:0;background:url('images/Ring1.jpg') center 30% / cover no-repeat;"></div>
+      <div style="position:absolute;inset:0;background:url('images/Ring1.jpg') center 70% / cover no-repeat;"></div>
       <div style="position:absolute;inset:0;background:rgba(44,40,30,0.35);"></div>
 
       <!-- Hero text -->
@@ -1533,6 +1533,7 @@
       if (sort === 'rating') filtered.sort((a, b) => b.rating - a.rating);
       else if (sort === 'name') filtered.sort((a, b) => a.name.localeCompare(b.name));
       else if (sort === 'available') filtered.sort((a, b) => (a.availability === 'available' ? -1 : 1));
+      else filtered.sort((a, b) => (b.gallery && b.gallery.length ? 1 : 0) - (a.gallery && a.gallery.length ? 1 : 0));
 
       document.getElementById('statTotal').textContent = filtered.length;
       document.getElementById('vendorGrid').innerHTML = filtered.length === 0
