@@ -317,6 +317,9 @@
     .fbtn { padding: 7px 16px; border: 0.5px solid var(--border); border-radius: 999px; font-family: 'Jost', sans-serif; font-size: 12px; font-weight: 400; letter-spacing: 0.04em; background: white; color: var(--mid); cursor: pointer; transition: all 0.15s; }
     .fbtn:hover { border-color: var(--border-strong); color: var(--charcoal); }
     .fbtn.active { background: var(--charcoal); color: var(--cream); border-color: var(--charcoal); }
+    .fbtn-loc { padding: 6px 14px; border: 0.5px solid var(--border); border-radius: 999px; font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 400; letter-spacing: 0.04em; background: white; color: var(--mid); cursor: pointer; transition: all 0.15s; }
+    .fbtn-loc:hover { border-color: var(--border-strong); color: var(--charcoal); }
+    .fbtn-loc.active { background: var(--dusty-rose); color: white; border-color: var(--dusty-rose); }
     .dir-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 2rem; }
     .dstat { background: var(--blush); border-radius: 10px; padding: 0.875rem; text-align: center; }
     .dstat-num { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; color: var(--charcoal); }
@@ -971,6 +974,15 @@
           <button class="fbtn" onclick="setFilter('Transport',this)">Transport</button>
           <button class="fbtn" onclick="setFilter('Jewellery',this)">Jewellery</button>
         </div>
+        <div class="dir-filters" style="margin-top:-0.75rem;">
+          <button class="fbtn-loc active" onclick="setLocFilter('All',this)">All cities</button>
+          <button class="fbtn-loc" onclick="setLocFilter('Melbourne',this)">Melbourne</button>
+          <button class="fbtn-loc" onclick="setLocFilter('Sydney',this)">Sydney</button>
+          <button class="fbtn-loc" onclick="setLocFilter('Brisbane',this)">Brisbane</button>
+          <button class="fbtn-loc" onclick="setLocFilter('Darwin',this)">Darwin</button>
+          <button class="fbtn-loc" onclick="setLocFilter('Tasmania',this)">Tasmania</button>
+          <button class="fbtn-loc" onclick="setLocFilter('Adelaide',this)">Adelaide</button>
+        </div>
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:10px;">
           <div style="display:flex;align-items:baseline;gap:8px;">
             <span id="statTotal" style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--charcoal);">15</span>
@@ -1483,6 +1495,7 @@
     ];
 
     let activeFilter = 'All';
+    let activeLocFilter = 'All';
 
     function showSection(sec, tabEl) {
       ['home','directory','pricing','vendors','faq','rings'].forEach(s => {
@@ -1520,13 +1533,21 @@
       filterVendors();
     }
 
+    function setLocFilter(loc, el) {
+      activeLocFilter = loc;
+      document.querySelectorAll('.fbtn-loc').forEach(b => b.classList.remove('active'));
+      el.classList.add('active');
+      filterVendors();
+    }
+
     function filterVendors() {
       const searchEl = document.getElementById('searchInput');
       const s = searchEl ? searchEl.value.toLowerCase() : '';
       const filtered = vendors.filter(v => {
         const mc = activeFilter === 'All' || v.cat === activeFilter;
+        const ml = activeLocFilter === 'All' || v.location === activeLocFilter;
         const ms = !s || v.name.toLowerCase().includes(s) || v.cat.toLowerCase().includes(s) || v.style.some(x => x.toLowerCase().includes(s)) || v.location.toLowerCase().includes(s);
-        return mc && ms;
+        return mc && ml && ms;
       });
       // Sort
       const sort = document.getElementById('sortSelect') ? document.getElementById('sortSelect').value : 'default';
