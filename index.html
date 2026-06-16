@@ -1213,20 +1213,45 @@
           <p class="section-eyebrow" style="text-align:left">For wedding vendors</p>
           <h2>Reach couples <em>already planning</em></h2>
           <p>Aisle &amp; Bloom connects you with engaged couples who are actively searching for vendors in your category. No cold outreach — just warm leads from people ready to book.</p>
-          <div style="background:white;border:0.5px solid var(--border);border-radius:16px;padding:1.5rem;margin:1.5rem 0;">
-            <p style="font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--dusty-rose);margin-bottom:0.75rem;">Vendor listing</p>
-            <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:0.25rem;">
-              <span style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;color:var(--charcoal);">First month free</span>
+          <!-- Pricing tiers -->
+          <div style="margin:1.5rem 0;display:flex;flex-direction:column;gap:1rem;">
+
+            <!-- Basic -->
+            <div style="background:white;border:0.5px solid var(--border);border-radius:16px;padding:1.5rem;position:relative;">
+              <p style="font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--dusty-rose);margin-bottom:0.75rem;">Basic — Metro Region</p>
+              <div style="display:flex;align-items:baseline;gap:6px;margin-bottom:0.25rem;">
+                <span style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;color:var(--charcoal);">$119</span>
+                <span style="font-size:13px;color:var(--mid);">/month</span>
+              </div>
+              <p style="font-size:13px;color:var(--mid);margin-bottom:1rem;">Cancel anytime, no lock-in.</p>
+              <ul class="vendor-perks">
+                <li><span class="perk-dot"></span>Featured listing visible to Melbourne metro couples</li>
+                <li><span class="perk-dot"></span>Gallery with photos, pricing, and reviews</li>
+                <li><span class="perk-dot"></span>Direct enquiries — no commissions on bookings</li>
+                <li><span class="perk-dot"></span>Availability badge so only available-date couples enquire</li>
+                <li><span class="perk-dot"></span>Update your profile, pricing and photos anytime</li>
+              </ul>
             </div>
-            <p style="font-size:13px;color:var(--mid);margin-bottom:1rem;">$89/month — cancel anytime, no lock-in.</p>
-            <ul class="vendor-perks">
-              <li><span class="perk-dot"></span>Featured listing in your category with photos, pricing, and reviews</li>
-              <li><span class="perk-dot"></span>Direct enquiries from couples — no commissions on bookings</li>
-              <li><span class="perk-dot"></span>Enquiry management dashboard to track and respond to leads</li>
-              <li><span class="perk-dot"></span>Availability badge so only available-date couples enquire</li>
-              <li><span class="perk-dot"></span>Update your profile, pricing and photos anytime</li>
-              <li><span class="perk-dot"></span>Listed on a platform trusted by 500+ Melbourne couples</li>
-            </ul>
+
+            <!-- Premium -->
+            <div style="background:linear-gradient(135deg,#2e2a1e 0%,#1a1710 100%);border:0.5px solid rgba(220,175,70,0.35);border-radius:16px;padding:1.5rem;position:relative;">
+              <div style="position:absolute;top:1.25rem;right:1.25rem;background:var(--gold);color:#1a1710;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:3px 10px;border-radius:20px;">Most popular</div>
+              <p style="font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;">Premium — Statewide</p>
+              <div style="display:flex;align-items:baseline;gap:6px;margin-bottom:0.25rem;">
+                <span style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;color:#fffaf0;">$189</span>
+                <span style="font-size:13px;color:rgba(255,245,240,0.6);">/month</span>
+              </div>
+              <p style="font-size:13px;color:rgba(255,245,240,0.6);margin-bottom:1rem;">Cancel anytime, no lock-in.</p>
+              <ul class="vendor-perks">
+                <li><span class="perk-dot" style="background:var(--gold);"></span><span style="color:rgba(255,245,240,0.85);">Listing visible to couples across all of Victoria</span></li>
+                <li><span class="perk-dot" style="background:var(--gold);"></span><span style="color:rgba(255,245,240,0.85);">Gallery with photos, pricing, and reviews</span></li>
+                <li><span class="perk-dot" style="background:var(--gold);"></span><span style="color:rgba(255,245,240,0.85);">Direct enquiries — no commissions on bookings</span></li>
+                <li><span class="perk-dot" style="background:var(--gold);"></span><span style="color:rgba(255,245,240,0.85);">Availability badge so only available-date couples enquire</span></li>
+                <li><span class="perk-dot" style="background:var(--gold);"></span><span style="color:rgba(255,245,240,0.85);">Priority placement above Basic listings in search results</span></li>
+                <li><span class="perk-dot" style="background:var(--gold);"></span><span style="color:rgba(255,245,240,0.85);">Update your profile, pricing and photos anytime</span></li>
+              </ul>
+            </div>
+
           </div>
           <div id="vendorAppForm">
             <p style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--charcoal);margin:1.5rem 0 1rem;">Apply to be listed</p>
@@ -1241,8 +1266,14 @@
             <input type="email" id="vaf-email" placeholder="Email address" class="enq-input">
             <input type="text" id="vaf-website" placeholder="Website or Instagram" class="enq-input">
             <textarea id="vaf-message" placeholder="Tell us about your business..." class="enq-input" rows="3" style="resize:vertical;"></textarea>
-            <button class="btn-primary" id="vafBtn" onclick="submitVendorApp()" style="width:100%;margin-top:0.5rem;">Apply &amp; subscribe — $89/month</button>
-            <p style="font-size:11px;color:var(--light);margin-top:0.75rem;">We review all applications within 48 hours. $89/month subscription. Cancel anytime.</p>
+            <!-- Tier selector -->
+            <div style="display:flex;gap:0.5rem;margin-bottom:1rem;">
+              <button id="tierBasic" onclick="selectTier('basic')" style="flex:1;padding:0.65rem;border-radius:10px;border:1.5px solid var(--border);background:white;font-size:12px;font-weight:600;color:var(--charcoal);cursor:pointer;transition:all 0.2s;">Basic — $119/mo</button>
+              <button id="tierPremium" onclick="selectTier('premium')" style="flex:1;padding:0.65rem;border-radius:10px;border:1.5px solid var(--gold);background:var(--gold);font-size:12px;font-weight:600;color:#1a1710;cursor:pointer;transition:all 0.2s;">Premium — $189/mo</button>
+            </div>
+            <input type="hidden" id="vaf-tier" value="premium">
+            <button class="btn-primary" id="vafBtn" onclick="submitVendorApp()" style="width:100%;margin-top:0.5rem;">Apply &amp; subscribe</button>
+            <p style="font-size:11px;color:var(--light);margin-top:0.75rem;">We review all applications within 48 hours. Cancel anytime.</p>
 
             <!-- Cancellation info -->
             <div style="margin-top:1.5rem;padding:1.25rem 1.5rem;background:var(--blush);border-radius:12px;border:0.5px solid var(--border);">
@@ -1288,7 +1319,7 @@
           <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How do I contact a vendor? <span class="faq-ch">▾</span></button><div class="faq-a"><div class="faq-a-inner">Simply click on any vendor card, fill in your name, phone number and email, and hit Send Enquiry. Your details go directly to the vendor and to our team.</div></div></div>
           <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Are all vendors based in Melbourne? <span class="faq-ch">▾</span></button><div class="faq-a"><div class="faq-a-inner">Yes. Every vendor listed on Aisle &amp; Bloom is based in or services the Greater Melbourne area. We manually review each application before anyone is listed.</div></div></div>
           <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What do the availability badges mean? <span class="faq-ch">▾</span></button><div class="faq-a"><div class="faq-a-inner">Each vendor card shows one of three badges — Available, Limited Dates, or Booked. These are updated by vendors so you can quickly see who is free for your date before reaching out.</div></div></div>
-          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How do I list my business on Aisle &amp; Bloom? <span class="faq-ch">▾</span></button><div class="faq-a"><div class="faq-a-inner">Head to the For Vendors tab and fill in the short application form. We review all applications within 48 hours. Your first month is free — then $89/month with no lock-in.</div></div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How do I list my business on Aisle &amp; Bloom? <span class="faq-ch">▾</span></button><div class="faq-a"><div class="faq-a-inner">Head to the For Vendors tab and fill in the short application form. We review all applications within 48 hours. Choose from $119/month (Basic, Metro) or $189/month (Premium, Statewide) with no lock-in.</div></div></div>
           <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is there a commission on bookings? <span class="faq-ch">▾</span></button><div class="faq-a"><div class="faq-a-inner">No. We never take a commission on any booking. All payment arrangements are made directly between you and your couples.</div></div></div>
           <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How do I get in touch? <span class="faq-ch">▾</span></button><div class="faq-a"><div class="faq-a-inner">You can reach us anytime at <a href="mailto:infoaislebloom@gmail.com" style="color:var(--deep-rose);">infoaislebloom@gmail.com</a>. We typically respond within 24 hours Monday to Friday.</div></div></div>
         </div>
@@ -1733,6 +1764,19 @@
 
     filterVendors();
 
+    function selectTier(tier) {
+      const basic = document.getElementById('tierBasic');
+      const premium = document.getElementById('tierPremium');
+      document.getElementById('vaf-tier').value = tier;
+      if (tier === 'basic') {
+        basic.style.background = 'var(--gold)'; basic.style.borderColor = 'var(--gold)'; basic.style.color = '#1a1710';
+        premium.style.background = 'white'; premium.style.borderColor = 'var(--border)'; premium.style.color = 'var(--charcoal)';
+      } else {
+        premium.style.background = 'var(--gold)'; premium.style.borderColor = 'var(--gold)'; premium.style.color = '#1a1710';
+        basic.style.background = 'white'; basic.style.borderColor = 'var(--border)'; basic.style.color = 'var(--charcoal)';
+      }
+    }
+
     async function submitVendorApp() {
       const business = document.getElementById('vaf-business').value.trim();
       const category = document.getElementById('vaf-category').value.trim();
@@ -1740,16 +1784,19 @@
       const email = document.getElementById('vaf-email').value.trim();
       const website = document.getElementById('vaf-website').value.trim();
       const message = document.getElementById('vaf-message').value.trim();
+      const tier = document.getElementById('vaf-tier').value;
+      const tierLabel = tier === 'basic' ? 'Basic — Metro ($119/month)' : 'Premium — Statewide ($189/month)';
       if (!business || !name || !email) { showToast('Please fill in your business name, contact name and email.'); return; }
       const btn = document.getElementById('vafBtn');
       btn.textContent = 'Sending…'; btn.disabled = true;
       // Open Stripe immediately (before await) to avoid popup blocker
-      const stripeWin = window.open('https://buy.stripe.com/6oUaEX1TueAXbJPcjS8EM02', '_blank');
+      const stripeLinks = { basic: 'https://buy.stripe.com/14A14nfKk64r8xD6Zy8EM03', premium: 'https://buy.stripe.com/cNi9AT8hS2Sf8xDes08EM04' };
+      const stripeWin = window.open(stripeLinks[tier] || stripeLinks.premium, '_blank');
       try {
         await fetch('https://formspree.io/f/xrejawyp', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({ business_name: business, category, contact_name: name, email, website_instagram: website, about: message, _subject: 'Vendor Application — ' + business })
+          body: JSON.stringify({ business_name: business, category, contact_name: name, email, website_instagram: website, about: message, plan: tierLabel, _subject: 'Vendor Application — ' + business + ' (' + tierLabel + ')' })
         });
       } catch(e) { console.error(e); }
       document.getElementById('vendorAppForm').style.display = 'none';
