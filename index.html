@@ -1509,6 +1509,7 @@
       {id:20,name:'Your Celebrant',cat:'Celebrant',icon:'celebrant',desc:'Heartfelt, personalised wedding ceremonies tailored to you. Creating meaningful moments that reflect your unique love story.',price:'From $800',rating:5.0,reviews:0,location:'Melbourne',style:['Personalised','Heartfelt','Modern'],packages:'Custom quotes',availability:'available',color:BANNERS[6],gallery:[]},
       {id:12,name:'Encore Events DJ',cat:'Entertainment',icon:'music',desc:'Professional wedding DJ service with lighting and MC included.',price:'From $1,100',rating:4.7,reviews:67,location:'Melbourne-wide',style:['DJ','Contemporary','Pop'],packages:'5h / 8h',placeholder:true,availability:'available',color:BANNERS[6],gallery:[]},
       {id:19,name:'Lumiere & Co',cat:'Jewellery',icon:'ring',desc:'Bespoke engagement rings and wedding bands crafted to your vision. From classic solitaires to intricate custom designs — every piece handcrafted in Melbourne.',price:'From $1,500',rating:5.0,reviews:1,location:'Melbourne',style:['Bespoke','Classic','Custom'],packages:'Custom quotes',availability:'available',color:BANNERS[3],gallery:['images/Ring1.jpg']},
+      {id:89,name:'Ceremonies with Kylie',cat:'Celebrant',icon:'celebrant',desc:'Warm, fun and personalised ceremonies for every kind of love. Weddings, vow renewals and baby namings, with a Melbourne base and offices in Langwarrin and Inverloch.',price:'From $550',rating:0,reviews:0,location:'Melbourne',style:['Personalised','Warm','Inclusive'],packages:'2 packages',availability:'available',instagram:'ceremonieswithkylie',color:BANNERS[6],gallery:[]},
       /* Unclaimed listings: public business details only; vendors can claim or request removal */
       {id:21,name:"The Wool Mill",cat:"Venue",icon:"venue",desc:"Wedding venue in Brunswick East. Former wool mill; 136 mezzanine / 180 feasting hall.",price:'',rating:0,reviews:0,location:'Melbourne',suburb:"Brunswick East",website:"https://thewoolmill.com.au",style:[],packages:'',availability:'unclaimed',instagram:"the.wool.mill",unclaimed:true,color:BANNERS[4],gallery:[]},
       {id:22,name:"Two Ton Max",cat:"Venue",icon:"venue",desc:"Wedding venue in North Melbourne. Warehouse.",price:'',rating:0,reviews:0,location:'Melbourne',suburb:"North Melbourne",website:"https://twotonmax.com.au",style:[],packages:'',availability:'unclaimed',unclaimed:true,color:BANNERS[4],gallery:[]},
@@ -1725,7 +1726,7 @@
             ${v.unclaimed
               ? `<span class="vcard-price">${v.suburb || v.location}</span><span class="vcard-rating">Not yet claimed</span>`
               : `<span class="vcard-price">${v.price}</span>
-            <span class="vcard-rating"><span class="stars">${stars(v.rating)}</span> ${v.rating} (${v.reviews})</span>`}
+            <span class="vcard-rating">${v.reviews > 0 ? `<span class="stars">${stars(v.rating)}</span> ${v.rating} (${v.reviews})` : 'New listing'}</span>`}
           </div>
           <button class="vcard-btn">View details</button>
         </div>
@@ -1788,7 +1789,7 @@
           <p class="modal-desc">${v.desc} Based in ${v.location}.</p>
           <div class="modal-details">
             <div class="det"><div class="det-lbl">Starting from</div><div class="det-val">${v.price}</div></div>
-            <div class="det"><div class="det-lbl">Rating</div><div class="det-val">${v.rating} ★ (${v.reviews})</div></div>
+            <div class="det"><div class="det-lbl">Rating</div><div class="det-val">${v.reviews > 0 ? `${v.rating} ★ (${v.reviews})` : 'New listing'}</div></div>
             <div class="det"><div class="det-lbl">Packages</div><div class="det-val">${v.packages}</div></div>
             <div class="det"><div class="det-lbl">Availability</div><div class="det-val" style="text-transform:capitalize">${v.availability}</div></div>
           </div>
