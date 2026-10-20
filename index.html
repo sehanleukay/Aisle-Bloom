@@ -339,6 +339,8 @@
     .b-lim { background: var(--warning-bg); color: var(--warning); }
     .vcard-mono { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: var(--deep-rose); }
     .vcard-mono::before { content: ''; position: absolute; inset: 12px; border: 0.5px solid rgba(122,99,64,0.35); border-radius: 10px; }
+    .vcard-banner .vcard-illus, .modal-banner .vcard-illus { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+    .vcard-banner .vbadge { z-index: 2; }
     .vcard-mono-ico { position: absolute; display: flex; opacity: 0.1; }
     .vcard-mono-ico svg { width: 130px; height: 130px; }
     .vcard-mono-init { position: relative; font-family: 'Cormorant Garamond', serif; font-size: 52px; line-height: 1; letter-spacing: 0.08em; }
@@ -1677,6 +1679,13 @@
       return 'mailto:infoaislebloom@gmail.com?subject=' + subj + '&body=' + body;
     }
     function safeUrl(u) { return /^https?:\/\//i.test(u || '') ? u : ''; }
+    /* Original category illustrations for unclaimed listings (not photos of any vendor's work) */
+    function illusSrc(cat) {
+      const map = { 'Venue': 'venue', 'Photography': 'photography', 'Florals': 'florals', 'Celebrant': 'celebrant',
+        'Catering': 'catering', 'Cake': 'cake', 'Hair & Makeup': 'beauty', 'Entertainment': 'entertainment',
+        'Transport': 'transport', 'Jewellery': 'jewellery' };
+      return 'images/illustrations/' + (map[cat] || 'venue') + '.svg';
+    }
     function initials(name) {
       const words = String(name).replace(/\(.*?\)/g, '').split(/[\s&\-]+/).filter(w => w && !/^(the|and|of|co\.?|pty|ltd)$/i.test(w));
       const pick = words.length > 1 ? [words[0], words[1]] : words.slice(0, 1);
@@ -1704,7 +1713,7 @@
       const hasBannerPhoto = v.gallery && v.gallery.length > 0;
       return `<div class="vcard" onclick="openModal(${v.id})">
         <div class="vcard-banner" style="background:${v.color}">
-          ${hasBannerPhoto ? `<img src="${v.gallery[0]}" alt="${v.name}" onerror="this.style.display='none';this.parentElement.style.justifyContent='center';">` : v.unclaimed ? `<div class="vcard-mono"><span class="vcard-mono-ico">${vendorIcon(v.icon)}</span><span class="vcard-mono-init">${initials(v.name)}</span><span class="vcard-mono-cat">${v.suburb || 'Melbourne'}</span></div>` : `<div class="vcard-icon">${vendorIcon(v.icon)}</div>`}
+          ${hasBannerPhoto ? `<img src="${v.gallery[0]}" alt="${v.name}" onerror="this.style.display='none';this.parentElement.style.justifyContent='center';">` : v.unclaimed ? `<div class="vcard-mono"><span class="vcard-mono-ico">${vendorIcon(v.icon)}</span><span class="vcard-mono-init">${initials(v.name)}</span><span class="vcard-mono-cat">${v.suburb || 'Melbourne'}</span></div><img class="vcard-illus" src="${illusSrc(v.cat)}" alt="Illustration for ${v.cat}" loading="lazy" onerror="this.remove()">` :`<div class="vcard-icon">${vendorIcon(v.icon)}</div>`}
           <span class="vbadge ${badgeCls(v.availability)}">${badgeLbl(v.availability)}</span>
         </div>
         <div class="vcard-body">
@@ -1732,7 +1741,7 @@
         const where = v.suburb || 'Melbourne';
         const host = (() => { try { return new URL(url).hostname.replace(/^www\./, ''); } catch (e) { return ''; } })();
         document.getElementById('modal').innerHTML = `
-          <div class="modal-banner" style="background:${v.color};position:relative;overflow:hidden;height:140px;"><div class="vcard-mono"><span class="vcard-mono-ico">${vendorIcon(v.icon)}</span><span class="vcard-mono-init">${initials(v.name)}</span><span class="vcard-mono-cat">${where}</span></div></div>
+          <div class="modal-banner" style="background:${v.color};position:relative;overflow:hidden;height:140px;"><div class="vcard-mono"><span class="vcard-mono-ico">${vendorIcon(v.icon)}</span><span class="vcard-mono-init">${initials(v.name)}</span><span class="vcard-mono-cat">${where}</span></div><img class="vcard-illus" src="${illusSrc(v.cat)}" alt="Illustration for ${v.cat}" onerror="this.remove()"></div>
           <div class="modal-body">
             <p class="modal-cat">${v.cat}</p>
             <p class="modal-name">${v.name}</p>
