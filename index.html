@@ -337,6 +337,7 @@
     .b-avail { background: var(--success-bg); color: var(--success); }
     .b-book { background: var(--danger-bg); color: var(--danger); }
     .b-lim { background: var(--warning-bg); color: var(--warning); }
+    .b-unclaimed { background: var(--cream, #f5f0e8); color: var(--mid, #6b6259); border: 0.5px solid var(--border, #e5dccb); }
     .vcard-body { padding: 1rem 1.1rem 1.1rem; }
     .vcard-cat { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--light); margin-bottom: 3px; }
     .vcard-name { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 600; color: var(--charcoal); margin-bottom: 5px; line-height: 1.2; }
@@ -1500,6 +1501,40 @@
       {id:20,name:'Your Celebrant',cat:'Celebrant',icon:'celebrant',desc:'Heartfelt, personalised wedding ceremonies tailored to you. Creating meaningful moments that reflect your unique love story.',price:'From $800',rating:5.0,reviews:0,location:'Melbourne',style:['Personalised','Heartfelt','Modern'],packages:'Custom quotes',availability:'available',color:BANNERS[6],gallery:[]},
       {id:12,name:'Encore Events DJ',cat:'Entertainment',icon:'music',desc:'Professional wedding DJ service with lighting and MC included.',price:'From $1,100',rating:4.7,reviews:67,location:'Melbourne-wide',style:['DJ','Contemporary','Pop'],packages:'5h / 8h',availability:'available',color:BANNERS[6],gallery:[]},
       {id:19,name:'Lumiere & Co',cat:'Jewellery',icon:'ring',desc:'Bespoke engagement rings and wedding bands crafted to your vision. From classic solitaires to intricate custom designs — every piece handcrafted in Melbourne.',price:'From $1,500',rating:5.0,reviews:1,location:'Melbourne',style:['Bespoke','Classic','Custom'],packages:'Custom quotes',availability:'available',color:BANNERS[3],gallery:['images/Ring1.jpg']},
+      /* Unclaimed listings: public business details only; vendors can claim or request removal */
+      {id:21,name:"The Wool Mill",cat:"Venue",icon:"venue",desc:"Wedding venue in Brunswick East. Former wool mill; 136 mezzanine / 180 feasting hall.",price:'',rating:0,reviews:0,location:'Melbourne',suburb:"Brunswick East",website:"https://thewoolmill.com.au",style:[],packages:'',availability:'unclaimed',unclaimed:true,color:BANNERS[4],gallery:[]},
+      {id:22,name:"Two Ton Max",cat:"Venue",icon:"venue",desc:"Wedding venue in North Melbourne. Warehouse.",price:'',rating:0,reviews:0,location:'Melbourne',suburb:"North Melbourne",website:"https://twotonmax.com.au",style:[],packages:'',availability:'unclaimed',unclaimed:true,color:BANNERS[4],gallery:[]},
+      {id:23,name:"Panama Dining Room and Bar",cat:"Venue",icon:"venue",desc:"Wedding venue in Fitzroy. Converted textile factory; up to 250.",price:'',rating:0,reviews:0,location:'Melbourne',suburb:"Fitzroy",website:"https://thepanama.com.au",style:[],packages:'',availability:'unclaimed',unclaimed:true,color:BANNERS[4],gallery:[]},
+      {id:24,name:"Gather and Tailor Warehouse",cat:"Venue",icon:"venue",desc:"Wedding venue in West Melbourne. Warehouse; up to 320 upstairs.",price:'',rating:0,reviews:0,location:'Melbourne',suburb:"West Melbourne",website:"https://gatherandtailor.com.au",style:[],packages:'',availability:'unclaimed',unclaimed:true,color:BANNERS[4],gallery:[]},
+      {id:25,name:"The Altar Electric",cat:"Venue",icon:"venue",desc:"Wedding venue in Abbotsford. Up to 80 ceremony.",price:'',rating:0,reviews:0,location:'Melbourne',suburb:"Abbotsford",website:"https://thealtarelectric.com.au",style:[],packages:'',availability:'unclaimed',unclaimed:true,color:BANNERS[4],gallery:[]},
+      {id:26,name:"Encore St Kilda",cat:"Venue",icon:"venue",desc:"Wedding venue in St Kilda. Beachside.",price:'',rating:0,reviews:0,location:'Melbourne',suburb:"St Kilda",website:"https://encorestkilda.com.au",style:[],packages:'',availability:'unclaimed',unclaimed:true,color:BANNERS[4],gallery:[]},
+      {id:27,name:"Greenfields",cat:"Venue",icon:"venue",desc:"Wedding venue in Albert Park. Lakeside; up to 150 seated.",price:'',rating:0,reviews:0,location:'Melbourne',suburb:"Albert Park",website:"https://greenfieldsalbertpark.com.au",style:[],packages:'',availability:'unclaimed',unclaimed:true,color:BANNERS[4],gallery:[]},
+      {id:28,name:"The Abbotsford Convent",cat:"Venue",icon:"venue",desc:"Wedding venue in Abbotsford. Heritage venue.",price:'',rating:0,reviews:0,location:'Melbourne',suburb:"Abbotsford",website:"https://abbotsfordconvent.com.au",style:[],packages:'',availability:'unclaimed',unclaimed:true,color:BANNERS[4],gallery:[]},
+      {id:29,name:"Zonzo",cat:"Venue",icon:"venue",desc:"Wedding venue in Yarra Glen. Winery; 140 seated.",price:'',rating:0,reviews:0,location:'Melbourne',suburb:"Yarra Glen",website:"https://zonzo.com.au",style:[],packages:'',availability:'unclaimed',unclaimed:true,color:BANNERS[4],gallery:[]},
+      {id:30,name:"Terindah Estate",cat:"Venue",icon:"venue",desc:"Wedding venue in Portarlington. Cellar door and event space.",price:'',rating:0,reviews:0,location:'Melbourne',suburb:"Portarlington",website:"https://terindahestate.com",style:[],packages:'',availability:'unclaimed',unclaimed:true,color:BANNERS[4],gallery:[]},
+      {id:31,name:"Leonda by the Yarra",cat:"Venue",icon:"venue",desc:"Wedding venue in Hawthorn (Yarra River). 60 to 1,000 guests.",price:'',rating:0,reviews:0,location:'Melbourne',suburb:"Hawthorn (Yarra River)",website:"https://leondabytheyarra.com.au",style:[],packages:'',availability:'unclaimed',unclaimed:true,color:BANNERS[4],gallery:[]},
+      {id:32,name:"freshphotography",cat:"Photography",icon:"camera",desc:"Wedding photographer in Melbourne and country Victoria. Documentary style; elopements to large weddings.",price:'',rating:0,reviews:0,location:'Melbourne',suburb:"Melbourne and country Victoria",website:"https://www.freshphotography.com.au",style:[],packages:'',availability:'unclaimed',unclaimed:true,color:BANNERS[1],gallery:[]},
+      {id:33,name:"Mighty Vision",cat:"Photography",icon:"camera",desc:"Wedding photography and videography in Malvern. Photo and video.",price:'',rating:0,reviews:0,location:'Melbourne',suburb:"Malvern",website:"https://www.mightyvision.com.au",style:[],packages:'',availability:'unclaimed',unclaimed:true,color:BANNERS[1],gallery:[]},
+      {id:34,name:"Lavan Photography & Videography",cat:"Photography",icon:"camera",desc:"Wedding photography and videography in Melbourne. Photo and video.",price:'',rating:0,reviews:0,location:'Melbourne',suburb:"",website:"https://www.lavanphoto.com.au",style:[],packages:'',availability:'unclaimed',unclaimed:true,color:BANNERS[1],gallery:[]},
+      {id:35,name:"Gaëlle Le Berre Photography",cat:"Photography",icon:"camera",desc:"Wedding photographer in Melbourne. Artistic and documentary.",price:'',rating:0,reviews:0,location:'Melbourne',suburb:"",website:"http://www.gaelleleberre.com.au",style:[],packages:'',availability:'unclaimed',unclaimed:true,color:BANNERS[1],gallery:[]},
+      {id:36,name:"Elise Kapeller Photography",cat:"Photography",icon:"camera",desc:"Wedding photographer in Melbourne. Candid.",price:'',rating:0,reviews:0,location:'Melbourne',suburb:"",website:"http://www.elisekapellerphotography.com",style:[],packages:'',availability:'unclaimed',unclaimed:true,color:BANNERS[1],gallery:[]},
+      {id:37,name:"Precise Moment Photography",cat:"Photography",icon:"camera",desc:"Wedding photographer in Craigieburn. Boutique studio.",price:'',rating:0,reviews:0,location:'Melbourne',suburb:"Craigieburn",website:"http://www.precisemomentphotography.com.au",style:[],packages:'',availability:'unclaimed',unclaimed:true,color:BANNERS[1],gallery:[]},
+      {id:38,name:"Lillypad Flowers & Events",cat:"Florals",icon:"florals",desc:"Wedding florist in Melbourne.",price:'',rating:0,reviews:0,location:'Melbourne',suburb:"",website:"https://www.lillypad.com.au",style:[],packages:'',availability:'unclaimed',unclaimed:true,color:BANNERS[0],gallery:[]},
+      {id:39,name:"Hailey Paige Flowers",cat:"Florals",icon:"florals",desc:"Wedding florist in Melbourne.",price:'',rating:0,reviews:0,location:'Melbourne',suburb:"",website:"http://www.haileypaigeflowers.com.au",style:[],packages:'',availability:'unclaimed',unclaimed:true,color:BANNERS[0],gallery:[]},
+      {id:40,name:"Florium Creations",cat:"Florals",icon:"florals",desc:"Wedding florist in Melbourne.",price:'',rating:0,reviews:0,location:'Melbourne',suburb:"",website:"http://www.floriumcreations.com.au",style:[],packages:'',availability:'unclaimed',unclaimed:true,color:BANNERS[0],gallery:[]},
+      {id:41,name:"Heathmont Flowers",cat:"Florals",icon:"florals",desc:"Wedding florist in Heathmont.",price:'',rating:0,reviews:0,location:'Melbourne',suburb:"Heathmont",website:"http://www.heathmontflowers.com.au/weddings.html",style:[],packages:'',availability:'unclaimed',unclaimed:true,color:BANNERS[0],gallery:[]},
+      {id:42,name:"Charis White",cat:"Celebrant",icon:"celebrant",desc:"Marriage celebrant in Melbourne.",price:'',rating:0,reviews:0,location:'Melbourne',suburb:"",website:"https://chariswhitecelebrant.com.au",style:[],packages:'',availability:'unclaimed',unclaimed:true,color:BANNERS[6],gallery:[]},
+      {id:43,name:"Pink Ceremonies (Carmel Webster)",cat:"Celebrant",icon:"celebrant",desc:"Marriage celebrant in Melbourne.",price:'',rating:0,reviews:0,location:'Melbourne',suburb:"",website:"https://pinkceremonies.com.au",style:[],packages:'',availability:'unclaimed',unclaimed:true,color:BANNERS[6],gallery:[]},
+      {id:44,name:"Dr Jeni Wilson",cat:"Celebrant",icon:"celebrant",desc:"Marriage celebrant in Melbourne and country venues.",price:'',rating:0,reviews:0,location:'Melbourne',suburb:"Melbourne and country venues",website:"https://melbournecelebrantservices.com",style:[],packages:'',availability:'unclaimed',unclaimed:true,color:BANNERS[6],gallery:[]},
+      {id:45,name:"Benn Stone (Melbourne Cityside Celebrant)",cat:"Celebrant",icon:"celebrant",desc:"Marriage celebrant in Melbourne.",price:'',rating:0,reviews:0,location:'Melbourne',suburb:"",website:"https://melbournecitysidecelebrant.com",style:[],packages:'',availability:'unclaimed',unclaimed:true,color:BANNERS[6],gallery:[]},
+      {id:46,name:"Bruce Shand",cat:"Celebrant",icon:"celebrant",desc:"Marriage celebrant in Throughout Victoria.",price:'',rating:0,reviews:0,location:'Melbourne',suburb:"Throughout Victoria",website:"https://bruceshand.com.au",style:[],packages:'',availability:'unclaimed',unclaimed:true,color:BANNERS[6],gallery:[]},
+      {id:47,name:"Hot Coals Catering",cat:"Catering",icon:"catering",desc:"Wedding caterer in Melbourne. Wood-fired; canapes to banquets.",price:'',rating:0,reviews:0,location:'Melbourne',suburb:"",website:"https://www.hotcoals.com.au",style:[],packages:'',availability:'unclaimed',unclaimed:true,color:BANNERS[2],gallery:[]},
+      {id:48,name:"Elia Donati",cat:"Catering",icon:"catering",desc:"Wedding caterer in Melbourne. Meat-heavy and plant-based menus.",price:'',rating:0,reviews:0,location:'Melbourne',suburb:"",website:"https://www.eliadonati.com",style:[],packages:'',availability:'unclaimed',unclaimed:true,color:BANNERS[2],gallery:[]},
+      {id:49,name:"Dinners with Jimmy",cat:"Catering",icon:"catering",desc:"Wedding caterer in Melbourne.",price:'',rating:0,reviews:0,location:'Melbourne',suburb:"",website:"https://dinnerswithjimmy.au",style:[],packages:'',availability:'unclaimed',unclaimed:true,color:BANNERS[2],gallery:[]},
+      {id:50,name:"The Prosecco Van",cat:"Catering",icon:"catering",desc:"Mobile wedding bar in Throughout Victoria. 20 to 200 guests.",price:'',rating:0,reviews:0,location:'Melbourne',suburb:"Throughout Victoria",website:"http://www.theproseccovan.net.au",style:[],packages:'',availability:'unclaimed',unclaimed:true,color:BANNERS[2],gallery:[]},
+      {id:51,name:"Videoboutique",cat:"Photography",icon:"camera",desc:"Wedding videographer in Melbourne and Australia-wide.",price:'',rating:0,reviews:0,location:'Melbourne',suburb:"Melbourne and Australia-wide",website:"http://www.videoboutique.com.au",style:[],packages:'',availability:'unclaimed',unclaimed:true,color:BANNERS[1],gallery:[]},
+      {id:52,name:"Allure Wedding Video",cat:"Photography",icon:"camera",desc:"Wedding videographer in Melbourne and regional Victoria.",price:'',rating:0,reviews:0,location:'Melbourne',suburb:"Melbourne and regional Victoria",website:"http://allureproductions.com.au",style:[],packages:'',availability:'unclaimed',unclaimed:true,color:BANNERS[1],gallery:[]},
+      {id:53,name:"Westward Films",cat:"Photography",icon:"camera",desc:"Wedding videographer in Melbourne.",price:'',rating:0,reviews:0,location:'Melbourne',suburb:"",website:"https://www.westwardfilms.com.au",style:[],packages:'',availability:'unclaimed',unclaimed:true,color:BANNERS[1],gallery:[]},
     ];
 
     let activeFilter = 'All';
@@ -1585,8 +1620,14 @@
 
     function vendorIcon(key) { return ICONS[key] || ICONS['camera']; }
     function stars(r) { const f = Math.floor(r); return '★'.repeat(f) + (r % 1 >= 0.5 ? '½' : '') + '☆'.repeat(5 - f - (r % 1 >= 0.5 ? 1 : 0)); }
-    function badgeCls(a) { return a === 'available' ? 'b-avail' : a === 'booked' ? 'b-book' : 'b-lim'; }
-    function badgeLbl(a) { return a === 'available' ? 'Available' : a === 'booked' ? 'Booked' : 'Limited dates'; }
+    function badgeCls(a) { return a === 'available' ? 'b-avail' : a === 'booked' ? 'b-book' : a === 'unclaimed' ? 'b-unclaimed' : 'b-lim'; }
+    function badgeLbl(a) { return a === 'available' ? 'Available' : a === 'booked' ? 'Booked' : a === 'unclaimed' ? 'Unclaimed' : 'Limited dates'; }
+    function claimMailto(v) {
+      const subj = encodeURIComponent('Aisle & Bloom listing: ' + v.name);
+      const body = encodeURIComponent('Hi, I\'d like to claim or remove the listing for ' + v.name + '.');
+      return 'mailto:infoaislebloom@gmail.com?subject=' + subj + '&body=' + body;
+    }
+    function safeUrl(u) { return /^https?:\/\//i.test(u || '') ? u : ''; }
 
     function cardHTML(v) {
       const hasBannerPhoto = v.gallery && v.gallery.length > 0;
@@ -1600,8 +1641,10 @@
           <p class="vcard-name">${v.name}</p>
           <p class="vcard-desc">${v.desc}</p>
           <div class="vcard-meta">
-            <span class="vcard-price">${v.price}</span>
-            <span class="vcard-rating"><span class="stars">${stars(v.rating)}</span> ${v.rating} (${v.reviews})</span>
+            ${v.unclaimed
+              ? `<span class="vcard-price">${v.suburb || v.location}</span><span class="vcard-rating">Not yet claimed</span>`
+              : `<span class="vcard-price">${v.price}</span>
+            <span class="vcard-rating"><span class="stars">${stars(v.rating)}</span> ${v.rating} (${v.reviews})</span>`}
           </div>
           <button class="vcard-btn">View details</button>
         </div>
@@ -1612,6 +1655,24 @@
       const v = vendors.find(x => x.id === id);
       if (!v) return;
       gtag('event', 'vendor_click', { vendor_name: v.name, vendor_category: v.cat, vendor_location: v.location });
+      if (v.unclaimed) {
+        const url = safeUrl(v.website);
+        document.getElementById('modal').innerHTML = `
+          <div class="modal-banner" style="background:${v.color}"><div class="vcard-icon modal-icon">${vendorIcon(v.icon)}</div></div>
+          <div class="modal-body">
+            <p class="modal-cat">${v.cat}</p>
+            <p class="modal-name">${v.name}</p>
+            <p class="modal-desc">${v.desc}${v.suburb ? '' : ''}</p>
+            <p style="font-size:12px;color:var(--mid);margin:0.75rem 0 1rem;">This is an unclaimed listing built from publicly available business details. This business is not a partner of Aisle &amp; Bloom and has not been verified by us.</p>
+            <div class="modal-actions" style="margin-top:0.75rem">
+              ${url ? `<a class="mbtn-primary" href="${url}" target="_blank" rel="noopener noreferrer nofollow" style="text-align:center;text-decoration:none;display:inline-block;" onclick="gtag('event','unclaimed_website_click',{vendor_name:'${v.name.replace(/'/g, "\\'")}'})">Visit website</a>` : ''}
+              <button class="mbtn-secondary" onclick="closeModal()">Close</button>
+            </div>
+            <p style="font-size:12px;margin-top:1rem;"><a href="${claimMailto(v)}" style="color:var(--deep-rose);">Own this business? Claim or remove this listing</a></p>
+          </div>`;
+        document.getElementById('modalOverlay').classList.add('open');
+        return;
+      }
       const galleryHTML = v.gallery && v.gallery.length ? `
         <div class="vendor-gallery">
           <p class="gallery-label">Gallery</p>
