@@ -1680,11 +1680,12 @@
     }
     function safeUrl(u) { return /^https?:\/\//i.test(u || '') ? u : ''; }
     /* Original category illustrations for unclaimed listings (not photos of any vendor's work) */
-    function illusSrc(cat) {
+    function illusSrc(cat, id) {
       const map = { 'Venue': 'venue', 'Photography': 'photography', 'Florals': 'florals', 'Celebrant': 'celebrant',
         'Catering': 'catering', 'Cake': 'cake', 'Hair & Makeup': 'beauty', 'Entertainment': 'entertainment',
         'Transport': 'transport', 'Jewellery': 'jewellery' };
-      return 'images/illustrations/' + (map[cat] || 'venue') + '.svg';
+      // 7 colour palettes; each vendor keeps the same one based on its id
+      return 'images/illustrations/' + (map[cat] || 'venue') + '-' + (Math.abs(Number(id) || 0) % 7) + '.svg';
     }
     function initials(name) {
       const words = String(name).replace(/\(.*?\)/g, '').split(/[\s&\-]+/).filter(w => w && !/^(the|and|of|co\.?|pty|ltd)$/i.test(w));
@@ -1713,7 +1714,7 @@
       const hasBannerPhoto = v.gallery && v.gallery.length > 0;
       return `<div class="vcard" onclick="openModal(${v.id})">
         <div class="vcard-banner" style="background:${v.color}">
-          ${hasBannerPhoto ? `<img src="${v.gallery[0]}" alt="${v.name}" onerror="this.style.display='none';this.parentElement.style.justifyContent='center';">` : v.unclaimed ? `<div class="vcard-mono"><span class="vcard-mono-ico">${vendorIcon(v.icon)}</span><span class="vcard-mono-init">${initials(v.name)}</span><span class="vcard-mono-cat">${v.suburb || 'Melbourne'}</span></div><img class="vcard-illus" src="${illusSrc(v.cat)}" alt="Illustration for ${v.cat}" loading="lazy" onerror="this.remove()">` :`<div class="vcard-icon">${vendorIcon(v.icon)}</div>`}
+          ${hasBannerPhoto ? `<img src="${v.gallery[0]}" alt="${v.name}" onerror="this.style.display='none';this.parentElement.style.justifyContent='center';">` : v.unclaimed ? `<div class="vcard-mono"><span class="vcard-mono-ico">${vendorIcon(v.icon)}</span><span class="vcard-mono-init">${initials(v.name)}</span><span class="vcard-mono-cat">${v.suburb || 'Melbourne'}</span></div><img class="vcard-illus" src="${illusSrc(v.cat, v.id)}" alt="Illustration for ${v.cat}" loading="lazy" onerror="this.remove()">` :`<div class="vcard-icon">${vendorIcon(v.icon)}</div>`}
           <span class="vbadge ${badgeCls(v.availability)}">${badgeLbl(v.availability)}</span>
         </div>
         <div class="vcard-body">
@@ -1741,7 +1742,7 @@
         const where = v.suburb || 'Melbourne';
         const host = (() => { try { return new URL(url).hostname.replace(/^www\./, ''); } catch (e) { return ''; } })();
         document.getElementById('modal').innerHTML = `
-          <div class="modal-banner" style="background:${v.color};position:relative;overflow:hidden;height:140px;"><div class="vcard-mono"><span class="vcard-mono-ico">${vendorIcon(v.icon)}</span><span class="vcard-mono-init">${initials(v.name)}</span><span class="vcard-mono-cat">${where}</span></div><img class="vcard-illus" src="${illusSrc(v.cat)}" alt="Illustration for ${v.cat}" onerror="this.remove()"></div>
+          <div class="modal-banner" style="background:${v.color};position:relative;overflow:hidden;height:140px;"><div class="vcard-mono"><span class="vcard-mono-ico">${vendorIcon(v.icon)}</span><span class="vcard-mono-init">${initials(v.name)}</span><span class="vcard-mono-cat">${where}</span></div><img class="vcard-illus" src="${illusSrc(v.cat, v.id)}" alt="Illustration for ${v.cat}" onerror="this.remove()"></div>
           <div class="modal-body">
             <p class="modal-cat">${v.cat}</p>
             <p class="modal-name">${v.name}</p>
