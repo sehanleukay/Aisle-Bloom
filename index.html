@@ -337,6 +337,12 @@
     .b-avail { background: var(--success-bg); color: var(--success); }
     .b-book { background: var(--danger-bg); color: var(--danger); }
     .b-lim { background: var(--warning-bg); color: var(--warning); }
+    .vcard-mono { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: var(--deep-rose); }
+    .vcard-mono::before { content: ''; position: absolute; inset: 12px; border: 0.5px solid rgba(122,99,64,0.35); border-radius: 10px; }
+    .vcard-mono-ico { position: absolute; display: flex; opacity: 0.1; }
+    .vcard-mono-ico svg { width: 130px; height: 130px; }
+    .vcard-mono-init { position: relative; font-family: 'Cormorant Garamond', serif; font-size: 52px; line-height: 1; letter-spacing: 0.08em; }
+    .vcard-mono-cat { position: relative; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.8; }
     .b-unclaimed { background: var(--cream, #f5f0e8); color: var(--mid, #6b6259); border: 0.5px solid var(--border, #e5dccb); }
     .vcard-body { padding: 1rem 1.1rem 1.1rem; }
     .vcard-cat { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--light); margin-bottom: 3px; }
@@ -1628,6 +1634,11 @@
       return 'mailto:infoaislebloom@gmail.com?subject=' + subj + '&body=' + body;
     }
     function safeUrl(u) { return /^https?:\/\//i.test(u || '') ? u : ''; }
+    function initials(name) {
+      const words = String(name).replace(/\(.*?\)/g, '').split(/[\s&\-]+/).filter(w => w && !/^(the|and|of|co\.?|pty|ltd)$/i.test(w));
+      const pick = words.length > 1 ? [words[0], words[1]] : words.slice(0, 1);
+      return pick.map(w => w.charAt(0).toUpperCase()).join('').replace(/[<>&"']/g, '');
+    }
     /* Instagram embeds load only when a visitor taps "Show Instagram" (nothing from Meta loads before that) */
     function loadInstagram(id) {
       const v = vendors.find(x => x.id === id);
@@ -1650,7 +1661,7 @@
       const hasBannerPhoto = v.gallery && v.gallery.length > 0;
       return `<div class="vcard" onclick="openModal(${v.id})">
         <div class="vcard-banner" style="background:${v.color}">
-          ${hasBannerPhoto ? `<img src="${v.gallery[0]}" alt="${v.name}" onerror="this.style.display='none';this.parentElement.style.justifyContent='center';">` : `<div class="vcard-icon">${vendorIcon(v.icon)}</div>`}
+          ${hasBannerPhoto ? `<img src="${v.gallery[0]}" alt="${v.name}" onerror="this.style.display='none';this.parentElement.style.justifyContent='center';">` : v.unclaimed ? `<div class="vcard-mono"><span class="vcard-mono-ico">${vendorIcon(v.icon)}</span><span class="vcard-mono-init">${initials(v.name)}</span><span class="vcard-mono-cat">${v.suburb || 'Melbourne'}</span></div>` : `<div class="vcard-icon">${vendorIcon(v.icon)}</div>`}
           <span class="vbadge ${badgeCls(v.availability)}">${badgeLbl(v.availability)}</span>
         </div>
         <div class="vcard-body">
