@@ -2149,6 +2149,18 @@
       // Apply sec-transition to initial home section
       const home = document.getElementById('sec-home');
       if (home) { home.classList.add('sec-transition'); }
+
+      // Deep links: ?page=rings or #rings opens that tab directly
+      try {
+        const valid = ['home','directory','pricing','vendors','faq','rings'];
+        const q = new URLSearchParams(location.search).get('page');
+        const want = (q || location.hash.replace('#', '')).toLowerCase();
+        if (want && want !== 'home' && valid.includes(want)) {
+          const tab = Array.from(document.querySelectorAll('.ptab'))
+            .find(t => (t.getAttribute('onclick') || '').includes("'" + want + "'"));
+          showSection(want, tab);
+        }
+      } catch (e) {}
     });
 
 
