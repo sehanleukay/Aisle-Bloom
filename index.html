@@ -1691,22 +1691,34 @@
       if (v.unclaimed) {
         const url = safeUrl(v.website);
         const igOk = /^[A-Za-z0-9._]{1,30}$/.test(v.instagram || '');
+        const where = v.suburb || 'Melbourne';
+        const host = (() => { try { return new URL(url).hostname.replace(/^www\./, ''); } catch (e) { return ''; } })();
         document.getElementById('modal').innerHTML = `
-          <div class="modal-banner" style="background:${v.color}"><div class="vcard-icon modal-icon">${vendorIcon(v.icon)}</div></div>
+          <div class="modal-banner" style="background:${v.color};position:relative;overflow:hidden;height:140px;"><div class="vcard-mono"><span class="vcard-mono-ico">${vendorIcon(v.icon)}</span><span class="vcard-mono-init">${initials(v.name)}</span><span class="vcard-mono-cat">${where}</span></div></div>
           <div class="modal-body">
             <p class="modal-cat">${v.cat}</p>
             <p class="modal-name">${v.name}</p>
-            <p class="modal-desc">${v.desc}${v.suburb ? '' : ''}</p>
-            <p style="font-size:12px;color:var(--mid);margin:0.75rem 0 1rem;">This is an unclaimed listing built from publicly available business details. This business is not a partner of Aisle &amp; Bloom and has not been verified by us.</p>
+            <p class="modal-desc">${v.desc}</p>
+            <div class="modal-details">
+              <div class="det"><div class="det-lbl">Location</div><div class="det-val">${where}</div></div>
+              <div class="det"><div class="det-lbl">Category</div><div class="det-val">${v.cat}</div></div>
+              <div class="det"><div class="det-lbl">Website</div><div class="det-val">${url && host ? `<a href="${url}" target="_blank" rel="noopener noreferrer nofollow" style="color:var(--deep-rose);text-decoration:none;word-break:break-all;">${host}</a>` : '—'}</div></div>
+              <div class="det"><div class="det-lbl">Listing</div><div class="det-val">Unclaimed</div></div>
+            </div>
+            <div class="modal-tags"><span class="tag">${v.cat}</span><span class="tag">${where}</span>${igOk ? '<span class="tag">Instagram</span>' : ''}</div>
+            ${igOk ? `<div class="vendor-gallery">
+              <p class="gallery-label">Instagram</p>
+              <div id="igWrap-${v.id}">
+                <button class="mbtn-secondary" id="igBtn-${v.id}" onclick="loadInstagram(${v.id})">Show Instagram</button>
+                <p style="font-size:11px;color:var(--mid);margin-top:6px;">Loads content from Instagram (Meta). <a href="https://www.instagram.com/${v.instagram}/" target="_blank" rel="noopener noreferrer nofollow" style="color:var(--deep-rose);">Open on Instagram</a></p>
+              </div>
+            </div>` : ''}
             <div class="modal-actions" style="margin-top:0.75rem">
               <a class="mbtn-primary" href="${enquiryMailto(v)}" style="text-align:center;text-decoration:none;display:inline-block;" onclick="gtag('event','unclaimed_enquiry_click',{vendor_name:'${v.name.replace(/'/g, "\\'")}'})">Send enquiry</a>
               <button class="mbtn-secondary" onclick="closeModal()">Close</button>
             </div>
-            ${igOk ? `<div id="igWrap-${v.id}" style="margin-top:1rem;">
-              <button class="mbtn-secondary" id="igBtn-${v.id}" onclick="loadInstagram(${v.id})">Show Instagram</button>
-              <p style="font-size:11px;color:var(--mid);margin-top:6px;">Loads content from Instagram (Meta). <a href="https://www.instagram.com/${v.instagram}/" target="_blank" rel="noopener noreferrer nofollow" style="color:var(--deep-rose);">Open on Instagram</a></p>
-            </div>` : ''}
-            <p style="font-size:12px;margin-top:1rem;"><a href="${claimMailto(v)}" style="color:var(--deep-rose);">Own this business? Claim or remove this listing</a></p>
+            <p style="font-size:12px;color:var(--mid);margin-top:1rem;">Unclaimed listing built from publicly available business details. This business is not a partner of Aisle &amp; Bloom and has not been verified by us.</p>
+            <p style="font-size:12px;margin-top:0.5rem;"><a href="${claimMailto(v)}" style="color:var(--deep-rose);">Own this business? Claim or remove this listing</a></p>
           </div>`;
         document.getElementById('modalOverlay').classList.add('open');
         return;
